@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "relics_and_ruins",
+  "version": "${version}",
+  "name": "Relics & Ruins",
+  "description": "",
+  "authors": [
+    "creoii"
+  ],
+  "contact": {},
+  "license": "All Rights Reserved",
+  "icon": "assets/relics_and_ruins/icon.png",
+  "environment": "*",
+  "accessWidener": "relics_and_ruins.accesswidener",
+  "entrypoints": {
+    "main": [
+      "dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins"
+    ],
+    "client": [
+      "dev.creoii.greatbigworld.relicsandruins.client.RelicsAndRuinsClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "mixins": [
+    "relics_and_ruins.mixins.json"
+  ],
+  "custom": {
+    "modmenu": {
+      "parent": {
+        "id": "great_big_world",
+        "name": "Great Big World",
+        "description": ""
+      }
+    }
+  }
+}
