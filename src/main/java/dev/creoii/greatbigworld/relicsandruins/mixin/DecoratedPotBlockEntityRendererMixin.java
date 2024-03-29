@@ -1,8 +1,8 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.creoii.greatbigworld.relicsandruins.util.DecoratedPotHelper;
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
+import dev.creoii.greatbigworld.relicsandruins.util.TrimmedDecoratedPot;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Blocks;
@@ -97,7 +97,8 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         if (sherds.right() != null) {
             renderPatternedSide(rightPattern, matrixStack, vertexConsumerProvider, i, j, sherds.right(), color);
         }
-        int trim = DecoratedPotHelper.getTrim(decoratedPotBlockEntity);
+
+        int trim = ((TrimmedDecoratedPot) decoratedPotBlockEntity).gbw$getTrim();
         if (sherds.front() != Items.BRICK || sherds.back() != Items.BRICK || sherds.left() != Items.BRICK || sherds.right() != Items.BRICK) {
             renderTrimmedSide(frontTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
             renderTrimmedSide(backTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
