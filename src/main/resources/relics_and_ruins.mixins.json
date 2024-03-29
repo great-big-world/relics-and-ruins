@@ -9,6 +9,7 @@
     "DecoratedPotBlockMixin"
   ],
   "client": [
+    "BuiltinModelItemRendererMixin",
     "DecoratedPotBlockEntityRendererMixin"
   ],
   "injectors": {
