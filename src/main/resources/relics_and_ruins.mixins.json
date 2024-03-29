@@ -4,8 +4,12 @@
   "package": "dev.creoii.greatbigworld.relicsandruins.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "CraftingDecoratedPotRecipeMixin",
+    "DecoratedPotBlockEntityMixin",
+    "DecoratedPotBlockMixin"
   ],
   "client": [
+    "DecoratedPotBlockEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

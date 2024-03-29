@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "decorated_pots",
+  "key": {
+    "#": {
+      "item": "minecraft:brick"
+    },
+    "D": {
+      "item": "minecraft:cyan_dye"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#D#",
+    " # "
+  ],
+  "result": {
+    "item": "great_big_world:cyan_decorated_pot"
+  }
+}
