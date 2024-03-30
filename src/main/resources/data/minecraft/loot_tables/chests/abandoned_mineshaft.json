@@ -277,23 +277,119 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "weight": 4,
+          "name": "minecraft:stone_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.05,
+                "max": 0.3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "weight": 2,
-          "name": "minecraft:stone_pickaxe"
+          "name": "minecraft:iron_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.05,
+                "max": 0.3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 4,
+          "name": "minecraft:stone_shovel",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": {
+                  "min": 0.05,
+                  "max": 0.3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "minecraft:iron_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": {
+                  "min": 0.05,
+                  "max": 0.3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "minecraft:stone_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.7,
+                "max": 0.95
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "minecraft:iron_pickaxe"
+          "name": "minecraft:iron_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.7,
+                "max": 0.95
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "weight": 2,
-          "name": "minecraft:stone_shovel"
+          "name": "minecraft:stone_shovel",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.7,
+                "max": 0.95
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "weight": 1,
-          "name": "minecraft:iron_pickaxe"
+          "name": "minecraft:iron_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.7,
+                "max": 0.95
+              }
+            }
+          ]
         }
       ]
     },
