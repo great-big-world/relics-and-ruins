@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BuiltinModelItemRenderer.class)
 public class BuiltinModelItemRendererMixin {
-    @Mutable @Shadow @Final private DecoratedPotBlockEntity renderDecoratedPot;
+    @Shadow @Final private DecoratedPotBlockEntity renderDecoratedPot;
 
     @ModifyExpressionValue(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z", ordinal = 4))
     private boolean gbw$renderDecoratedPotItemModels(boolean original, @Local BlockState blockState) {
