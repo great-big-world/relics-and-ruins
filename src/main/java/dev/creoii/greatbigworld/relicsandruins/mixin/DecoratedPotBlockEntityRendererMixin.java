@@ -5,9 +5,7 @@ import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
 import dev.creoii.greatbigworld.relicsandruins.util.TrimmedDecoratedPot;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.DecoratedPotPatterns;
-import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
@@ -67,9 +65,9 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     @Redirect(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V"))
     private void gbw$tintRenders(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, @Local(argsOnly = true) DecoratedPotBlockEntity decoratedPotBlockEntity) {
         float[] color;
-        if (decoratedPotBlockEntity.getCachedState().getBlock() instanceof DyedDecoratedPot dyedDecoratedPot && !decoratedPotBlockEntity.getCachedState().isOf(Blocks.DECORATED_POT)) {
-            MapColor mapColor = dyedDecoratedPot.gbw$getColor();
-            color = new float[]{red(mapColor.color), green(mapColor.color), blue(mapColor.color)};
+        if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
+            int mapColor = dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR;
+            color = new float[]{red(mapColor), green(mapColor), blue(mapColor)};
         } else color = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
         instance.render(matrices, vertices, light, overlay, color[0], color[1], color[2], 1f);
     }
@@ -77,9 +75,9 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;renderDecoratedSide(Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/util/SpriteIdentifier;)V", ordinal = 0), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
     private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci, Direction direction, DecoratedPotBlockEntity.WobbleType wobbleType, VertexConsumer vertexConsumer, DecoratedPotBlockEntity.Sherds sherds) {
         float[] color;
-        if (decoratedPotBlockEntity.getCachedState().getBlock() instanceof DyedDecoratedPot dyedDecoratedPot && !decoratedPotBlockEntity.getCachedState().isOf(Blocks.DECORATED_POT)) {
-            MapColor mapColor = dyedDecoratedPot.gbw$getColor();
-            color = new float[]{red(mapColor.color), green(mapColor.color), blue(mapColor.color)};
+        if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
+            int mapColor = dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR;
+            color = new float[]{red(mapColor), green(mapColor), blue(mapColor)};
         } else color = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
         renderSide(front, matrixStack, vertexConsumerProvider, i, j, color);
         renderSide(back, matrixStack, vertexConsumerProvider, i, j, color);

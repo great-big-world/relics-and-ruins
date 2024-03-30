@@ -1,10 +1,13 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin;
 
+import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
 import dev.creoii.greatbigworld.relicsandruins.util.TrimmedDecoratedPot;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,8 +15,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DecoratedPotBlockEntity.class)
-public class DecoratedPotBlockEntityMixin implements TrimmedDecoratedPot {
+public class DecoratedPotBlockEntityMixin implements DyedDecoratedPot, TrimmedDecoratedPot {
     @Unique private final String TRIM_KEY = "trim";
+    @Unique private MapColor color = null;
     @Unique private int trim;
 
     @Inject(method = "<init>", at = @At("TAIL"))
@@ -39,5 +43,16 @@ public class DecoratedPotBlockEntityMixin implements TrimmedDecoratedPot {
     @Override
     public void gbw$setTrim(int trim) {
         this.trim = trim;
+    }
+
+    @Override
+    @Nullable
+    public MapColor gbw$getColor() {
+        return color;
+    }
+
+    @Override
+    public void gbw$setColor(MapColor color) {
+        this.color = color;
     }
 }

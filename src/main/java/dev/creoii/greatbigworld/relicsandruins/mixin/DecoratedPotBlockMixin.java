@@ -1,12 +1,11 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.creoii.creoapi.api.modification.BlockModification;
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DecoratedPotBlock;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.item.BlockItem;
@@ -14,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,7 +27,8 @@ public class DecoratedPotBlockMixin implements DyedDecoratedPot {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void gbw$setColor(AbstractBlock.Settings settings, CallbackInfo ci) {
-        color = BlockModification.INSTANCE.getMapColor((DecoratedPotBlock) (Object) this);
+        if ((DecoratedPotBlock) (Object) this != Blocks.DECORATED_POT)
+            color = BlockModification.INSTANCE.getMapColor((DecoratedPotBlock) (Object) this);
     }
 
     @Inject(method = "getPickStack", at = @At(value = "RETURN", ordinal = 0), cancellable = true)
@@ -37,7 +38,16 @@ public class DecoratedPotBlockMixin implements DyedDecoratedPot {
         cir.setReturnValue(stack);
     }
 
+    @ModifyReturnValue(method = "createBlockEntity", at = @At("RETURN"))
+    private BlockEntity gbw$dyeCreateBlockEntity(BlockEntity original, @Local(argsOnly = true) BlockState state) {
+        if (!state.isOf(Blocks.DECORATED_POT))
+            ((DyedDecoratedPot) original).gbw$setColor(color);
+        else ((DyedDecoratedPot) original).gbw$setColor(null);
+        return original;
+    }
+
     @Override
+    @Nullable
     public MapColor gbw$getColor() {
         return color;
     }
