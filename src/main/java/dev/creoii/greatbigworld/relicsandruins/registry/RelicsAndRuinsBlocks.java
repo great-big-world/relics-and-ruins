@@ -17,8 +17,8 @@ public final class RelicsAndRuinsBlocks {
     public static final Block RED_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_RED));
     public static final Block ORANGE_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_ORANGE));
     public static final Block YELLOW_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_YELLOW));
-    public static final Block GREEN_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_LIME));
-    public static final Block LIME_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_GREEN));
+    public static final Block LIME_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_LIME));
+    public static final Block GREEN_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_GREEN));
     public static final Block CYAN_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_CYAN));
     public static final Block BLUE_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_BLUE));
     public static final Block LIGHT_BLUE_DECORATED_POT = new DecoratedPotBlock(FabricBlockSettings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE));

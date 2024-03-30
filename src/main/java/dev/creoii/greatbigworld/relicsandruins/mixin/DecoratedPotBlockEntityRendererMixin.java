@@ -137,7 +137,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         if (item == Items.BRICK)
             return null;
         SpriteIdentifier id = TexturedRenderLayers.getDecoratedPotPatternTextureId(DecoratedPotPatterns.fromSherd(item));
-        return new SpriteIdentifier(id.getAtlasId(), new Identifier(id.getTextureId().getNamespace(), id.getTextureId().getPath().replace("pot/", "pot/pattern/").replace("_pottery_pattern", "")));
+        return id == null ? null : new SpriteIdentifier(id.getAtlasId(), new Identifier(id.getTextureId().getNamespace(), id.getTextureId().getPath().replace("pot/", "pot/pattern/").replace("_pottery_pattern", "")));
     }
 
     @Unique
