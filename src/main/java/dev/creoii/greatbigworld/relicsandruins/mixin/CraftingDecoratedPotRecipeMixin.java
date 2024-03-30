@@ -1,5 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsItems;
 import net.minecraft.block.entity.BlockEntityType;
@@ -9,7 +10,6 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.CraftingDecoratedPotRecipe;
 import net.minecraft.registry.DynamicRegistryManager;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -42,10 +42,9 @@ public class CraftingDecoratedPotRecipeMixin {
         }
     }
 
-    @Inject(method = "matches(Lnet/minecraft/inventory/RecipeInputInventory;Lnet/minecraft/world/World;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"), cancellable = true)
-    private void gbw$matchDyeItem(RecipeInputInventory recipeInputInventory, World world, CallbackInfoReturnable<Boolean> cir, @Local int i, @Local ItemStack itemStack) {
-        if (i == 4 && itemStack.getItem() instanceof DyeItem)
-            cir.setReturnValue(true);
+    @ModifyExpressionValue(method = "matches(Lnet/minecraft/inventory/RecipeInputInventory;Lnet/minecraft/world/World;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
+    private boolean gbw$matchDyeItem(boolean original, @Local int i, @Local ItemStack itemStack) {
+        return original || (i == 4 && itemStack.getItem() instanceof DyeItem);
     }
 
     @Unique
