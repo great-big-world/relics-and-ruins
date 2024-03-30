@@ -5,12 +5,12 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
-    "DecoratedPotBlockEntityMixin",
-    "DecoratedPotBlockMixin"
+    "block.DecoratedPotBlockEntityMixin",
+    "block.DecoratedPotBlockMixin"
   ],
   "client": [
-    "BuiltinModelItemRendererMixin",
-    "DecoratedPotBlockEntityRendererMixin"
+    "client.BuiltinModelItemRendererMixin",
+    "client.DecoratedPotBlockEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

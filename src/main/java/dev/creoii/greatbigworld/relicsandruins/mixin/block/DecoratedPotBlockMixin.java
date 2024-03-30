@@ -1,4 +1,4 @@
-package dev.creoii.greatbigworld.relicsandruins.mixin;
+package dev.creoii.greatbigworld.relicsandruins.mixin.block;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
