@@ -110,15 +110,15 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
 
     @Inject(method = "getSidesTexturedModelData", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILSOFT)
     private static void gbw$addDecalSidesTexturedModelData(CallbackInfoReturnable<TexturedModelData> cir, ModelData modelData, ModelPartData modelPartData, ModelPartBuilder modelPartBuilder) {
-        ModelPartBuilder decalBuilder = ModelPartBuilder.create().uv(1, 0).cuboid(-0.01f, 0.0f, -0.01f, 14.01f, 16f, 0.01f, EnumSet.of(Direction.NORTH));
-        modelPartData.addChild("back_trim", decalBuilder, ModelTransform.of(15.0f, 16.0f, 1.0f, 0.0f, 0.0f, (float)Math.PI));
-        modelPartData.addChild("left_trim", decalBuilder, ModelTransform.of(1.0f, 16.0f, 1.0f, 0.0f, -1.5707964f, (float)Math.PI));
-        modelPartData.addChild("right_trim", decalBuilder, ModelTransform.of(15.0f, 16.0f, 15.0f, 0.0f, 1.5707964f, (float)Math.PI));
-        modelPartData.addChild("front_trim", decalBuilder, ModelTransform.of(1.0f, 16.0f, 15.0f, (float)Math.PI, 0.0f, 0.0f));
-        modelPartData.addChild("back_pattern", decalBuilder, ModelTransform.of(15.0f, 16.0f, 1.0f, 0.0f, 0.0f, (float)Math.PI));
-        modelPartData.addChild("left_pattern", decalBuilder, ModelTransform.of(1.0f, 16.0f, 1.0f, 0.0f, -1.5707964f, (float)Math.PI));
-        modelPartData.addChild("right_pattern", decalBuilder, ModelTransform.of(15.0f, 16.0f, 15.0f, 0.0f, 1.5707964f, (float)Math.PI));
-        modelPartData.addChild("front_pattern", decalBuilder, ModelTransform.of(1.0f, 16.0f, 15.0f, (float)Math.PI, 0.0f, 0.0f));
+        ModelPartBuilder decalBuilder = ModelPartBuilder.create().uv(1, 0).cuboid(-01f, 0f, -01f, 141f, 16f, 01f, EnumSet.of(Direction.NORTH));
+        modelPartData.addChild("back_trim", decalBuilder, ModelTransform.of(15f, 16f, 1f, 0f, 0f, (float) Math.PI));
+        modelPartData.addChild("left_trim", decalBuilder, ModelTransform.of(1f, 16f, 1f, 0f, -1.5707964f, (float) Math.PI));
+        modelPartData.addChild("right_trim", decalBuilder, ModelTransform.of(15f, 16f, 15f, 0f, 1.5707964f, (float) Math.PI));
+        modelPartData.addChild("front_trim", decalBuilder, ModelTransform.of(1f, 16f, 15f, (float) Math.PI, 0f, 0f));
+        modelPartData.addChild("back_pattern", decalBuilder, ModelTransform.of(15f, 16f, 1f, 0f, 0f, (float) Math.PI));
+        modelPartData.addChild("left_pattern", decalBuilder, ModelTransform.of(1f, 16f, 1f, 0f, -1.5707964f, (float) Math.PI));
+        modelPartData.addChild("right_pattern", decalBuilder, ModelTransform.of(15f, 16f, 15f, 0f, 1.5707964f, (float) Math.PI));
+        modelPartData.addChild("front_pattern", decalBuilder, ModelTransform.of(1f, 16f, 15f, (float) Math.PI, 0f, 0f));
     }
 
     @Unique
