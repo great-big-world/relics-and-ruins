@@ -41,11 +41,6 @@ public class DecoratedPotBlockEntityMixin implements DyedDecoratedPot, TrimmedDe
     }
 
     @Override
-    public void gbw$setTrim(int trim) {
-        this.trim = trim;
-    }
-
-    @Override
     @Nullable
     public MapColor gbw$getColor() {
         return color;
