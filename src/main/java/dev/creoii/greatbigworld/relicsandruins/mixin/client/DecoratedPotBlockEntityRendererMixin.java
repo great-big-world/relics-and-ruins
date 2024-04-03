@@ -118,7 +118,8 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         modelPartData.addChild("back_pattern", decalBuilder, ModelTransform.of(15f, 16f, 1f, 0f, 0f, (float) Math.PI));
         modelPartData.addChild("left_pattern", decalBuilder, ModelTransform.of(1f, 16f, 1f, 0f, -1.5707964f, (float) Math.PI));
         modelPartData.addChild("right_pattern", decalBuilder, ModelTransform.of(15f, 16f, 15f, 0f, 1.5707964f, (float) Math.PI));
-        modelPartData.addChild("front_pattern", decalBuilder, ModelTransform.of(1f, 16f, 15f, (float) Math.PI, 0f, 0f));    }
+        modelPartData.addChild("front_pattern", decalBuilder, ModelTransform.of(1f, 16f, 15f, (float) Math.PI, 0f, 0f));
+    }
 
     @Unique
     private void renderTrimmedSide(ModelPart part, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, SpriteIdentifier textureId) {
