@@ -103,7 +103,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         for(int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
             int j = i - this.scrollOffset;
             int k = x + j % 3 * 16;
-            int l = j / 3;
+            int l = j / 4;
             int m = y + l * 18 + 2;
             Identifier identifier;
             if (i == ((ExtendedSmithingScreenHandler)this.handler).gbw$getSelectedRecipe()) {
@@ -122,7 +122,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         for (int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
             int j = i - this.scrollOffset;
             int k = x + j % 3 * 16;
-            int l = j / 3;
+            int l = j / 4;
             int m = y + l * 18 + 2;
             context.drawItem(ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.get(i).getDefaultStack(), k, m);
         }
@@ -135,8 +135,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
             int i = this.x + 59;
             int j = this.y + 13;
             int k = this.scrollOffset + 12;
-
-            for(int l = this.scrollOffset; l < k; ++l) {
+            for (int l = this.scrollOffset; l < k; ++l) {
                 int m = l - this.scrollOffset;
                 double d = mouseX - (double)(i + m % 3 * 16);
                 double e = mouseY - (double)(j + m / 3 * 18);
