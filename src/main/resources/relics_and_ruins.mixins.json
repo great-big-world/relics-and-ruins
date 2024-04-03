@@ -10,7 +10,8 @@
   ],
   "client": [
     "client.BuiltinModelItemRendererMixin",
-    "client.DecoratedPotBlockEntityRendererMixin"
+    "client.DecoratedPotBlockEntityRendererMixin",
+    "client.screen.SmithingScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
