@@ -60,7 +60,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
 
     @Inject(method = "drawBackground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/InventoryScreen;drawEntity(Lnet/minecraft/client/gui/DrawContext;FFILorg/joml/Vector3f;Lorg/joml/Quaternionf;Lorg/joml/Quaternionf;Lnet/minecraft/entity/LivingEntity;)V"), cancellable = true)
     private void gbw$renderArmorStandToTheRight(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
-        InventoryScreen.drawEntity(context, (float)(this.x + 147), (float)(this.y + 62), 25, field_45497, ARMOR_STAND_ROTATION, null, armorStand);
+        InventoryScreen.drawEntity(context, (float)(this.x + 147), (float)(this.y + 63), 25, field_45497, ARMOR_STAND_ROTATION, null, armorStand);
         ci.cancel();
     }
 
@@ -141,11 +141,11 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
         if (this.mouseClicked && this.shouldScroll()) {
-            int i = this.y + 14;
-            int j = i + 54;
+            int i = this.y + 13;
+            int j = i + 59;
             this.scrollAmount = ((float)mouseY - (float)i - 7.5F) / ((float)(j - i) - 15.0F);
             this.scrollAmount = MathHelper.clamp(this.scrollAmount, 0.0F, 1.0F);
-            this.scrollOffset = (int)((double)(this.scrollAmount * (float)this.getMaxScroll()) + 0.5) * 4;
+            this.scrollOffset = (int)((double)(this.scrollAmount * (float)this.getMaxScroll()) + 0.5) * 3;
             return true;
         } else {
             return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
@@ -169,6 +169,6 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     }
 
     protected int getMaxScroll() {
-        return (16 + 4 - 1) / 4 - 3;
+        return (16 + 3 - 1) / 3 - 3;
     }
 }
