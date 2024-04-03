@@ -17,6 +17,7 @@ import net.minecraft.recipe.StonecuttingRecipe;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.SmithingScreenHandler;
 import net.minecraft.screen.StonecutterScreenHandler;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -68,7 +69,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     private void gbw$renderSmithingTemplates(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         int i = this.x;
         int j = this.y;
-        int k = (int)(41.0F * this.scrollAmount);
+        int k = (int)(41f * this.scrollAmount);
         Identifier identifier = this.shouldScroll() ? SCROLLER_TEXTURE : SCROLLER_DISABLED_TEXTURE;
         context.drawGuiTexture(identifier, i + 109, j + 14 + k, 12, 15);
         int l = this.x + 59;
@@ -78,8 +79,28 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         renderRecipeIcons(context, l, m, n);
     }
 
+    @Inject(method = "renderSlotTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/SmithingScreenHandler;getSlot(I)Lnet/minecraft/screen/slot/Slot;"), cancellable = true)
+    private void gbw$dontRenderTemplateTooltip(DrawContext context, int mouseX, int mouseY, CallbackInfo ci) {
+        if (focusedSlot.id == 0)
+            ci.cancel();
+
+        if (this.canCraft) {
+            int i = this.x + 52;
+            int j = this.y + 14;
+            int k = this.scrollOffset + 12;
+            for(int l = this.scrollOffset; l < k && l < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++l) {
+                int m = l - this.scrollOffset;
+                int n = i + m % 4 * 16;
+                int o = j + m / 4 * 18 + 2;
+                if (x >= n && x < n + 16 && y >= o && y < o + 18) {
+                    context.drawItemTooltip(this.textRenderer, ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.get(l).getDefaultStack(), x, y);
+                }
+            }
+        }
+    }
+
     private void renderRecipeBackground(DrawContext context, int mouseX, int mouseY, int x, int y, int scrollOffset) {
-        for(int i = this.scrollOffset; i < scrollOffset && i < 16; ++i) {
+        for(int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
             int j = i - this.scrollOffset;
             int k = x + j % 3 * 16;
             int l = j / 3;
@@ -95,17 +116,15 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
 
             context.drawGuiTexture(identifier, k, m - 1, 16, 18);
         }
-
     }
 
     private void renderRecipeIcons(DrawContext context, int x, int y, int scrollOffset) {
-        List<Item> list = Registries.ITEM.stream().filter(item -> item instanceof SmithingTemplateItem && item != Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).toList();
-        for (int i = this.scrollOffset; i < scrollOffset; ++i) {
+        for (int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
             int j = i - this.scrollOffset;
             int k = x + j % 3 * 16;
             int l = j / 3;
             int m = y + l * 18 + 2;
-            context.drawItem(list.get(i).getDefaultStack(), k, m);
+            context.drawItem(ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.get(i).getDefaultStack(), k, m);
         }
     }
 
@@ -164,11 +183,18 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         return true;
     }
 
+    @Override
+    protected void drawSlot(DrawContext context, Slot slot) {
+        if (slot.id == 0)
+            return;
+        super.drawSlot(context, slot);
+    }
+
     private boolean shouldScroll() {
-        return this.canCraft && 16 > 9;
+        return this.canCraft && ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() > 9;
     }
 
     protected int getMaxScroll() {
-        return (16 + 3 - 1) / 3 - 3;
+        return (ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() + 3 - 1) / 3 - 3;
     }
 }
