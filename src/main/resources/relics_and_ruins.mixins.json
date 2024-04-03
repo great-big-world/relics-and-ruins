@@ -6,7 +6,8 @@
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
     "block.DecoratedPotBlockEntityMixin",
-    "block.DecoratedPotBlockMixin"
+    "block.DecoratedPotBlockMixin",
+    "client.screen.SmithingScreenHandlerMixin"
   ],
   "client": [
     "client.BuiltinModelItemRendererMixin",

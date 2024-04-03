@@ -41,6 +41,11 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         super(handler, playerInventory, title, texture);
     }
 
+    @Inject(method = "<init>", at = @At("TAIL"))
+    private void gbw$fixTitleY(SmithingScreenHandler handler, PlayerInventory playerInventory, Text title, CallbackInfo ci) {
+        this.titleY = 4;
+    }
+
     @Inject(method = "render", at = @At("TAIL"))
     private void gbw$renderSmithingTemplates(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         int i = this.x;
@@ -48,8 +53,8 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         int k = (int)(41.0F * this.scrollAmount);
         Identifier identifier = this.shouldScroll() ? SCROLLER_TEXTURE : SCROLLER_DISABLED_TEXTURE;
         context.drawGuiTexture(identifier, i + 119, j + 15 + k, 12, 15);
-        int l = this.x + 104;
-        int m = this.y + 14;
+        int l = this.x + 78;
+        int m = this.y + 13;
         int n = this.scrollOffset + 12;
         this.renderRecipeBackground(context, mouseX, mouseY, l, m, n);
         renderRecipeIcons(context, l, m, n);
