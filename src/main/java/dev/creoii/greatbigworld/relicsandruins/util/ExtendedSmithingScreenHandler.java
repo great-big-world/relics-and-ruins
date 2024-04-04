@@ -8,7 +8,7 @@ import net.minecraft.registry.Registries;
 import java.util.List;
 
 public interface ExtendedSmithingScreenHandler {
-    List<Item> SMITHING_TEMPLATES = Registries.ITEM.stream().filter(item -> item instanceof SmithingTemplateItem && item != Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE).toList();
+    List<Item> SMITHING_TEMPLATES = Registries.ITEM.stream().filter(item -> item instanceof SmithingTemplateItem).toList();
 
     int gbw$getSelectedRecipe();
 }

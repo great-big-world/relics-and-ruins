@@ -61,7 +61,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
 
     @Inject(method = "drawBackground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/InventoryScreen;drawEntity(Lnet/minecraft/client/gui/DrawContext;FFILorg/joml/Vector3f;Lorg/joml/Quaternionf;Lorg/joml/Quaternionf;Lnet/minecraft/entity/LivingEntity;)V"), cancellable = true)
     private void gbw$renderArmorStandToTheRight(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
-        InventoryScreen.drawEntity(context, (float)(this.x + 147), (float)(this.y + 63), 25, field_45497, ARMOR_STAND_ROTATION, null, armorStand);
+        InventoryScreen.drawEntity(context, (float)(this.x + 152), (float)(this.y + 63), 25, field_45497, ARMOR_STAND_ROTATION, null, armorStand);
         ci.cancel();
     }
 
@@ -71,38 +71,18 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         int j = this.y;
         int k = (int)(41f * this.scrollAmount);
         Identifier identifier = this.shouldScroll() ? SCROLLER_TEXTURE : SCROLLER_DISABLED_TEXTURE;
-        context.drawGuiTexture(identifier, i + 109, j + 14 + k, 12, 15);
-        int l = this.x + 59;
+        context.drawGuiTexture(identifier, i + 118, j + 14 + k, 12, 15);
+        int l = this.x + 51;
         int m = this.y + 13;
         int n = this.scrollOffset + 12;
         renderRecipeBackground(context, mouseX, mouseY, l, m, n);
         renderRecipeIcons(context, l, m, n);
     }
 
-    @Inject(method = "renderSlotTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/SmithingScreenHandler;getSlot(I)Lnet/minecraft/screen/slot/Slot;"), cancellable = true)
-    private void gbw$dontRenderTemplateTooltip(DrawContext context, int mouseX, int mouseY, CallbackInfo ci) {
-        if (focusedSlot.id == 0)
-            ci.cancel();
-
-        if (this.canCraft) {
-            int i = this.x + 52;
-            int j = this.y + 14;
-            int k = this.scrollOffset + 12;
-            for(int l = this.scrollOffset; l < k && l < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++l) {
-                int m = l - this.scrollOffset;
-                int n = i + m % 4 * 16;
-                int o = j + m / 4 * 18 + 2;
-                if (x >= n && x < n + 16 && y >= o && y < o + 18) {
-                    context.drawItemTooltip(this.textRenderer, ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.get(l).getDefaultStack(), x, y);
-                }
-            }
-        }
-    }
-
     private void renderRecipeBackground(DrawContext context, int mouseX, int mouseY, int x, int y, int scrollOffset) {
         for(int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
             int j = i - this.scrollOffset;
-            int k = x + j % 3 * 16;
+            int k = x + j % 4 * 16;
             int l = j / 4;
             int m = y + l * 18 + 2;
             Identifier identifier;
@@ -113,7 +93,6 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
             } else {
                 identifier = RECIPE_TEXTURE;
             }
-
             context.drawGuiTexture(identifier, k, m - 1, 16, 18);
         }
     }
@@ -121,7 +100,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     private void renderRecipeIcons(DrawContext context, int x, int y, int scrollOffset) {
         for (int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
             int j = i - this.scrollOffset;
-            int k = x + j % 3 * 16;
+            int k = x + j % 4 * 16;
             int l = j / 4;
             int m = y + l * 18 + 2;
             context.drawItem(ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.get(i).getDefaultStack(), k, m);
@@ -129,16 +108,22 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     }
 
     @Override
+    protected void drawSlot(DrawContext context, Slot slot) {
+        if (slot.id == 0)
+            return;
+        super.drawSlot(context, slot);
+    }
+
+    @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        this.mouseClicked = false;
         if (this.canCraft) {
-            int i = this.x + 59;
+            int i = this.x + 51;
             int j = this.y + 13;
             int k = this.scrollOffset + 12;
             for (int l = this.scrollOffset; l < k; ++l) {
                 int m = l - this.scrollOffset;
-                double d = mouseX - (double)(i + m % 3 * 16);
-                double e = mouseY - (double)(j + m / 3 * 18);
+                double d = mouseX - (double)(i + m % 4 * 16);
+                double e = mouseY - (double)(j + m / 4 * 18);
                 if (d >= 0.0 && e >= 0.0 && d < 16.0 && e < 18.0 && (this.handler).onButtonClick(this.client.player, l)) {
                     MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_STONECUTTER_SELECT_RECIPE, 1.0F));
                     this.client.interactionManager.clickButton((this.handler).syncId, l);
@@ -146,13 +131,12 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
                 }
             }
 
-            i = this.x + 119;
+            i = this.x + 118;
             j = this.y + 9;
             if (mouseX >= (double)i && mouseX < (double)(i + 13) && mouseY >= (double)j && mouseY < (double)(j + 59)) {
-                this.mouseClicked = true;
+                this.mouseClicked = !mouseClicked;
             }
         }
-
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
@@ -160,10 +144,10 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
         if (this.mouseClicked && this.shouldScroll()) {
             int i = this.y + 13;
-            int j = i + 59;
+            int j = i + 51;
             this.scrollAmount = ((float)mouseY - (float)i - 7.5F) / ((float)(j - i) - 15.0F);
             this.scrollAmount = MathHelper.clamp(this.scrollAmount, 0.0F, 1.0F);
-            this.scrollOffset = (int)((double)(this.scrollAmount * (float)this.getMaxScroll()) + 0.5) * 3;
+            this.scrollOffset = (int)((double)(this.scrollAmount * (float)this.getMaxScroll()) + 0.5) * 4;
             return true;
         } else {
             return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
@@ -176,24 +160,16 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
             int i = this.getMaxScroll();
             float f = (float)verticalAmount / (float)i;
             this.scrollAmount = MathHelper.clamp(this.scrollAmount - f, 0.0F, 1.0F);
-            this.scrollOffset = (int)((double)(this.scrollAmount * (float)i) + 0.5) * 3;
+            this.scrollOffset = (int)((double)(this.scrollAmount * (float)i) + 0.5) * 4;
         }
-
         return true;
     }
 
-    @Override
-    protected void drawSlot(DrawContext context, Slot slot) {
-        if (slot.id == 0)
-            return;
-        super.drawSlot(context, slot);
-    }
-
     private boolean shouldScroll() {
-        return this.canCraft && ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() > 9;
+        return this.canCraft && ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() > 12;
     }
 
     protected int getMaxScroll() {
-        return (ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() + 3 - 1) / 3 - 3;
+        return (ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() + 4 - 1) / 4 - 3;
     }
 }

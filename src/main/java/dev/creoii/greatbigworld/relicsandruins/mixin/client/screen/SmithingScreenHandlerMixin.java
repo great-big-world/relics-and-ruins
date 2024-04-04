@@ -38,7 +38,7 @@ public abstract class SmithingScreenHandlerMixin extends ForgingScreenHandler im
 
     @ModifyReturnValue(method = "getForgingSlotsManager", at = @At("RETURN"))
     private ForgingSlotsManager gbw$fixSmithingSlotsHeight(ForgingSlotsManager original) {
-        return ForgingSlotsManager.create().input(0, 59, 14, stack -> false).input(1, 8, 14, (stack) -> {
+        return ForgingSlotsManager.create().input(0, 60, 14, stack -> false).input(1, 8, 14, (stack) -> {
             return recipes.stream().anyMatch((recipe) -> {
                 return (recipe.value()).testBase(stack);
             });
@@ -56,8 +56,13 @@ public abstract class SmithingScreenHandlerMixin extends ForgingScreenHandler im
 
     public boolean onButtonClick(PlayerEntity player, int id) {
         if (this.isInBounds(id)) {
-            this.selectedRecipe.set(id);
-            this.input.setStack(0, SMITHING_TEMPLATES.get(id).getDefaultStack());
+            if (selectedRecipe.get() == id) {
+                selectedRecipe.set(-1);
+                this.input.setStack(0, ItemStack.EMPTY);
+            } else {
+                this.selectedRecipe.set(id);
+                this.input.setStack(0, SMITHING_TEMPLATES.get(id).getDefaultStack());
+            }
         }
         return true;
     }
