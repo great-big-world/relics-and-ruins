@@ -132,7 +132,7 @@
     },
     {
       "rolls": {
-        "min": 1,
+        "min": 0,
         "max": 2
       },
       "entries": [
@@ -314,6 +314,21 @@
           "type": "minecraft:item",
           "weight": 1,
           "name": "minecraft:sculk_vein"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:echoing_blade",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.05
+            }
+          ]
         }
       ]
     }
