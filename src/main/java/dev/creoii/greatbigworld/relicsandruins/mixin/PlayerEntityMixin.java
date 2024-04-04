@@ -2,13 +2,8 @@ package dev.creoii.greatbigworld.relicsandruins.mixin;
 
 import com.mojang.authlib.GameProfile;
 import dev.creoii.greatbigworld.relicsandruins.util.TemplateUnlockerPlayer;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.recipebook.ClientRecipeBook;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.stat.StatHandler;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;

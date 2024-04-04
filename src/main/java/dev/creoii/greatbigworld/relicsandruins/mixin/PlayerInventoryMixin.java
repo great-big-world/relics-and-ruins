@@ -1,6 +1,5 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin;
 
-import dev.creoii.greatbigworld.relicsandruins.util.ExtendedSmithingScreenHandler;
 import dev.creoii.greatbigworld.relicsandruins.util.TemplateUnlockerPlayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
