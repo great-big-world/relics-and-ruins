@@ -2,8 +2,10 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.client.screen;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import dev.creoii.greatbigworld.relicsandruins.util.ExtendedSmithingScreenHandler;
+import dev.creoii.greatbigworld.relicsandruins.util.TemplateUnlockerPlayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.SmithingRecipe;
@@ -61,14 +63,14 @@ public abstract class SmithingScreenHandlerMixin extends ForgingScreenHandler im
                 this.input.setStack(0, ItemStack.EMPTY);
             } else {
                 this.selectedRecipe.set(id);
-                this.input.setStack(0, SMITHING_TEMPLATES.get(id).getDefaultStack());
+                this.input.setStack(0, ((Item) ((TemplateUnlockerPlayer) player).gbw$getUnlockedTemplates().toArray()[id]).getDefaultStack());
             }
         }
         return true;
     }
 
     private boolean isInBounds(int id) {
-        return id >= 0 && id < SMITHING_TEMPLATES.size();
+        return id >= 0 && id < ((TemplateUnlockerPlayer) player).gbw$getUnlockedTemplates().size();
     }
 
     public int gbw$getSelectedRecipe() {

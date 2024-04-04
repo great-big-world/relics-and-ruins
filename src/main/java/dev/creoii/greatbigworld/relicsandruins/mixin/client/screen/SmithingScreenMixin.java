@@ -1,13 +1,16 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin.client.screen;
 
 import dev.creoii.greatbigworld.relicsandruins.util.ExtendedSmithingScreenHandler;
+import dev.creoii.greatbigworld.relicsandruins.util.TemplateUnlockerPlayer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.ForgingScreen;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.gui.screen.ingame.SmithingScreen;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -80,7 +83,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     }
 
     private void renderRecipeBackground(DrawContext context, int mouseX, int mouseY, int x, int y, int scrollOffset) {
-        for(int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
+        for(int i = this.scrollOffset; i < scrollOffset && i < ((TemplateUnlockerPlayer) client.player).gbw$getUnlockedTemplates().size(); ++i) {
             int j = i - this.scrollOffset;
             int k = x + j % 4 * 16;
             int l = j / 4;
@@ -98,12 +101,12 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     }
 
     private void renderRecipeIcons(DrawContext context, int x, int y, int scrollOffset) {
-        for (int i = this.scrollOffset; i < scrollOffset && i < ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size(); ++i) {
+        for (int i = this.scrollOffset; i < scrollOffset && i < ((TemplateUnlockerPlayer) client.player).gbw$getUnlockedTemplates().size(); ++i) {
             int j = i - this.scrollOffset;
             int k = x + j % 4 * 16;
             int l = j / 4;
             int m = y + l * 18 + 2;
-            context.drawItem(ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.get(i).getDefaultStack(), k, m);
+            context.drawItem(((Item) ((TemplateUnlockerPlayer) client.player).gbw$getUnlockedTemplates().toArray()[i]).getDefaultStack(), k, m);
         }
     }
 
@@ -166,10 +169,10 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     }
 
     private boolean shouldScroll() {
-        return this.canCraft && ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() > 12;
+        return this.canCraft && ((TemplateUnlockerPlayer) client.player).gbw$getUnlockedTemplates().size() > 12;
     }
 
     protected int getMaxScroll() {
-        return (ExtendedSmithingScreenHandler.SMITHING_TEMPLATES.size() + 4 - 1) / 4 - 3;
+        return (((TemplateUnlockerPlayer) client.player).gbw$getUnlockedTemplates().size() + 4 - 1) / 4 - 3;
     }
 }
