@@ -7,11 +7,13 @@
     "CraftingDecoratedPotRecipeMixin",
     "PlayerEntityMixin",
     "PlayerInventoryMixin",
+    "ShapeTypeMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
     "client.screen.SmithingScreenHandlerMixin"
   ],
   "client": [
+    "MinecraftClientMixin",
     "client.BuiltinModelItemRendererMixin",
     "client.DecoratedPotBlockEntityRendererMixin",
     "client.screen.SmithingScreenMixin"

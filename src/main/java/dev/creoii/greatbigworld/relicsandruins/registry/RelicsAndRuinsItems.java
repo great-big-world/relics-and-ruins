@@ -2,6 +2,7 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.creoapi.api.item.CreoItemSettings;
 import dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins;
+import dev.creoii.greatbigworld.relicsandruins.item.EchoingBladeItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -38,7 +39,7 @@ public final class RelicsAndRuinsItems {
     public static final Item MOSSY_COBBLESTONE_BRICK_SLAB = new BlockItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_SLAB, new CreoItemSettings());
     public static final Item MOSSY_COBBLESTONE_BRICK_WALL = new BlockItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_WALL, new CreoItemSettings());
 
-    public static final Item ECHOING_BLADE = new SwordItem(ToolMaterials.NETHERITE, 200, 0f, new CreoItemSettings().rarity(Rarity.EPIC));
+    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.NETHERITE, 200, 0f, new CreoItemSettings().rarity(Rarity.EPIC));
 
     public static void register() {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
