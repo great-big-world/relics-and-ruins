@@ -13,7 +13,7 @@
     "client.screen.SmithingScreenHandlerMixin"
   ],
   "client": [
-    "MinecraftClientMixin",
+    "client.MinecraftClientMixin",
     "client.BuiltinModelItemRendererMixin",
     "client.DecoratedPotBlockEntityRendererMixin",
     "client.screen.SmithingScreenMixin"
