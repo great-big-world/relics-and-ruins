@@ -1,5 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.registry;
 
+import dev.creoii.creoapi.api.food.CreoFoodComponent;
 import dev.creoii.creoapi.api.item.CreoItemSettings;
 import dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins;
 import dev.creoii.greatbigworld.relicsandruins.item.EchoingBladeItem;
@@ -40,6 +41,8 @@ public final class RelicsAndRuinsItems {
     public static final Item MOSSY_COBBLESTONE_BRICK_WALL = new BlockItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_WALL, new CreoItemSettings());
 
     public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.NETHERITE, 200, 0f, new CreoItemSettings().rarity(Rarity.EPIC));
+    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new CreoItemSettings().rarity(Rarity.EPIC));
+    public static final Item CRYSTAL_APPLE = new Item(new CreoItemSettings().rarity(Rarity.EPIC).food(new CreoFoodComponent.Builder().build()));
 
     public static void register() {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
@@ -71,6 +74,8 @@ public final class RelicsAndRuinsItems {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL);
 
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "echoing_blade"), ECHOING_BLADE);
+        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "rogueish_hood"), ROGUEISH_HOOD);
+        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "crystal_apple"), CRYSTAL_APPLE);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addAfter(Items.COBBLESTONE_WALL, COBBLESTONE_BRICKS, COBBLESTONE_BRICK_STAIRS, COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_WALL, CHISELED_COBBLESTONE_BRICKS, COBBLESTONE_BRICK_PILLAR, MOSSY_COBBLESTONE_BRICKS, MOSSY_COBBLESTONE_BRICK_STAIRS, MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_WALL);
@@ -80,6 +85,12 @@ public final class RelicsAndRuinsItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.addAfter(Items.TOTEM_OF_UNDYING, ECHOING_BLADE);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
+            entries.addAfter(Items.NETHERITE_HOE, ROGUEISH_HOOD);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
+            entries.addAfter(Items.ENCHANTED_GOLDEN_APPLE, CRYSTAL_APPLE);
         });
     }
 }

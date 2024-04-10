@@ -18,7 +18,7 @@ public class PlayerInventoryMixin {
 
     @Inject(method = "setStack", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/collection/DefaultedList;set(ILjava/lang/Object;)Ljava/lang/Object;"))
     private void gbw$unlockSmithingTemplates(int slot, ItemStack stack, CallbackInfo ci) {
-        if (stack.getItem() instanceof SmithingTemplateItem && player instanceof TemplateUnlockerPlayer templateUnlockerPlayer) {
+        if (stack.getItem() instanceof SmithingTemplateItem && player instanceof TemplateUnlockerPlayer templateUnlockerPlayer && !templateUnlockerPlayer.gbw$isUnlocked(stack.getItem())) {
             templateUnlockerPlayer.gbw$unlockTemplate(stack.getItem());
         }
     }

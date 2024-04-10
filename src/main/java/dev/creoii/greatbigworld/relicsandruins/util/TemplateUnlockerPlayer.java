@@ -8,4 +8,8 @@ public interface TemplateUnlockerPlayer {
     Set<Item> gbw$getUnlockedTemplates();
 
     void gbw$unlockTemplate(Item item);
+
+    default boolean gbw$isUnlocked(Item item) {
+        return gbw$getUnlockedTemplates().contains(item);
+    }
 }

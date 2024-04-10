@@ -9,7 +9,6 @@ import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,9 +32,7 @@ public abstract class MinecraftClientMixin {
             double d = interactionManager.getReachDistance() * 2.5d;
             Vec3d vec3d = getCameraEntity().getCameraPosVec(1f);
             Vec3d vec3d2 = getCameraEntity().getRotationVec(1f);
-            Vec3d vec3d3 = vec3d.add(vec3d2.x * d, vec3d2.y * d, vec3d2.z * d);
-            Box box = getCameraEntity().getBoundingBox().stretch(vec3d2.multiply(d)).expand(1d, 1d, 1d);
-            xrayResult = ProjectileUtil.raycast(getCameraEntity(), vec3d, vec3d3, box, (entityx) -> {
+            xrayResult = ProjectileUtil.raycast(getCameraEntity(), vec3d, vec3d.add(vec3d2.x * d, vec3d2.y * d, vec3d2.z * d), getCameraEntity().getBoundingBox().stretch(vec3d2.multiply(d)).expand(1d, 1d, 1d), (entityx) -> {
                 return !entityx.isSpectator() && entityx.canHit();
             }, d);
         }
@@ -48,7 +45,7 @@ public abstract class MinecraftClientMixin {
             if (stack.getItem() instanceof XrayAttack xrayAttack && xrayResult != null && xrayResult.getType() == HitResult.Type.ENTITY) {
                 EntityHitResult entityHitResult = (EntityHitResult) xrayResult;
                 interactionManager.attackEntity(player, entityHitResult.getEntity());
-                xrayAttack.onXrayAttack((MinecraftClient) (Object) this, stack, entityHitResult.getEntity());
+                xrayAttack.onAttackThroughBlock((MinecraftClient) (Object) this, stack, entityHitResult.getEntity());
             }
         }
     }

@@ -16,13 +16,11 @@ public class EchoingBladeItem extends SwordItem implements XrayAttack {
     }
 
     @Override
-    public void onXrayAttack(MinecraftClient client, ItemStack stack, Entity entity) {
+    public void onAttackThroughBlock(MinecraftClient client, ItemStack stack, Entity entity) {
         Vec3d vec3d = client.player.getPos().add(0d, 1.600000023841858d, 0d);
         Vec3d vec3d2 = entity.getEyePos().subtract(vec3d);
-        Vec3d vec3d3 = vec3d2.normalize();
-
         for (int i = 0; i < MathHelper.floor(vec3d2.length()); ++i) {
-            Vec3d vec3d4 = vec3d.add(vec3d3.multiply(i));
+            Vec3d vec3d4 = vec3d.add(vec3d2.normalize().multiply(i));
             client.world.addParticle(ParticleTypes.SONIC_BOOM, vec3d4.x, vec3d4.y, vec3d4.z, 0d, 0d, 0d);
         }
     }
