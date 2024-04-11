@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
+    "EntityMixin",
     "PlayerEntityMixin",
     "PlayerInventoryMixin",
     "ShapeTypeMixin",
@@ -13,9 +14,10 @@
     "client.screen.SmithingScreenHandlerMixin"
   ],
   "client": [
-    "client.MinecraftClientMixin",
     "client.BuiltinModelItemRendererMixin",
+    "client.ChatHudMixin",
     "client.DecoratedPotBlockEntityRendererMixin",
+    "client.MinecraftClientMixin",
     "client.screen.SmithingScreenMixin"
   ],
   "injectors": {

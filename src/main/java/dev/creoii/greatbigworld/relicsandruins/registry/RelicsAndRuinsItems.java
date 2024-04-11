@@ -43,6 +43,7 @@ public final class RelicsAndRuinsItems {
     public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.NETHERITE, 200, 0f, new CreoItemSettings().rarity(Rarity.EPIC));
     public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new CreoItemSettings().rarity(Rarity.EPIC));
     public static final Item CRYSTAL_APPLE = new Item(new CreoItemSettings().rarity(Rarity.EPIC).food(new CreoFoodComponent.Builder().build()));
+    public static final Item EARTHSHAKER_PICKAXE = new PickaxeItem(ToolMaterials.NETHERITE, 4, 1f, new CreoItemSettings().rarity(Rarity.EPIC));
 
     public static void register() {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
@@ -76,6 +77,7 @@ public final class RelicsAndRuinsItems {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "echoing_blade"), ECHOING_BLADE);
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "rogueish_hood"), ROGUEISH_HOOD);
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "crystal_apple"), CRYSTAL_APPLE);
+        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "earthshaker_pickaxe"), EARTHSHAKER_PICKAXE);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addAfter(Items.COBBLESTONE_WALL, COBBLESTONE_BRICKS, COBBLESTONE_BRICK_STAIRS, COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_WALL, CHISELED_COBBLESTONE_BRICKS, COBBLESTONE_BRICK_PILLAR, MOSSY_COBBLESTONE_BRICKS, MOSSY_COBBLESTONE_BRICK_STAIRS, MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_WALL);
@@ -87,7 +89,7 @@ public final class RelicsAndRuinsItems {
             entries.addAfter(Items.TOTEM_OF_UNDYING, ECHOING_BLADE);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.addAfter(Items.NETHERITE_HOE, ROGUEISH_HOOD);
+            entries.addAfter(Items.NETHERITE_HOE, ROGUEISH_HOOD, EARTHSHAKER_PICKAXE);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.addAfter(Items.ENCHANTED_GOLDEN_APPLE, CRYSTAL_APPLE);
