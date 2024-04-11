@@ -3,7 +3,9 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 import dev.creoii.creoapi.api.food.CreoFoodComponent;
 import dev.creoii.creoapi.api.item.CreoItemSettings;
 import dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins;
+import dev.creoii.greatbigworld.relicsandruins.item.EarthshakerPickaxeItem;
 import dev.creoii.greatbigworld.relicsandruins.item.EchoingBladeItem;
+import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsRarities;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -40,10 +42,10 @@ public final class RelicsAndRuinsItems {
     public static final Item MOSSY_COBBLESTONE_BRICK_SLAB = new BlockItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_SLAB, new CreoItemSettings());
     public static final Item MOSSY_COBBLESTONE_BRICK_WALL = new BlockItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_WALL, new CreoItemSettings());
 
-    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.NETHERITE, 200, 0f, new CreoItemSettings().rarity(Rarity.EPIC));
-    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new CreoItemSettings().rarity(Rarity.EPIC));
-    public static final Item CRYSTAL_APPLE = new Item(new CreoItemSettings().rarity(Rarity.EPIC).food(new CreoFoodComponent.Builder().build()));
-    public static final Item EARTHSHAKER_PICKAXE = new PickaxeItem(ToolMaterials.NETHERITE, 4, 1f, new CreoItemSettings().rarity(Rarity.EPIC));
+    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.NETHERITE, 200, 0f, new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC));
+    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC));
+    public static final Item CRYSTAL_APPLE = new Item(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).food(new CreoFoodComponent.Builder().eatDurability(3).build()));
+    public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC));
 
     public static void register() {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
