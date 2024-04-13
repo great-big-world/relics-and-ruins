@@ -37,7 +37,7 @@ public class EchoingBladeItem extends SwordItem implements CreoItem, Relic {
         Vec3d vec3d2 = target.getEyePos().subtract(vec3d);
         for (int i = 0; i < MathHelper.floor(vec3d2.length()); ++i) {
             Vec3d vec3d4 = vec3d.add(vec3d2.normalize().multiply(i));
-            player.getWorld().addParticle(ParticleTypes.SONIC_BOOM, vec3d4.x, vec3d4.y, vec3d4.z, 0d, 0d, 0d);
+            player.getServerWorld().spawnParticles(ParticleTypes.SONIC_BOOM, vec3d4.x, vec3d4.y, vec3d4.z, 1, 0d, 0d, 0d, 0d);
         }
 
         player.getWorld().playSoundFromEntity(target, SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.PLAYERS, 1f, 1f);
