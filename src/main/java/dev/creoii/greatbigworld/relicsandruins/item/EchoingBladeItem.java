@@ -2,13 +2,13 @@ package dev.creoii.greatbigworld.relicsandruins.item;
 
 import dev.creoii.creoapi.api.item.CreoItem;
 import dev.creoii.greatbigworld.relicsandruins.util.Relic;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
@@ -32,20 +32,20 @@ public class EchoingBladeItem extends SwordItem implements CreoItem, Relic {
     }
 
     @Override
-    public void onAttackThroughBlock(MinecraftClient client, ItemStack stack, Entity entity) {
-        Vec3d vec3d = client.player.getPos().add(0d, 1.600000023841858d, 0d);
-        Vec3d vec3d2 = entity.getEyePos().subtract(vec3d);
+    public void onAttackThroughBlock(ServerPlayerEntity player, ItemStack stack, Entity target) {
+        Vec3d vec3d = player.getPos().add(0d, 1.600000023841858d, 0d);
+        Vec3d vec3d2 = target.getEyePos().subtract(vec3d);
         for (int i = 0; i < MathHelper.floor(vec3d2.length()); ++i) {
             Vec3d vec3d4 = vec3d.add(vec3d2.normalize().multiply(i));
-            client.world.addParticle(ParticleTypes.SONIC_BOOM, vec3d4.x, vec3d4.y, vec3d4.z, 0d, 0d, 0d);
+            player.getWorld().addParticle(ParticleTypes.SONIC_BOOM, vec3d4.x, vec3d4.y, vec3d4.z, 0d, 0d, 0d);
         }
 
-        client.world.playSoundFromEntity(entity, SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.PLAYERS, 1f, 1f);
+        player.getWorld().playSoundFromEntity(target, SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.PLAYERS, 1f, 1f);
         resetCharge(stack);
     }
 
     @Override
-    public boolean canAttackThroughBlock(MinecraftClient client, ItemStack stack, Entity entity) {
+    public boolean canAttackThroughBlock(ServerPlayerEntity player, ItemStack stack, Entity entity) {
         return isCharged(stack);
     }
 
