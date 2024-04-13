@@ -18,7 +18,7 @@ public interface Relic {
         nbt.putInt(CHARGE_KEY, 0);
     }
 
-    default boolean isAtMaxCharge(ItemStack stack) {
+    default boolean isCharged(ItemStack stack) {
         NbtCompound nbt = stack.getOrCreateNbt();
         return nbt.getInt(CHARGE_KEY) >= getMaxCharge();
     }

@@ -1,4 +1,4 @@
-package dev.creoii.greatbigworld.relicsandruins.mixin;
+package dev.creoii.greatbigworld.relicsandruins.mixin.entity;
 
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsItems;
 import net.minecraft.entity.Entity;

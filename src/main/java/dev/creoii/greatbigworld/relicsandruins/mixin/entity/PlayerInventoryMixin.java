@@ -1,4 +1,4 @@
-package dev.creoii.greatbigworld.relicsandruins.mixin;
+package dev.creoii.greatbigworld.relicsandruins.mixin.entity;
 
 import dev.creoii.greatbigworld.relicsandruins.util.TemplateUnlockerPlayer;
 import net.minecraft.entity.player.PlayerEntity;

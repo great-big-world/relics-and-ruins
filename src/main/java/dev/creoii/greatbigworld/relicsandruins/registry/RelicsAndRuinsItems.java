@@ -42,9 +42,9 @@ public final class RelicsAndRuinsItems {
     public static final Item MOSSY_COBBLESTONE_BRICK_SLAB = new BlockItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_SLAB, new CreoItemSettings());
     public static final Item MOSSY_COBBLESTONE_BRICK_WALL = new BlockItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_WALL, new CreoItemSettings());
 
-    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.NETHERITE, 200, 0f, new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC));
+    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.NETHERITE, 20, 0f, new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC));
     public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC));
-    public static final Item CRYSTAL_APPLE = new Item(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).food(new CreoFoodComponent.Builder().eatDurability(3).build()));
+    public static final Item CRYSTAL_APPLE = new Item(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).food(new CreoFoodComponent.Builder().value(3).healsHealth().build()));
     public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC));
 
     public static void register() {
