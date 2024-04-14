@@ -3,6 +3,7 @@ package dev.creoii.greatbigworld.relicsandruins.item;
 import dev.creoii.creoapi.api.item.CreoItem;
 import dev.creoii.greatbigworld.relicsandruins.util.Relic;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -28,11 +29,13 @@ public class EchoingBladeItem extends SwordItem implements CreoItem, Relic {
 
     @Override
     public int getMaxCharge() {
-        return 7;
+        return 3;
     }
 
     @Override
     public void onAttackThroughBlock(ServerPlayerEntity player, ItemStack stack, Entity target) {
+        if (!target.isAlive())
+            return;
         Vec3d vec3d = player.getPos().add(0d, 1.600000023841858d, 0d);
         Vec3d vec3d2 = target.getEyePos().subtract(vec3d);
         for (int i = 0; i < MathHelper.floor(vec3d2.length()); ++i) {
@@ -40,7 +43,11 @@ public class EchoingBladeItem extends SwordItem implements CreoItem, Relic {
             player.getServerWorld().spawnParticles(ParticleTypes.SONIC_BOOM, vec3d4.x, vec3d4.y, vec3d4.z, 1, 0d, 0d, 0d, 0d);
         }
 
-        player.getWorld().playSoundFromEntity(target, SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.PLAYERS, 1f, 1f);
+        player.playSound(SoundEvents.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.PLAYERS, 1.5f, 1f);
+        for (int i = 0; i < 3; ++i) {
+            target.getWorld().spawnEntity(new ExperienceOrbEntity(target.getWorld(), target.getX(), target.getRandomBodyY(), target.getZ(), 6));
+        }
+        target.damage(target.getDamageSources().sonicBoom(player), 8f);
         resetCharge(stack);
     }
 
@@ -52,7 +59,8 @@ public class EchoingBladeItem extends SwordItem implements CreoItem, Relic {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         incrementCharge(stack);
-        attacker.getWorld().playSoundFromEntity(attacker, SoundEvents.ENTITY_WARDEN_SONIC_CHARGE, SoundCategory.PLAYERS, 1f, 1f);
+        attacker.playSound(SoundEvents.ENTITY_WARDEN_SONIC_CHARGE, 1.5f, 1f);
+        target.getWorld().spawnEntity(new ExperienceOrbEntity(target.getWorld(), target.getX(), target.getRandomBodyY(), target.getZ(), 2));
         return super.postHit(stack, target, attacker);
     }
 }
