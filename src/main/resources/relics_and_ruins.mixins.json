@@ -5,14 +5,15 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
-    "entity.EntityMixin",
-    "entity.PlayerEntityMixin",
-    "entity.PlayerInventoryMixin",
     "RarityMixin",
     "ShapeTypeMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
-    "client.screen.SmithingScreenHandlerMixin"
+    "client.screen.SmithingScreenHandlerMixin",
+    "entity.EntityMixin",
+    "entity.ExperienceOrbEntityMixin",
+    "entity.PlayerEntityMixin",
+    "entity.PlayerInventoryMixin"
   ],
   "client": [
     "client.BuiltinModelItemRendererMixin",
