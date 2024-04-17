@@ -12,12 +12,14 @@
     "client.screen.SmithingScreenHandlerMixin",
     "entity.EntityMixin",
     "entity.ExperienceOrbEntityMixin",
+    "entity.ItemEntityMixin",
     "entity.PlayerEntityMixin",
     "entity.PlayerInventoryMixin"
   ],
   "client": [
     "client.BuiltinModelItemRendererMixin",
     "client.DecoratedPotBlockEntityRendererMixin",
+    "client.DrawContextMixin",
     "client.screen.SmithingScreenMixin"
   ],
   "injectors": {

@@ -29,7 +29,7 @@ public class EchoingBladeItem extends SwordItem implements CreoItem, Relic {
 
     @Override
     public int getMaxCharge() {
-        return 3;
+        return 6;
     }
 
     @Override
@@ -47,8 +47,9 @@ public class EchoingBladeItem extends SwordItem implements CreoItem, Relic {
         for (int i = 0; i < 3; ++i) {
             target.getWorld().spawnEntity(new ExperienceOrbEntity(target.getWorld(), target.getX(), target.getRandomBodyY(), target.getZ(), 6));
         }
-        target.damage(target.getDamageSources().sonicBoom(player), 8f);
+        target.damage(target.getDamageSources().sonicBoom(player), 16f);
         resetCharge(stack);
+        player.getItemCooldownManager().set(stack.getItem(), 220);
     }
 
     @Override
