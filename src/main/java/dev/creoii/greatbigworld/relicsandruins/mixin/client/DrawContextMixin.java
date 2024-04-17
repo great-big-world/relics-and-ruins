@@ -23,7 +23,7 @@ public abstract class DrawContextMixin {
             int k = x + 2;
             int l = y + 14;
             fill(RenderLayer.getGuiOverlay(), k, l, k + 13, l + 2, Colors.BLACK);
-            fill(RenderLayer.getGuiOverlay(), k, l, k + i, l + 1, 0xff2fbf3e | Colors.BLACK);
+            fill(RenderLayer.getGuiOverlay(), k, l, k + i, l + 1, 0xff00bfbf);
         }
     }
 }

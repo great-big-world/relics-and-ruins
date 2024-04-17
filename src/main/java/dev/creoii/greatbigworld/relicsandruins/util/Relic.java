@@ -30,7 +30,7 @@ public interface Relic {
     }
 
     default int getChargeItemBarStep(ItemStack stack) {
-        return MathHelper.clamp(getCharge(stack) - getMaxCharge(), 0, getMaxCharge());
+        return Math.round(((float) getCharge(stack) / getMaxCharge()) * 13);
     }
 
     default int getCharge(ItemStack stack) {
