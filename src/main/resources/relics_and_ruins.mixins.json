@@ -12,7 +12,6 @@
     "client.screen.SmithingScreenHandlerMixin",
     "entity.EntityMixin",
     "entity.ExperienceOrbEntityMixin",
-    "entity.ItemEntityMixin",
     "entity.PlayerEntityMixin",
     "entity.PlayerInventoryMixin"
   ],
