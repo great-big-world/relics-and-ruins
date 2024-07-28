@@ -14,7 +14,7 @@ import java.util.Arrays;
 @Mixin(Rarity.class)
 public class RarityMixin {
     @Invoker("<init>")
-    private static Rarity init(String name, int id, Formatting formatting) {
+    private static Rarity init(String internalName, int id, final int index, final String name, final Formatting formatting) {
         throw new AssertionError();
     }
 
@@ -27,7 +27,7 @@ public class RarityMixin {
         ArrayList<Rarity> values = new ArrayList<>(Arrays.asList(field_8905));
         int last = values.size();
 
-        values.add(init("RELIC", last, Formatting.GOLD));
+        values.add(init("RELIC", last, 4, "relic", Formatting.GOLD));
 
         field_8905 = values.toArray(new Rarity[0]);
     }

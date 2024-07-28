@@ -3,16 +3,12 @@ package dev.creoii.greatbigworld.relicsandruins.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsItems;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.DecoratedPotBlockEntity;
+import net.minecraft.block.entity.Sherds;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.inventory.RecipeInputInventory;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.DyeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.item.*;
 import net.minecraft.recipe.CraftingDecoratedPotRecipe;
-import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.RegistryWrapper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -21,8 +17,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CraftingDecoratedPotRecipe.class)
 public class CraftingDecoratedPotRecipeMixin {
-    @Inject(method = "craft(Lnet/minecraft/inventory/RecipeInputInventory;Lnet/minecraft/registry/DynamicRegistryManager;)Lnet/minecraft/item/ItemStack;", at = @At("RETURN"), cancellable = true)
-    private void gbw$makeDecoratedPotsDyeable(RecipeInputInventory recipeInputInventory, DynamicRegistryManager dynamicRegistryManager, CallbackInfoReturnable<ItemStack> cir, @Local DecoratedPotBlockEntity.Sherds sherds) {
+    @Inject(method = "craft(Lnet/minecraft/inventory/RecipeInputInventory;Lnet/minecraft/registry/RegistryWrapper$WrapperLookup;)Lnet/minecraft/item/ItemStack;", at = @At("RETURN"), cancellable = true)
+    private void gbw$makeDecoratedPotsDyeable(RecipeInputInventory recipeInputInventory, RegistryWrapper.WrapperLookup wrapperLookup, CallbackInfoReturnable<ItemStack> cir, @Local Sherds sherds) {
         if (recipeInputInventory.getStack(4).getItem() instanceof DyeItem dyeItem) {
             cir.setReturnValue(switch (dyeItem.getColor()) {
                 case BROWN -> getStackWith(RelicsAndRuinsItems.BROWN_DECORATED_POT, sherds);
@@ -51,9 +47,9 @@ public class CraftingDecoratedPotRecipeMixin {
     }
 
     @Unique
-    private static ItemStack getStackWith(Item item, DecoratedPotBlockEntity.Sherds sherds) {
+    private static ItemStack getStackWith(Item item, Sherds sherds) {
         ItemStack stack = item.getDefaultStack();
-        BlockItem.setBlockEntityNbt(stack, BlockEntityType.DECORATED_POT, sherds.toNbt(new NbtCompound()));
+        stack.set(DataComponentTypes.POT_DECORATIONS, sherds);
         return stack;
     }
 }

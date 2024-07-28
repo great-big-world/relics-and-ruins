@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,12 +27,12 @@ public class DecoratedPotBlockEntityMixin implements DyedDecoratedPot, TrimmedDe
     }
 
     @Inject(method = "writeNbt", at = @At("TAIL"))
-    private void gbw$writeTrimNbt(NbtCompound nbt, CallbackInfo ci) {
+    private void gbw$writeTrimNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup, CallbackInfo ci) {
         nbt.putInt(TRIM_KEY, trim);
     }
 
     @Inject(method = "readNbt", at = @At("TAIL"))
-    private void gbw$readTrimNbt(NbtCompound nbt, CallbackInfo ci) {
+    private void gbw$readTrimNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup, CallbackInfo ci) {
         trim = nbt.getInt(TRIM_KEY);
     }
 

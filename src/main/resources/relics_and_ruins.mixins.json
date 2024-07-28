@@ -6,10 +6,10 @@
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
     "RarityMixin",
-    "ShapeTypeMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
     "client.screen.SmithingScreenHandlerMixin",
+    "creoapi.CreoItemImplMixin",
     "entity.EntityMixin",
     "entity.ExperienceOrbEntityMixin",
     "entity.PlayerEntityMixin",
@@ -19,6 +19,7 @@
     "client.BuiltinModelItemRendererMixin",
     "client.DecoratedPotBlockEntityRendererMixin",
     "client.DrawContextMixin",
+    "client.GameRendererMixin",
     "client.screen.SmithingScreenMixin"
   ],
   "injectors": {

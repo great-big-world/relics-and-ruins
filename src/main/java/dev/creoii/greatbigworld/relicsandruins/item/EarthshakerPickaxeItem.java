@@ -1,6 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.item;
 
-import dev.creoii.greatbigworld.relicsandruins.util.Relic;
+import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -14,31 +14,26 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EarthshakerPickaxeItem extends PickaxeItem implements Relic {
+public class EarthshakerPickaxeItem extends PickaxeItem {
     public EarthshakerPickaxeItem(Settings settings) {
-        super(ToolMaterials.NETHERITE, 4, 1f, settings);
+        super(ToolMaterials.NETHERITE, settings);
     }
 
     @Override
     public ItemStack getDefaultStack() {
         ItemStack stack = super.getDefaultStack();
-        resetCharge(stack);
+        RelicComponent.resetCharge(stack);
         return stack;
     }
 
     @Override
-    public int getMaxCharge() {
-        return 27;
-    }
-
-    @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-        incrementCharge(stack);
-        if (isCharged(stack)) {
+        RelicComponent.incrementCharge(stack);
+        if (RelicComponent.isCharged(stack)) {
             for (BlockPos pos1: earthquake(pos, 8, 5)) {
                 world.breakBlock(pos1, true, miner);
             }
-            resetCharge(stack);
+            RelicComponent.resetCharge(stack);
         }
         return super.postMine(stack, world, state, pos, miner);
     }

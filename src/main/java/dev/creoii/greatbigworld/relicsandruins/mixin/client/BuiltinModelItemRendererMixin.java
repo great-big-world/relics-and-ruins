@@ -28,12 +28,12 @@ public class BuiltinModelItemRendererMixin {
         return original || blockState.getBlock() instanceof DecoratedPotBlock;
     }
 
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/entity/DecoratedPotBlockEntity;readNbtFromStack(Lnet/minecraft/item/ItemStack;)V", shift = At.Shift.AFTER))
+    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/entity/DecoratedPotBlockEntity;readFrom(Lnet/minecraft/item/ItemStack;)V", shift = At.Shift.AFTER))
     private void gbw$modifyDecoratedPotRender(ItemStack stack, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, CallbackInfo ci, @Local BlockState blockState) {
         if (blockState.getBlock() instanceof DecoratedPotBlock decoratedPotBlock && decoratedPotBlock instanceof DyedDecoratedPot dyedDecoratedPot) {
-            if (blockState.isOf(Blocks.DECORATED_POT))
+            if (blockState.isOf(Blocks.DECORATED_POT)) {
                 ((DyedDecoratedPot) renderDecoratedPot).gbw$setColor(null);
-            else ((DyedDecoratedPot) renderDecoratedPot).gbw$setColor(dyedDecoratedPot.gbw$getColor());
+            } else ((DyedDecoratedPot) renderDecoratedPot).gbw$setColor(dyedDecoratedPot.gbw$getColor());
         }
     }
 }

@@ -52,7 +52,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         titleY = 4;
     }
 
-    @Inject(method = "drawBackground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/InventoryScreen;drawEntity(Lnet/minecraft/client/gui/DrawContext;FFILorg/joml/Vector3f;Lorg/joml/Quaternionf;Lorg/joml/Quaternionf;Lnet/minecraft/entity/LivingEntity;)V"), cancellable = true)
+    @Inject(method = "drawBackground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/InventoryScreen;drawEntity(Lnet/minecraft/client/gui/DrawContext;FFFLorg/joml/Vector3f;Lorg/joml/Quaternionf;Lorg/joml/Quaternionf;Lnet/minecraft/entity/LivingEntity;)V"), cancellable = true)
     private void gbw$renderArmorStandToTheRight(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
         InventoryScreen.drawEntity(context, (float)(x + 152), (float)(y + 63), 25, field_45497, ARMOR_STAND_ROTATION, null, armorStand);
         ci.cancel();

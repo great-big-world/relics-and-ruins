@@ -7,6 +7,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.DecoratedPotPatterns;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
+import net.minecraft.block.entity.Sherds;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
@@ -33,6 +34,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.EnumSet;
+import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 @Mixin(DecoratedPotBlockEntityRenderer.class)
@@ -75,7 +77,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     }
 
     @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;renderDecoratedSide(Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/util/SpriteIdentifier;)V", ordinal = 0), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci, Direction direction, DecoratedPotBlockEntity.WobbleType wobbleType, VertexConsumer vertexConsumer, DecoratedPotBlockEntity.Sherds sherds) {
+    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci, Direction direction, DecoratedPotBlockEntity.WobbleType wobbleType, VertexConsumer vertexConsumer, Sherds sherds) {
         float[] color;
         if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
             int mapColor = dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR;
@@ -85,21 +87,21 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         renderSide(back, matrixStack, vertexConsumerProvider, i, j, color);
         renderSide(left, matrixStack, vertexConsumerProvider, i, j, color);
         renderSide(right, matrixStack, vertexConsumerProvider, i, j, color);
-        if (sherds.front() != null) {
-            renderPatternedSide(frontPattern, matrixStack, vertexConsumerProvider, i, j, sherds.front(), color);
+        if (sherds.front().isPresent()) {
+            renderPatternedSide(frontPattern, matrixStack, vertexConsumerProvider, i, j, sherds.front().get(), color);
         }
-        if (sherds.back() != null) {
-            renderPatternedSide(backPattern, matrixStack, vertexConsumerProvider, i, j, sherds.back(), color);
+        if (sherds.back().isPresent()) {
+            renderPatternedSide(backPattern, matrixStack, vertexConsumerProvider, i, j, sherds.back().get(), color);
         }
-        if (sherds.left() != null) {
-            renderPatternedSide(leftPattern, matrixStack, vertexConsumerProvider, i, j, sherds.left(), color);
+        if (sherds.left().isPresent()) {
+            renderPatternedSide(leftPattern, matrixStack, vertexConsumerProvider, i, j, sherds.left().get(), color);
         }
-        if (sherds.right() != null) {
-            renderPatternedSide(rightPattern, matrixStack, vertexConsumerProvider, i, j, sherds.right(), color);
+        if (sherds.right().isPresent()) {
+            renderPatternedSide(rightPattern, matrixStack, vertexConsumerProvider, i, j, sherds.right().get(), color);
         }
 
         int trim = ((TrimmedDecoratedPot) decoratedPotBlockEntity).gbw$getTrim();
-        if (sherds.front() != Items.BRICK || sherds.back() != Items.BRICK || sherds.left() != Items.BRICK || sherds.right() != Items.BRICK) {
+        if (isSherdNotBrick(sherds.front()) || isSherdNotBrick(sherds.back()) || isSherdNotBrick(sherds.left()) || isSherdNotBrick(sherds.right())) {
             renderTrimmedSide(frontTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
             renderTrimmedSide(backTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
             renderTrimmedSide(leftTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
@@ -167,5 +169,10 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     @Unique
     private static float blue(int color) {
         return (color & 0xff) / 255f;
+    }
+
+    @Unique
+    private static boolean isSherdNotBrick(Optional<Item> sherd) {
+        return sherd.isPresent() && sherd.get() != Items.BRICK;
     }
 }
