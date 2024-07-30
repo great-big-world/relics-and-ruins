@@ -19,7 +19,6 @@
     "client.BuiltinModelItemRendererMixin",
     "client.DecoratedPotBlockEntityRendererMixin",
     "client.DrawContextMixin",
-    "client.GameRendererMixin",
     "client.screen.SmithingScreenMixin"
   ],
   "injectors": {

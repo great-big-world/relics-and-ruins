@@ -20,7 +20,7 @@ public abstract class DrawContextMixin {
     @Inject(method = "drawItemInSlot(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isItemBarVisible()Z"))
     private void gbw$renderRelicCharge(TextRenderer textRenderer, ItemStack stack, int x, int y, String countOverride, CallbackInfo ci) {
         RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
-        if (component != null && RelicComponent.getCharge(stack) > 0) {
+        if (component != null && RelicComponent.getCharge(stack) > 0 && !RelicComponent.isCharged(stack)) {
             int i = RelicComponent.getChargeItemBarStep(stack);
             int k = x + 2;
             int l = y + 14;
