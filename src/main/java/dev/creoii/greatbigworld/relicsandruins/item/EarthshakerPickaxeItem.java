@@ -59,9 +59,7 @@ public class EarthshakerPickaxeItem extends PickaxeItem {
         double angleIncrement = 2 * Math.PI / count;
         for (int i = 0; i < count; i++) {
             double angle = i * angleIncrement;
-            double dx = Math.cos(angle);
-            double dy = Math.sin(angle);
-            directions.add(new Vec3d(dx, dy, 0));
+            directions.add(new Vec3d(Math.cos(angle), Math.sin(angle), 0));
         }
         return directions;
     }
