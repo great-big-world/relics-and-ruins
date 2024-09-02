@@ -8,13 +8,21 @@ import dev.creoii.greatbigworld.relicsandruins.item.EchoingBladeItem;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsRarities;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.block.entity.Sherds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ContainerComponent;
+import net.minecraft.entity.passive.AbstractDonkeyEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPointer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 
 import java.util.List;
 import java.util.Optional;
@@ -104,5 +112,34 @@ public final class RelicsAndRuinsItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.addAfter(Items.ENCHANTED_GOLDEN_APPLE, CRYSTAL_APPLE);
         });
+
+        FuelRegistry.INSTANCE.add(ConventionalItemTags.CHESTS, 300);
+
+        final FallibleItemDispenserBehavior CHEST_DISPENSER_BEHAVIOR = new FallibleItemDispenserBehavior(){
+            @Override
+            public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+                BlockPos pos = pointer.pos().offset(pointer.state().get(DispenserBlock.FACING));
+                for (AbstractDonkeyEntity abstractDonkeyEntity2 : pointer.world().getEntitiesByClass(AbstractDonkeyEntity.class, new Box(pos), abstractDonkeyEntity -> abstractDonkeyEntity.isAlive() && !abstractDonkeyEntity.hasChest())) {
+                    if (!abstractDonkeyEntity2.isTame() || !abstractDonkeyEntity2.getStackReference(499).set(stack))
+                        continue;
+                    stack.decrement(1);
+                    setSuccess(true);
+                    return stack;
+                }
+                return super.dispenseSilently(pointer, stack);
+            }
+        };
+
+        DispenserBlock.registerBehavior(OAK_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(SPRUCE_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BIRCH_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(JUNGLE_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(DARK_OAK_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(ACACIA_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(MANGROVE_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(CHERRY_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(BAMBOO_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(CRIMSON_CHEST, CHEST_DISPENSER_BEHAVIOR);
+        DispenserBlock.registerBehavior(WARPED_CHEST, CHEST_DISPENSER_BEHAVIOR);
     }
 }
