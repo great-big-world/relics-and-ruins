@@ -63,6 +63,8 @@ public final class RelicsAndRuinsItems {
     public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1f, -2.8f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 27, Optional.empty())));
     public static final Item MENDSTONE = new Item(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn());
 
+    public static final Item DISC_FRAGMENT_RELIC = new DiscFragmentItem(new Item.Settings());
+
     public static void register() {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
@@ -99,6 +101,8 @@ public final class RelicsAndRuinsItems {
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "earthshaker_pickaxe"), EARTHSHAKER_PICKAXE);
         Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "mendstone"), MENDSTONE);
 
+        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "disc_fragment_relic"), DISC_FRAGMENT_RELIC);
+
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.DECORATED_POT, BROWN_DECORATED_POT, RED_DECORATED_POT, ORANGE_DECORATED_POT, YELLOW_DECORATED_POT, LIME_DECORATED_POT, GREEN_DECORATED_POT, CYAN_DECORATED_POT, BLUE_DECORATED_POT, LIGHT_BLUE_DECORATED_POT, PINK_DECORATED_POT, MAGENTA_DECORATED_POT, PURPLE_DECORATED_POT, BLACK_DECORATED_POT, GRAY_DECORATED_POT, LIGHT_GRAY_DECORATED_POT, WHITE_DECORATED_POT);
             entries.addAfter(Items.CHEST, OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, DARK_OAK_CHEST, BIRCH_CHEST, MANGROVE_CHEST, CHERRY_CHEST, BAMBOO_CHEST, CRIMSON_CHEST, WARPED_CHEST);
@@ -111,6 +115,18 @@ public final class RelicsAndRuinsItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.addAfter(Items.ENCHANTED_GOLDEN_APPLE, CRYSTAL_APPLE);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+            entries.getDisplayStacks().replaceAll(stack -> {
+                if (stack.isOf(Items.DISC_FRAGMENT_5))
+                    return DISC_FRAGMENT_RELIC.getDefaultStack();
+                return stack;
+            });
+            entries.getSearchTabStacks().replaceAll(stack -> {
+                if (stack.isOf(Items.DISC_FRAGMENT_5))
+                    return DISC_FRAGMENT_RELIC.getDefaultStack();
+                return stack;
+            });
         });
 
         FuelRegistry.INSTANCE.add(ConventionalItemTags.CHESTS, 300);

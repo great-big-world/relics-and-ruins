@@ -32,5 +32,8 @@
   "item.great_big_world.rogueish_hood": "Rogueish Hood",
   "item.great_big_world.crystal_apple": "Crystal Apple",
   "item.great_big_world.earthshaker_pickaxe": "Earthshaker Pickaxe",
-  "item.great_big_world.mendstone": "Mendstone"
+  "item.great_big_world.mendstone": "Mendstone",
+
+  "item.great_big_world.disc_fragment_relic": "Disc Fragment",
+  "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic"
 }
