@@ -2,7 +2,6 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -10,7 +9,6 @@ import dev.creoii.greatbigworld.relicsandruins.block.ChestBlock;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsBlocks;
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
@@ -26,7 +24,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Map;

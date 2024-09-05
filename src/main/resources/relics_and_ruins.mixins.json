@@ -6,10 +6,9 @@
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
     "RarityMixin",
+    "SmithingScreenHandlerMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
-    "client.screen.SmithingScreenHandlerMixin",
-    "creoapi.CreoItemImplMixin",
     "entity.AbstractDonkeyEntityMixin",
     "entity.EntityMixin",
     "entity.ExperienceOrbEntityMixin",

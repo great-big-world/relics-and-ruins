@@ -1,4 +1,4 @@
-package dev.creoii.greatbigworld.relicsandruins.mixin.client.screen;
+package dev.creoii.greatbigworld.relicsandruins.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import dev.creoii.greatbigworld.relicsandruins.util.ExtendedSmithingScreenHandler;
