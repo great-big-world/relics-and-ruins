@@ -69,6 +69,7 @@ public abstract class SmithingScreenHandlerMixin extends ForgingScreenHandler im
         return true;
     }
 
+    @Unique
     private boolean isInBounds(int id) {
         return id >= 0 && id < ((TemplateUnlockerPlayer) player).gbw$getUnlockedTemplates().size();
     }

@@ -158,10 +158,12 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
         return true;
     }
 
+    @Unique
     private boolean shouldScroll() {
         return canCraft && ((TemplateUnlockerPlayer) client.player).gbw$getUnlockedTemplates().size() > 12;
     }
 
+    @Unique
     protected int getMaxScroll() {
         return (((TemplateUnlockerPlayer) client.player).gbw$getUnlockedTemplates().size() + 4 - 1) / 4 - 3;
     }

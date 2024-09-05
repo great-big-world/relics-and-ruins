@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class AbstractDonkeyEntityMixin {
     @Redirect(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
     private boolean gbw$allowVariantChestsOnDonkeys(ItemStack instance, Item item) {
-        return instance.isIn(RelicsAndRuinsTags.ITEMS_VARIANT_CHESTS);
+        return instance.isIn(RelicsAndRuinsTags.VARIANT_CHEST_ITEMS);
     }
 }

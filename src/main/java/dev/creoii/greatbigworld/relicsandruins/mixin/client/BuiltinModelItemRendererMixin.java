@@ -74,7 +74,7 @@ public class BuiltinModelItemRendererMixin {
 
     @ModifyExpressionValue(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z", ordinal = 1))
     private boolean gbw$allowRenderVariantChestItems(boolean original, @Local BlockState blockState) {
-        return original || blockState.isIn(RelicsAndRuinsTags.BLOCKS_VARIANT_CHESTS);
+        return original || blockState.isIn(RelicsAndRuinsTags.VARIANT_CHEST_BLOCKS);
     }
 
     @WrapOperation(method = "render", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/item/BuiltinModelItemRenderer;renderChestNormal:Lnet/minecraft/block/entity/ChestBlockEntity;"))
