@@ -411,7 +411,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 2,
+          "weight": 4,
           "name": "minecraft:potion",
           "functions": [
             {
@@ -428,6 +428,17 @@
             {
               "function": "minecraft:set_potion",
               "id": "minecraft:long_night_vision"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "great_big_world:strong_night_vision"
             }
           ]
         }
