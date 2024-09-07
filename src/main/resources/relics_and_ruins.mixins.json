@@ -10,10 +10,13 @@
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
     "entity.AbstractDonkeyEntityMixin",
+    "entity.CatSitOnBlockGoalMixin",
     "entity.EntityMixin",
     "entity.ExperienceOrbEntityMixin",
     "entity.PlayerEntityMixin",
-    "entity.PlayerInventoryMixin"
+    "entity.PlayerInventoryMixin",
+    "world.StructurePieceMixin",
+    "world.StructureTemplateMixin"
   ],
   "client": [
     "client.BuiltinModelItemRendererMixin",
