@@ -1,8 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.registry;
 
-import dev.creoii.creoapi.api.item.CreoFoodComponent;
-import dev.creoii.creoapi.api.item.CreoItemSettings;
-import dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins;
+import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.relicsandruins.item.EarthshakerPickaxeItem;
 import dev.creoii.greatbigworld.relicsandruins.item.EchoingBladeItem;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
@@ -15,6 +13,7 @@ import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.block.entity.Sherds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ContainerComponent;
+import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.passive.AbstractDonkeyEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -28,80 +27,88 @@ import java.util.List;
 import java.util.Optional;
 
 public final class RelicsAndRuinsItems {
-    public static final Item BROWN_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.BROWN_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item RED_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.RED_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item ORANGE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.ORANGE_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item YELLOW_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.YELLOW_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item LIME_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.LIME_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item GREEN_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.GREEN_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item CYAN_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.CYAN_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item LIGHT_BLUE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.LIGHT_BLUE_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item BLUE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.BLUE_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item PINK_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.PINK_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item MAGENTA_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.MAGENTA_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item PURPLE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.PURPLE_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item BLACK_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.BLACK_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item GRAY_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.GRAY_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item LIGHT_GRAY_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.LIGHT_GRAY_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
-    public static final Item WHITE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.WHITE_DECORATED_POT, new CreoItemSettings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item BROWN_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.BROWN_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item RED_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.RED_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item ORANGE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.ORANGE_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item YELLOW_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.YELLOW_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item LIME_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.LIME_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item GREEN_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.GREEN_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item CYAN_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.CYAN_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item LIGHT_BLUE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.LIGHT_BLUE_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item BLUE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.BLUE_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item PINK_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.PINK_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item MAGENTA_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.MAGENTA_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item PURPLE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.PURPLE_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item BLACK_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.BLACK_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item GRAY_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.GRAY_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item LIGHT_GRAY_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.LIGHT_GRAY_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
+    public static final Item WHITE_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.WHITE_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
 
-    public static final Item OAK_CHEST = new BlockItem(RelicsAndRuinsBlocks.OAK_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item SPRUCE_CHEST = new BlockItem(RelicsAndRuinsBlocks.SPRUCE_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item BIRCH_CHEST = new BlockItem(RelicsAndRuinsBlocks.BIRCH_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item JUNGLE_CHEST = new BlockItem(RelicsAndRuinsBlocks.JUNGLE_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item DARK_OAK_CHEST = new BlockItem(RelicsAndRuinsBlocks.DARK_OAK_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item ACACIA_CHEST = new BlockItem(RelicsAndRuinsBlocks.ACACIA_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item MANGROVE_CHEST = new BlockItem(RelicsAndRuinsBlocks.MANGROVE_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item CHERRY_CHEST = new BlockItem(RelicsAndRuinsBlocks.CHERRY_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item BAMBOO_CHEST = new BlockItem(RelicsAndRuinsBlocks.BAMBOO_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item CRIMSON_CHEST = new BlockItem(RelicsAndRuinsBlocks.CRIMSON_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
-    public static final Item WARPED_CHEST = new BlockItem(RelicsAndRuinsBlocks.WARPED_CHEST, new CreoItemSettings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item OAK_CHEST = new BlockItem(RelicsAndRuinsBlocks.OAK_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item SPRUCE_CHEST = new BlockItem(RelicsAndRuinsBlocks.SPRUCE_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item BIRCH_CHEST = new BlockItem(RelicsAndRuinsBlocks.BIRCH_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item JUNGLE_CHEST = new BlockItem(RelicsAndRuinsBlocks.JUNGLE_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item DARK_OAK_CHEST = new BlockItem(RelicsAndRuinsBlocks.DARK_OAK_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item ACACIA_CHEST = new BlockItem(RelicsAndRuinsBlocks.ACACIA_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item MANGROVE_CHEST = new BlockItem(RelicsAndRuinsBlocks.MANGROVE_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item CHERRY_CHEST = new BlockItem(RelicsAndRuinsBlocks.CHERRY_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item BAMBOO_CHEST = new BlockItem(RelicsAndRuinsBlocks.BAMBOO_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item CRIMSON_CHEST = new BlockItem(RelicsAndRuinsBlocks.CRIMSON_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
+    public static final Item WARPED_CHEST = new BlockItem(RelicsAndRuinsBlocks.WARPED_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
 
-    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.STONE, new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.2f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 6, Optional.empty())));
-    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn());
-    public static final Item CRYSTAL_APPLE = new Item(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().food(new CreoFoodComponent(3, 0f, true, false, 20, true, List.of())));
-    public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1f, -2.8f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 27, Optional.empty())));
-    public static final Item MENDSTONE = new Item(new CreoItemSettings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn());
+    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.STONE, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.2f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 6, Optional.empty())));
+    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC));
+    public static final Item CRYSTAL_APPLE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).food(new FoodComponent(3, 0f, false, 20, List.of())));
+    public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1f, -2.8f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 27, Optional.empty())));
+    public static final Item MENDSTONE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC));
+
+/*  OLD RELIC DEFINITIONS FOR REFERENCE
+    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.STONE, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.2f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 6, Optional.empty())));
+    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn());
+    public static final Item CRYSTAL_APPLE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().food(new CreoFoodComponent(3, 0f, true, false, 20, true, List.of())));
+    public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1f, -2.8f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 27, Optional.empty())));
+    public static final Item MENDSTONE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn());
+*/
 
     public static final Item DISC_FRAGMENT_RELIC = new DiscFragmentItem(new Item.Settings());
 
     public static void register() {
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "orange_decorated_pot"), ORANGE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "yellow_decorated_pot"), YELLOW_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "lime_decorated_pot"), LIME_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "green_decorated_pot"), GREEN_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "cyan_decorated_pot"), CYAN_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "blue_decorated_pot"), BLUE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "light_blue_decorated_pot"), LIGHT_BLUE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "pink_decorated_pot"), PINK_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "magenta_decorated_pot"), MAGENTA_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "purple_decorated_pot"), PURPLE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "black_decorated_pot"), BLACK_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "gray_decorated_pot"), GRAY_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "light_gray_decorated_pot"), LIGHT_GRAY_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "white_decorated_pot"), WHITE_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "orange_decorated_pot"), ORANGE_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "yellow_decorated_pot"), YELLOW_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "lime_decorated_pot"), LIME_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "green_decorated_pot"), GREEN_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "cyan_decorated_pot"), CYAN_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "blue_decorated_pot"), BLUE_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "light_blue_decorated_pot"), LIGHT_BLUE_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pink_decorated_pot"), PINK_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "magenta_decorated_pot"), MAGENTA_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "purple_decorated_pot"), PURPLE_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "black_decorated_pot"), BLACK_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "gray_decorated_pot"), GRAY_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "light_gray_decorated_pot"), LIGHT_GRAY_DECORATED_POT);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "white_decorated_pot"), WHITE_DECORATED_POT);
 
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "oak_chest"), OAK_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "spruce_chest"), SPRUCE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "birch_chest"), BIRCH_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "jungle_chest"), JUNGLE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "dark_oak_chest"), DARK_OAK_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "acacia_chest"), ACACIA_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "mangrove_chest"), MANGROVE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "cherry_chest"), CHERRY_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "warped_chest"), WARPED_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "oak_chest"), OAK_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "spruce_chest"), SPRUCE_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "birch_chest"), BIRCH_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "jungle_chest"), JUNGLE_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "dark_oak_chest"), DARK_OAK_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "acacia_chest"), ACACIA_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mangrove_chest"), MANGROVE_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "cherry_chest"), CHERRY_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "warped_chest"), WARPED_CHEST);
 
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "echoing_blade"), ECHOING_BLADE);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "rogueish_hood"), ROGUEISH_HOOD);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "crystal_apple"), CRYSTAL_APPLE);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "earthshaker_pickaxe"), EARTHSHAKER_PICKAXE);
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "mendstone"), MENDSTONE);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "echoing_blade"), ECHOING_BLADE);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "rogueish_hood"), ROGUEISH_HOOD);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crystal_apple"), CRYSTAL_APPLE);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "earthshaker_pickaxe"), EARTHSHAKER_PICKAXE);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mendstone"), MENDSTONE);
 
-        Registry.register(Registries.ITEM, new Identifier(RelicsAndRuins.NAMESPACE, "disc_fragment_relic"), DISC_FRAGMENT_RELIC);
+        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DISC_FRAGMENT_RELIC);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.CHEST, OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, DARK_OAK_CHEST, BIRCH_CHEST, MANGROVE_CHEST, CHERRY_CHEST, BAMBOO_CHEST, CRIMSON_CHEST, WARPED_CHEST);

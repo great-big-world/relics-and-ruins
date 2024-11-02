@@ -2,7 +2,6 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.block;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.creoii.creoapi.api.modification.BlockModification;
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -28,7 +27,7 @@ public class DecoratedPotBlockMixin implements DyedDecoratedPot {
     @Inject(method = "<init>", at = @At("TAIL"))
     private void gbw$setColor(AbstractBlock.Settings settings, CallbackInfo ci) {
         if ((DecoratedPotBlock) (Object) this != Blocks.DECORATED_POT)
-            color = BlockModification.INSTANCE.getMapColor((DecoratedPotBlock) (Object) this);
+            color = ((DecoratedPotBlock) (Object) this).getDefaultMapColor();
     }
 
     @Inject(method = "getPickStack", at = @At(value = "RETURN", ordinal = 0), cancellable = true)

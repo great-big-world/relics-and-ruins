@@ -1,7 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.registry;
 
-import dev.creoii.creoapi.api.blockinjection.BlockEntityTypeInjection;
-import dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins;
+import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.relicsandruins.block.ChestBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
@@ -62,36 +61,36 @@ public final class RelicsAndRuinsBlocks {
     }, WoodType.WARPED);
 
     public static void register() {
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "orange_decorated_pot"), ORANGE_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "yellow_decorated_pot"), YELLOW_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "lime_decorated_pot"), LIME_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "green_decorated_pot"), GREEN_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "cyan_decorated_pot"), CYAN_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "blue_decorated_pot"), BLUE_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "light_blue_decorated_pot"), LIGHT_BLUE_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "pink_decorated_pot"), PINK_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "magenta_decorated_pot"), MAGENTA_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "purple_decorated_pot"), PURPLE_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "black_decorated_pot"), BLACK_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "gray_decorated_pot"), GRAY_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "light_gray_decorated_pot"), LIGHT_GRAY_DECORATED_POT);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "white_decorated_pot"), WHITE_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "orange_decorated_pot"), ORANGE_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "yellow_decorated_pot"), YELLOW_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "lime_decorated_pot"), LIME_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "green_decorated_pot"), GREEN_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "cyan_decorated_pot"), CYAN_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "blue_decorated_pot"), BLUE_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "light_blue_decorated_pot"), LIGHT_BLUE_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "pink_decorated_pot"), PINK_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "magenta_decorated_pot"), MAGENTA_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "purple_decorated_pot"), PURPLE_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "black_decorated_pot"), BLACK_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "gray_decorated_pot"), GRAY_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "light_gray_decorated_pot"), LIGHT_GRAY_DECORATED_POT);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "white_decorated_pot"), WHITE_DECORATED_POT);
 
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "oak_chest"), OAK_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "spruce_chest"), SPRUCE_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "birch_chest"), BIRCH_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "jungle_chest"), JUNGLE_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "dark_oak_chest"), DARK_OAK_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "acacia_chest"), ACACIA_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "mangrove_chest"), MANGROVE_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "cherry_chest"), CHERRY_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
-        Registry.register(Registries.BLOCK, new Identifier(RelicsAndRuins.NAMESPACE, "warped_chest"), WARPED_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "oak_chest"), OAK_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "spruce_chest"), SPRUCE_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "birch_chest"), BIRCH_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "jungle_chest"), JUNGLE_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "dark_oak_chest"), DARK_OAK_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "acacia_chest"), ACACIA_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "mangrove_chest"), MANGROVE_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "cherry_chest"), CHERRY_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
+        Registry.register(Registries.BLOCK, new Identifier(GreatBigWorld.NAMESPACE, "warped_chest"), WARPED_CHEST);
 
-        BlockEntityTypeInjection.inject(BlockEntityType.DECORATED_POT, BROWN_DECORATED_POT, RED_DECORATED_POT, ORANGE_DECORATED_POT, YELLOW_DECORATED_POT, LIME_DECORATED_POT, GREEN_DECORATED_POT, CYAN_DECORATED_POT, BLUE_DECORATED_POT, LIGHT_BLUE_DECORATED_POT, PINK_DECORATED_POT, MAGENTA_DECORATED_POT, PURPLE_DECORATED_POT, BLACK_DECORATED_POT, GRAY_DECORATED_POT, LIGHT_GRAY_DECORATED_POT, WHITE_DECORATED_POT);
-        BlockEntityTypeInjection.inject(BlockEntityType.CHEST, OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, DARK_OAK_CHEST, ACACIA_CHEST, MANGROVE_CHEST, CHERRY_CHEST, BAMBOO_CHEST, CRIMSON_CHEST, WARPED_CHEST);
+        //BlockEntityTypeInjection.inject(BlockEntityType.DECORATED_POT, BROWN_DECORATED_POT, RED_DECORATED_POT, ORANGE_DECORATED_POT, YELLOW_DECORATED_POT, LIME_DECORATED_POT, GREEN_DECORATED_POT, CYAN_DECORATED_POT, BLUE_DECORATED_POT, LIGHT_BLUE_DECORATED_POT, PINK_DECORATED_POT, MAGENTA_DECORATED_POT, PURPLE_DECORATED_POT, BLACK_DECORATED_POT, GRAY_DECORATED_POT, LIGHT_GRAY_DECORATED_POT, WHITE_DECORATED_POT);
+        //BlockEntityTypeInjection.inject(BlockEntityType.CHEST, OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, DARK_OAK_CHEST, ACACIA_CHEST, MANGROVE_CHEST, CHERRY_CHEST, BAMBOO_CHEST, CRIMSON_CHEST, WARPED_CHEST);
     }
 }

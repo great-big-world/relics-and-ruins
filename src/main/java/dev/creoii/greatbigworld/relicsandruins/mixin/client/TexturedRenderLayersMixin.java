@@ -2,6 +2,7 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins;
 import dev.creoii.greatbigworld.relicsandruins.block.ChestBlock;
 import net.minecraft.block.WoodType;
@@ -47,6 +48,6 @@ public class TexturedRenderLayersMixin {
 
     @Unique
     private static SpriteIdentifier createChestTextureId(String variant) {
-        return new SpriteIdentifier(CHEST_ATLAS_TEXTURE, new Identifier(RelicsAndRuins.NAMESPACE, "entity/chest/" + variant));
+        return new SpriteIdentifier(CHEST_ATLAS_TEXTURE, new Identifier(GreatBigWorld.NAMESPACE, "entity/chest/" + variant));
     }
 }

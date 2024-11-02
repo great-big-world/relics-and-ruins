@@ -1,12 +1,11 @@
 package dev.creoii.greatbigworld.relicsandruins.item;
 
-import dev.creoii.creoapi.api.item.CreoItem;
+import dev.creoii.greatbigworld.item.UseThroughBlock;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponents;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
@@ -24,7 +23,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EchoingBladeItem extends SwordItem implements CreoItem {
+public class EchoingBladeItem extends SwordItem implements UseThroughBlock {
     public EchoingBladeItem(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
     }
