@@ -58,7 +58,7 @@ public final class RelicsAndRuinsItems {
 
     public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.STONE, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.2f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 6, Optional.empty())));
     public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC));
-    public static final Item CRYSTAL_APPLE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).food(new FoodComponent(3, 0f, false, 20, List.of())));
+    public static final Item CRYSTAL_APPLE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).food(new FoodComponent(3, 0f, false, 20, Optional.empty(), List.of())));
     public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1f, -2.8f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 27, Optional.empty())));
     public static final Item MENDSTONE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC));
 
@@ -73,42 +73,42 @@ public final class RelicsAndRuinsItems {
     public static final Item DISC_FRAGMENT_RELIC = new DiscFragmentItem(new Item.Settings());
 
     public static void register() {
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "orange_decorated_pot"), ORANGE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "yellow_decorated_pot"), YELLOW_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "lime_decorated_pot"), LIME_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "green_decorated_pot"), GREEN_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "cyan_decorated_pot"), CYAN_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "blue_decorated_pot"), BLUE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "light_blue_decorated_pot"), LIGHT_BLUE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pink_decorated_pot"), PINK_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "magenta_decorated_pot"), MAGENTA_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "purple_decorated_pot"), PURPLE_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "black_decorated_pot"), BLACK_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "gray_decorated_pot"), GRAY_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "light_gray_decorated_pot"), LIGHT_GRAY_DECORATED_POT);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "white_decorated_pot"), WHITE_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "orange_decorated_pot"), ORANGE_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "yellow_decorated_pot"), YELLOW_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "lime_decorated_pot"), LIME_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "green_decorated_pot"), GREEN_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "cyan_decorated_pot"), CYAN_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "blue_decorated_pot"), BLUE_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "light_blue_decorated_pot"), LIGHT_BLUE_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "pink_decorated_pot"), PINK_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "magenta_decorated_pot"), MAGENTA_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "purple_decorated_pot"), PURPLE_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "black_decorated_pot"), BLACK_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "gray_decorated_pot"), GRAY_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "light_gray_decorated_pot"), LIGHT_GRAY_DECORATED_POT);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "white_decorated_pot"), WHITE_DECORATED_POT);
 
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "oak_chest"), OAK_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "spruce_chest"), SPRUCE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "birch_chest"), BIRCH_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "jungle_chest"), JUNGLE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "dark_oak_chest"), DARK_OAK_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "acacia_chest"), ACACIA_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mangrove_chest"), MANGROVE_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "cherry_chest"), CHERRY_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "warped_chest"), WARPED_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "oak_chest"), OAK_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "spruce_chest"), SPRUCE_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "birch_chest"), BIRCH_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "jungle_chest"), JUNGLE_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "dark_oak_chest"), DARK_OAK_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "acacia_chest"), ACACIA_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "mangrove_chest"), MANGROVE_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "cherry_chest"), CHERRY_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "warped_chest"), WARPED_CHEST);
 
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "echoing_blade"), ECHOING_BLADE);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "rogueish_hood"), ROGUEISH_HOOD);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crystal_apple"), CRYSTAL_APPLE);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "earthshaker_pickaxe"), EARTHSHAKER_PICKAXE);
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mendstone"), MENDSTONE);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "echoing_blade"), ECHOING_BLADE);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "rogueish_hood"), ROGUEISH_HOOD);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "crystal_apple"), CRYSTAL_APPLE);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "earthshaker_pickaxe"), EARTHSHAKER_PICKAXE);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "mendstone"), MENDSTONE);
 
-        Registry.register(Registries.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DISC_FRAGMENT_RELIC);
+        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DISC_FRAGMENT_RELIC);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.CHEST, OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, DARK_OAK_CHEST, BIRCH_CHEST, MANGROVE_CHEST, CHERRY_CHEST, BAMBOO_CHEST, CRIMSON_CHEST, WARPED_CHEST);

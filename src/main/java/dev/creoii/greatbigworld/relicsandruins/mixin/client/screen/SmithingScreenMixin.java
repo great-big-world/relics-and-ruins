@@ -33,11 +33,11 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     @Shadow @Final private static Vector3f field_45497;
     @Shadow @Final private static Quaternionf ARMOR_STAND_ROTATION;
     @Shadow @Nullable private ArmorStandEntity armorStand;
-    @Unique private static final Identifier SCROLLER_TEXTURE = new Identifier("container/stonecutter/scroller");
-    @Unique private static final Identifier SCROLLER_DISABLED_TEXTURE = new Identifier("container/stonecutter/scroller_disabled");
-    @Unique private static final Identifier RECIPE_SELECTED_TEXTURE = new Identifier("container/stonecutter/recipe_selected");
-    @Unique private static final Identifier RECIPE_HIGHLIGHTED_TEXTURE = new Identifier("container/stonecutter/recipe_highlighted");
-    @Unique private static final Identifier RECIPE_TEXTURE = new Identifier("container/stonecutter/recipe");
+    @Unique private static final Identifier SCROLLER_TEXTURE = Identifier.of("container/stonecutter/scroller");
+    @Unique private static final Identifier SCROLLER_DISABLED_TEXTURE = Identifier.of("container/stonecutter/scroller_disabled");
+    @Unique private static final Identifier RECIPE_SELECTED_TEXTURE = Identifier.of("container/stonecutter/recipe_selected");
+    @Unique private static final Identifier RECIPE_HIGHLIGHTED_TEXTURE = Identifier.of("container/stonecutter/recipe_highlighted");
+    @Unique private static final Identifier RECIPE_TEXTURE = Identifier.of("container/stonecutter/recipe");
     @Unique private float scrollAmount;
     @Unique private boolean mouseClicked;
     @Unique private int scrollOffset;

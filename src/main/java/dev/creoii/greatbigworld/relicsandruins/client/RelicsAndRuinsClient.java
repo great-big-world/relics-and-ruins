@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 public class RelicsAndRuinsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        Identifier id = new Identifier(GreatBigWorld.NAMESPACE, "relic_charged");
+        Identifier id = Identifier.of(GreatBigWorld.NAMESPACE, "relic_charged");
         ModelPredicateProviderRegistry.register(id, (stack, world, entity, seed) -> {
             if (RelicComponent.isCharged(stack)) {
                 return 1f;

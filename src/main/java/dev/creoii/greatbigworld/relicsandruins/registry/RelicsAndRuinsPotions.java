@@ -17,7 +17,7 @@ public final class RelicsAndRuinsPotions {
     public static RegistryEntry<Potion> STRONG_NIGHT_VISION;
 
     public static void register() {
-        STRONG_NIGHT_VISION = Registry.registerReference(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_night_vision"), new Potion("night_vision", new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1800, 1)));
+        STRONG_NIGHT_VISION = Registry.registerReference(Registries.POTION, Identifier.of(GreatBigWorld.NAMESPACE, "strong_night_vision"), new Potion("night_vision", new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1800, 1)));
 
         FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
             builder.registerPotionRecipe(Potions.NIGHT_VISION, Items.GLOWSTONE_DUST, STRONG_NIGHT_VISION);

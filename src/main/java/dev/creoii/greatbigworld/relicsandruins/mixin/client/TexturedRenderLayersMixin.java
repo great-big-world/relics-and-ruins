@@ -48,6 +48,6 @@ public class TexturedRenderLayersMixin {
 
     @Unique
     private static SpriteIdentifier createChestTextureId(String variant) {
-        return new SpriteIdentifier(CHEST_ATLAS_TEXTURE, new Identifier(GreatBigWorld.NAMESPACE, "entity/chest/" + variant));
+        return new SpriteIdentifier(CHEST_ATLAS_TEXTURE, Identifier.of(GreatBigWorld.NAMESPACE, "entity/chest/" + variant));
     }
 }

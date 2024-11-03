@@ -20,6 +20,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -44,7 +45,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     @Shadow @Final private ModelPart left;
     @Shadow @Final private ModelPart right;
     @Unique private static final int BASE_COLOR = 10443081;
-    @Unique private static final SpriteIdentifier BASE_SPRITE = new SpriteIdentifier(TexturedRenderLayers.DECORATED_POT_ATLAS_TEXTURE, new Identifier("entity/decorated_pot/decorated_pot_side"));
+    @Unique private static final SpriteIdentifier BASE_SPRITE = new SpriteIdentifier(TexturedRenderLayers.DECORATED_POT_ATLAS_TEXTURE, Identifier.of("entity/decorated_pot/decorated_pot_side"));
     @Unique private ModelPart frontTrim;
     @Unique private ModelPart backTrim;
     @Unique private ModelPart leftTrim;
@@ -68,12 +69,11 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
 
     @Redirect(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V"))
     private void gbw$tintRenders(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, @Local(argsOnly = true) DecoratedPotBlockEntity decoratedPotBlockEntity) {
-        float[] color;
         if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
-            int mapColor = dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR;
-            color = new float[]{red(mapColor), green(mapColor), blue(mapColor)};
-        } else color = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
-        instance.render(matrices, vertices, light, overlay, color[0], color[1], color[2], 1f);
+            instance.render(matrices, vertices, light, overlay, dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR);
+        } else {
+            instance.render(matrices, vertices, light, overlay, BASE_COLOR);
+        }
     }
 
     @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;renderDecoratedSide(Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/util/SpriteIdentifier;)V", ordinal = 0), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
@@ -132,7 +132,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
 
     @Unique
     private static SpriteIdentifier getTextureIdFromTrim(int trim) {
-        return new SpriteIdentifier(TexturedRenderLayers.DECORATED_POT_ATLAS_TEXTURE, new Identifier("entity/decorated_pot/trim/trim" + trim));
+        return new SpriteIdentifier(TexturedRenderLayers.DECORATED_POT_ATLAS_TEXTURE, Identifier.of("entity/decorated_pot/trim/trim" + trim));
     }
 
     @Unique
@@ -141,19 +141,19 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         if (item == Items.BRICK)
             return null;
         SpriteIdentifier id = TexturedRenderLayers.getDecoratedPotPatternTextureId(DecoratedPotPatterns.fromSherd(item));
-        return id == null ? null : new SpriteIdentifier(id.getAtlasId(), new Identifier(id.getTextureId().getNamespace(), id.getTextureId().getPath().replace("pot/", "pot/pattern/").replace("_pottery_pattern", "")));
+        return id == null ? null : new SpriteIdentifier(id.getAtlasId(), Identifier.of(id.getTextureId().getNamespace(), id.getTextureId().getPath().replace("pot/", "pot/pattern/").replace("_pottery_pattern", "")));
     }
 
     @Unique
     private void renderSide(ModelPart part, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, float[] color) {
-        part.render(matrices, BASE_SPRITE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid), light, overlay, color[0], color[1], color[2], 1f);
+        part.render(matrices, BASE_SPRITE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid), light, overlay, ColorHelper.Argb.fromFloats(1f, color[0], color[1], color[2]));
     }
 
     @Unique
     private void renderPatternedSide(ModelPart part, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, @Nullable Item item, float[] color) {
         SpriteIdentifier textureId = getPatternIdFromSherd(item);
         if (textureId != null)
-            part.render(matrices, textureId.getVertexConsumer(vertexConsumers, RenderLayer::getEntityTranslucent), light, overlay, color[0], color[1], color[2], 1f);
+            part.render(matrices, textureId.getVertexConsumer(vertexConsumers, RenderLayer::getEntityTranslucent), light, overlay, ColorHelper.Argb.fromFloats(1f, color[0], color[1], color[2]));
     }
 
     @Unique

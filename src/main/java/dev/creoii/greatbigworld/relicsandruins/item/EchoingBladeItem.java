@@ -76,7 +76,7 @@ public class EchoingBladeItem extends SwordItem implements UseThroughBlock {
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack) {
+    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
         RelicComponent relicComponent = stack.get(RelicsAndRuinsDataComponents.RELIC);
         if (relicComponent != null && relicComponent.charge() > 0) {
             return 72000;
