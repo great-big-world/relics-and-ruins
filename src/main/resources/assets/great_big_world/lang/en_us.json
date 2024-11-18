@@ -28,12 +28,55 @@
   "block.great_big_world.crimson_chest": "Crimson Chest",
   "block.great_big_world.warped_chest": "Warped Chest",
 
+  "block.great_big_world.brazier": "Brazier",
+  "block.great_big_world.soul_brazier": "Soul Brazier",
+
+  "block.great_big_world.cobblestone_bricks": "Cobblestone Bricks",
+  "block.great_big_world.cobblestone_brick_stairs": "Cobblestone Brick Stairs",
+  "block.great_big_world.cobblestone_brick_slab": "Cobblestone Brick Slab",
+  "block.great_big_world.vertical_cobblestone_brick_slab": "Vertical Cobblestone Brick Slab",
+  "block.great_big_world.cobblestone_brick_wall": "Cobblestone Brick Wall",
+  "block.great_big_world.chiseled_cobblestone_bricks": "Chiseled Cobblestone Bricks",
+  "block.great_big_world.cobblestone_brick_pillar": "Cobblestone Brick Pillar",
+  "block.great_big_world.mossy_cobblestone_bricks": "Mossy Cobblestone Bricks",
+  "block.great_big_world.mossy_cobblestone_brick_stairs": "Mossy Cobblestone Brick Stairs",
+  "block.great_big_world.mossy_cobblestone_brick_slab": "Mossy Cobblestone Brick Slab",
+  "block.great_big_world.vertical_mossy_cobblestone_brick_slab": "Vertical Mossy Cobblestone Brick Slab",
+  "block.great_big_world.mossy_cobblestone_brick_wall": "Mossy Cobblestone Brick Wall",
+
+  "block.great_big_world.ice_bricks": "Ice Bricks",
+  "block.great_big_world.ice_brick_stairs": "Ice Brick Stairs",
+  "block.great_big_world.ice_brick_slab": "Ice Brick Slab",
+  "block.great_big_world.vertical_ice_brick_slab": "Vertical Ice Brick Slab",
+  "block.great_big_world.ice_brick_wall": "Ice Brick Wall",
+  "block.great_big_world.packed_ice_bricks": "Packed Ice Bricks",
+  "block.great_big_world.packed_ice_brick_stairs": "Packed Ice Brick Stairs",
+  "block.great_big_world.packed_ice_brick_slab": "Packed Ice Brick Slab",
+  "block.great_big_world.vertical_packed_ice_brick_slab": "Vertical Packed Ice Brick Slab",
+  "block.great_big_world.packed_ice_brick_wall": "Packed Ice Brick Wall",
+  "block.great_big_world.blue_ice_bricks": "Blue Ice Bricks",
+  "block.great_big_world.blue_ice_brick_stairs": "Blue Ice Brick Stairs",
+  "block.great_big_world.blue_ice_brick_slab": "Blue Ice Brick Slab",
+  "block.great_big_world.vertical_blue_ice_brick_slab": "Vertical Blue Ice Brick Slab",
+  "block.great_big_world.blue_ice_brick_wall": "Blue Ice Brick Wall",
+  "block.great_big_world.snow_bricks": "Snow Bricks",
+  "block.great_big_world.snow_brick_stairs": "Snow Brick Stairs",
+  "block.great_big_world.snow_brick_slab": "Snow Brick Slab",
+  "block.great_big_world.vertical_snow_brick_slab": "Vertical Snow Brick Slab",
+  "block.great_big_world.snow_brick_wall": "Snow Brick Wall",
+
   "item.great_big_world.echoing_blade": "Echoing Blade",
   "item.great_big_world.rogueish_hood": "Rogueish Hood",
   "item.great_big_world.crystal_apple": "Crystal Apple",
   "item.great_big_world.earthshaker_pickaxe": "Earthshaker Pickaxe",
   "item.great_big_world.mendstone": "Mendstone",
 
+  "item.great_big_world.desert_treasure": "Desert Jewel",
+  "item.great_big_world.jungle_treasure": "Jungle Eye",
+  "item.great_big_world.swamp_treasure": "Swamp Idol",
+
   "item.great_big_world.disc_fragment_relic": "Disc Fragment",
-  "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic"
+  "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic",
+
+  "item.tooltip.treasure": "Treasure"
 }

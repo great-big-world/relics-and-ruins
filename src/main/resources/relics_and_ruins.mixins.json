@@ -13,6 +13,7 @@
     "entity.CatSitOnBlockGoalMixin",
     "entity.EntityMixin",
     "entity.ExperienceOrbEntityMixin",
+    "entity.LivingEntityMixin",
     "entity.PlayerEntityMixin",
     "entity.PlayerInventoryMixin",
     "world.StructurePieceMixin",

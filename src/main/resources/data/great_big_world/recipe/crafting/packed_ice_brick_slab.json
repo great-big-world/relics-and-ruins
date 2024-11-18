@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "great_big_world:packed_ice_bricks"
+    }
+  },
+  "result": {
+    "id": "great_big_world:packed_ice_brick_slab",
+    "count": 3
+  },
+  "show_notification": true
+}

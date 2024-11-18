@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CC",
+    "CC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:ice"
+    }
+  },
+  "result": {
+    "id": "great_big_world:ice_bricks",
+    "count": 4
+  }
+}

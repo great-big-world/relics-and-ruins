@@ -1,6 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin.client;
 
-import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponents;
+import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsComponentTypes;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -19,7 +19,7 @@ public abstract class DrawContextMixin {
 
     @Inject(method = "drawItemInSlot(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isItemBarVisible()Z"))
     private void gbw$renderRelicCharge(TextRenderer textRenderer, ItemStack stack, int x, int y, String countOverride, CallbackInfo ci) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null && RelicComponent.getCharge(stack) > 0 && !RelicComponent.isCharged(stack)) {
             int i = RelicComponent.getChargeItemBarStep(stack);
             int k = x + 2;

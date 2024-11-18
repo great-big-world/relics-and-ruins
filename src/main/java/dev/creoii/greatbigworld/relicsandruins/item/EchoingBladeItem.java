@@ -1,7 +1,7 @@
 package dev.creoii.greatbigworld.relicsandruins.item;
 
 import dev.creoii.greatbigworld.item.UseThroughBlock;
-import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponents;
+import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsComponentTypes;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
@@ -77,7 +77,7 @@ public class EchoingBladeItem extends SwordItem implements UseThroughBlock {
 
     @Override
     public int getMaxUseTime(ItemStack stack, LivingEntity user) {
-        RelicComponent relicComponent = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent relicComponent = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (relicComponent != null && relicComponent.charge() > 0) {
             return 72000;
         }
@@ -86,7 +86,7 @@ public class EchoingBladeItem extends SwordItem implements UseThroughBlock {
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
-        RelicComponent relicComponent = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent relicComponent = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (relicComponent != null && relicComponent.charge() > 0) {
             user.setCurrentHand(hand);
             return TypedActionResult.consume(stack);

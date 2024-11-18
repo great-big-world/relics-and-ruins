@@ -2,7 +2,7 @@ package dev.creoii.greatbigworld.relicsandruins.util;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponents;
+import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
@@ -28,15 +28,15 @@ public record RelicComponent(int charge, int maxCharge, Optional<BlockPos> origi
             RelicComponent::new);
 
     public static void setOrigin(ItemStack stack, BlockPos pos) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null) {
-            stack.set(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(component.charge(), component.maxCharge(), Optional.of(pos)));
+            stack.set(RelicsAndRuinsComponentTypes.RELIC, new RelicComponent(component.charge(), component.maxCharge(), Optional.of(pos)));
         }
     }
 
     @Nullable
     public static BlockPos getOrigin(ItemStack stack) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null && component.origin().isPresent()) {
             return component.origin().get();
         }
@@ -44,7 +44,7 @@ public record RelicComponent(int charge, int maxCharge, Optional<BlockPos> origi
     }
 
     public static int getChargeItemBarStep(ItemStack stack) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null) {
             return Math.round(((float) getCharge(stack) / component.maxCharge()) * 13);
         }
@@ -52,7 +52,7 @@ public record RelicComponent(int charge, int maxCharge, Optional<BlockPos> origi
     }
 
     public static int getCharge(ItemStack stack) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null) {
             return component.charge();
         }
@@ -60,21 +60,21 @@ public record RelicComponent(int charge, int maxCharge, Optional<BlockPos> origi
     }
 
     public static void incrementCharge(ItemStack stack) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null) {
-            stack.set(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(Math.min(component.maxCharge(), component.charge() + 1), component.maxCharge(), component.origin()));
+            stack.set(RelicsAndRuinsComponentTypes.RELIC, new RelicComponent(Math.min(component.maxCharge(), component.charge() + 1), component.maxCharge(), component.origin()));
         }
     }
 
     public static void resetCharge(ItemStack stack) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null) {
-            stack.set(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, component.maxCharge(), component.origin()));
+            stack.set(RelicsAndRuinsComponentTypes.RELIC, new RelicComponent(0, component.maxCharge(), component.origin()));
         }
     }
 
     public static boolean isCharged(ItemStack stack) {
-        RelicComponent component = stack.get(RelicsAndRuinsDataComponents.RELIC);
+        RelicComponent component = stack.get(RelicsAndRuinsComponentTypes.RELIC);
         if (component != null) {
             return component.charge() >= component.maxCharge();
         }

@@ -1,11 +1,14 @@
 package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.greatbigworld.GreatBigWorld;
+import dev.creoii.greatbigworld.architectsassembly.block.VerticalSlabBlock;
+import dev.creoii.greatbigworld.relicsandruins.block.*;
 import dev.creoii.greatbigworld.relicsandruins.block.ChestBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 public final class RelicsAndRuinsBlocks {
@@ -60,6 +63,44 @@ public final class RelicsAndRuinsBlocks {
         return BlockEntityType.CHEST;
     }, WoodType.WARPED);
 
+    public static final Block BRAZIER = new BrazierBlock(true, 1, AbstractBlock.Settings.create().requiresTool().strength(5f, 4f).nonOpaque().luminance(state -> state.get(Properties.LIT) ? 15 : 0));
+    public static final Block SOUL_BRAZIER = new BrazierBlock(false, 2, AbstractBlock.Settings.create().requiresTool().strength(5f, 4f).nonOpaque().luminance(state -> state.get(Properties.LIT) ? 10 : 0));
+
+    public static final Block COBBLESTONE_BRICKS = new Block(AbstractBlock.Settings.copy(Blocks.COBBLESTONE));
+    public static final Block COBBLESTONE_BRICK_STAIRS = new StairsBlock(COBBLESTONE_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
+    public static final Block COBBLESTONE_BRICK_SLAB = new SlabBlock(AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
+    public static final Block VERTICAL_COBBLESTONE_BRICK_SLAB = new VerticalSlabBlock(AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
+    public static final Block COBBLESTONE_BRICK_WALL = new WallBlock(AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
+    public static final Block CHISELED_COBBLESTONE_BRICKS = new Block(AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
+    public static final Block COBBLESTONE_BRICK_PILLAR = new PillarBlock(AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
+    public static final Block MOSSY_COBBLESTONE_BRICKS = new Block(AbstractBlock.Settings.copy(Blocks.MOSSY_COBBLESTONE));
+    public static final Block MOSSY_COBBLESTONE_BRICK_STAIRS = new StairsBlock(MOSSY_COBBLESTONE_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(MOSSY_COBBLESTONE_BRICKS));
+    public static final Block MOSSY_COBBLESTONE_BRICK_SLAB = new SlabBlock(AbstractBlock.Settings.copy(MOSSY_COBBLESTONE_BRICKS));
+    public static final Block VERTICAL_MOSSY_COBBLESTONE_BRICK_SLAB = new VerticalSlabBlock(AbstractBlock.Settings.copy(MOSSY_COBBLESTONE_BRICKS));
+    public static final Block MOSSY_COBBLESTONE_BRICK_WALL = new WallBlock(AbstractBlock.Settings.copy(MOSSY_COBBLESTONE_BRICKS));
+
+    public static final Block ICE_BRICKS = new IceBlock(AbstractBlock.Settings.copy(Blocks.ICE));
+    public static final Block ICE_BRICK_STAIRS = new IceStairsBlock(ICE_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(ICE_BRICKS));
+    public static final Block ICE_BRICK_SLAB = new IceSlabBlock(AbstractBlock.Settings.copy(ICE_BRICKS));
+    public static final Block VERTICAL_ICE_BRICK_SLAB = new IceVerticalSlabBlock(AbstractBlock.Settings.copy(ICE_BRICKS));
+    public static final Block ICE_BRICK_WALL = new IceWallBlock(AbstractBlock.Settings.copy(ICE_BRICKS));
+    public static final Block PACKED_ICE_BRICKS = new Block(AbstractBlock.Settings.copy(Blocks.PACKED_ICE));
+    public static final Block PACKED_ICE_BRICK_STAIRS = new StairsBlock(PACKED_ICE_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(PACKED_ICE_BRICKS));
+    public static final Block PACKED_ICE_BRICK_SLAB = new SlabBlock(AbstractBlock.Settings.copy(PACKED_ICE_BRICKS));
+    public static final Block VERTICAL_PACKED_ICE_BRICK_SLAB = new VerticalSlabBlock(AbstractBlock.Settings.copy(PACKED_ICE_BRICKS));
+    public static final Block PACKED_ICE_BRICK_WALL = new WallBlock(AbstractBlock.Settings.copy(PACKED_ICE_BRICKS));
+    public static final Block BLUE_ICE_BRICKS = new Block(AbstractBlock.Settings.copy(Blocks.BLUE_ICE));
+    public static final Block BLUE_ICE_BRICK_STAIRS = new StairsBlock(BLUE_ICE_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(BLUE_ICE_BRICKS));
+    public static final Block BLUE_ICE_BRICK_SLAB = new SlabBlock(AbstractBlock.Settings.copy(BLUE_ICE_BRICKS));
+    public static final Block VERTICAL_BLUE_ICE_BRICK_SLAB = new VerticalSlabBlock(AbstractBlock.Settings.copy(BLUE_ICE_BRICKS));
+    public static final Block BLUE_ICE_BRICK_WALL = new WallBlock(AbstractBlock.Settings.copy(BLUE_ICE_BRICKS));
+
+    public static final Block SNOW_BRICKS = new Block(AbstractBlock.Settings.copy(Blocks.SNOW_BLOCK));
+    public static final Block SNOW_BRICK_STAIRS = new StairsBlock(SNOW_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(SNOW_BRICKS));
+    public static final Block SNOW_BRICK_SLAB = new SlabBlock(AbstractBlock.Settings.copy(SNOW_BRICKS));
+    public static final Block VERTICAL_SNOW_BRICK_SLAB = new VerticalSlabBlock(AbstractBlock.Settings.copy(SNOW_BRICKS));
+    public static final Block SNOW_BRICK_WALL = new WallBlock(AbstractBlock.Settings.copy(SNOW_BRICKS));
+
     public static void register() {
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "brown_decorated_pot"), BROWN_DECORATED_POT);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "red_decorated_pot"), RED_DECORATED_POT);
@@ -89,6 +130,44 @@ public final class RelicsAndRuinsBlocks {
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "warped_chest"), WARPED_CHEST);
+
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "brazier"), BRAZIER);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "soul_brazier"), SOUL_BRAZIER);
+
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "vertical_cobblestone_brick_slab"), VERTICAL_COBBLESTONE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "chiseled_cobblestone_bricks"), CHISELED_COBBLESTONE_BRICKS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_pillar"), COBBLESTONE_BRICK_PILLAR);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "vertical_mossy_cobblestone_brick_slab"), VERTICAL_MOSSY_COBBLESTONE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL);
+
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "ice_bricks"), ICE_BRICKS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_stairs"), ICE_BRICK_STAIRS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_slab"), ICE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "vertical_ice_brick_slab"), VERTICAL_ICE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_wall"), ICE_BRICK_WALL);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "packed_ice_bricks"), PACKED_ICE_BRICKS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "packed_ice_brick_stairs"), PACKED_ICE_BRICK_STAIRS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "packed_ice_brick_slab"), PACKED_ICE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "vertical_packed_ice_brick_slab"), VERTICAL_PACKED_ICE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "packed_ice_brick_wall"), PACKED_ICE_BRICK_WALL);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "blue_ice_bricks"), BLUE_ICE_BRICKS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "blue_ice_brick_stairs"), BLUE_ICE_BRICK_STAIRS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "blue_ice_brick_slab"), BLUE_ICE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "vertical_blue_ice_brick_slab"), VERTICAL_BLUE_ICE_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "blue_ice_brick_wall"), BLUE_ICE_BRICK_WALL);
+
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "snow_bricks"), SNOW_BRICKS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_stairs"), SNOW_BRICK_STAIRS);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_slab"), SNOW_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "vertical_snow_brick_slab"), VERTICAL_SNOW_BRICK_SLAB);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), SNOW_BRICK_WALL);
 
         BlockEntityType.DECORATED_POT.addSupportedBlock(BROWN_DECORATED_POT);
         BlockEntityType.DECORATED_POT.addSupportedBlock(RED_DECORATED_POT);

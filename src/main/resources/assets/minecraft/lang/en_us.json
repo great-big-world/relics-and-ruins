@@ -14,5 +14,10 @@
   "block.great_big_world.black_decorated_pot.variant": "Decorated Pot",
   "block.great_big_world.gray_decorated_pot.variant": "Decorated Pot",
   "block.great_big_world.light_gray_decorated_pot.variant": "Decorated Pot",
-  "block.great_big_world.white_decorated_pot.variant": "Decorated Pot"
+  "block.great_big_world.white_decorated_pot.variant": "Decorated Pot",
+
+  "block.great_big_world.mossy_cobblestone_bricks.variant": "Cobblestone Bricks",
+  "block.great_big_world.mossy_cobblestone_brick_stairs.variant": "Cobblestone Brick Stairs",
+  "block.great_big_world.mossy_cobblestone_brick_slab.variant": "Cobblestone Brick Slab",
+  "block.great_big_world.mossy_cobblestone_brick_wall.variant": "Cobblestone Brick Wall"
 }

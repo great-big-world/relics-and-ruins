@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class RelicsAndRuinsTags {
     public static final TagKey<Block> VARIANT_CHEST_BLOCKS = TagKey.of(RegistryKeys.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "variant_chests"));
+    public static final TagKey<Block> BRAZIERS = TagKey.of(RegistryKeys.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "braziers"));
 
     public static final TagKey<Item> VARIANT_CHEST_ITEMS = TagKey.of(RegistryKeys.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "variant_chests"));
 }
