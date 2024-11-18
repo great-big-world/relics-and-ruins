@@ -182,6 +182,6 @@ public class BrazierBlock extends Block implements Waterloggable {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(LIT, WATERLOGGED);
+        builder.add(LIT, WATERLOGGED, TREASURE);
     }
 }
