@@ -1,11 +1,15 @@
 package dev.creoii.greatbigworld.relicsandruins.item;
 
+import dev.creoii.greatbigworld.relicsandruins.util.BlockBreakingManager;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterials;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -27,11 +31,21 @@ public class EarthshakerPickaxeItem extends PickaxeItem {
     }
 
     @Override
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        if (!context.getWorld().isClient) {
+            BlockBreakingManager.getInstance(context.getWorld().getServer()).addBlockDamage(context.getWorld(), context.getPlayer(), context.getBlockPos(), 1);
+        }
+        return ActionResult.success(context.getWorld().isClient);
+    }
+
+    @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-        RelicComponent.incrementCharge(stack);
+        if (!miner.isInCreativeMode())
+            RelicComponent.incrementCharge(stack);
         if (RelicComponent.isCharged(stack)) {
             for (BlockPos pos1: earthquake(pos, 8, 5)) {
-                world.breakBlock(pos1, true, miner);
+                if (!world.isClient && miner instanceof PlayerEntity player)
+                    BlockBreakingManager.getInstance(world.getServer()).addBlockDamage(world, player, pos1, 1);
             }
             RelicComponent.resetCharge(stack);
         }
@@ -43,7 +57,7 @@ public class EarthshakerPickaxeItem extends PickaxeItem {
         Random random = Random.create();
         List<Vec3d> directions = getDirections(count);
         for (Vec3d dir : directions) {
-            BlockPos.Mutable current = new BlockPos(center).mutableCopy();
+            BlockPos.Mutable current = center.mutableCopy();
             for (int i = 0; i < distance + random.nextInt(5) - 2; ++i) {
                 int x = center.getX() + (int) Math.round(dir.x * (i + 1)) + random.nextInt(3) - 1;
                 int y = center.getY() + (int) Math.round(dir.y * (i + 1)) + random.nextInt(3) - 1;

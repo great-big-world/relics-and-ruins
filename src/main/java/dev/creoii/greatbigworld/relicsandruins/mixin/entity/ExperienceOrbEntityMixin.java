@@ -36,6 +36,6 @@ public class ExperienceOrbEntityMixin {
                 }
             }
         }
-        return null;
+        return Optional.empty();
     }
 }
