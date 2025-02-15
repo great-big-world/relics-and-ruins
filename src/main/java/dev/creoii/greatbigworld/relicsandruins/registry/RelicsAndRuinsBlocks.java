@@ -8,7 +8,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 public final class RelicsAndRuinsBlocks {
@@ -53,6 +52,9 @@ public final class RelicsAndRuinsBlocks {
     public static final Block CHERRY_CHEST = new ChestBlock(AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.TERRACOTTA_WHITE), () -> {
         return BlockEntityType.CHEST;
     }, WoodType.CHERRY);
+    public static final Block PALE_OAK_CHEST = new ChestBlock(AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.OFF_WHITE), () -> {
+        return BlockEntityType.CHEST;
+    }, WoodType.PALE_OAK);
     public static final Block BAMBOO_CHEST = new ChestBlock(AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.YELLOW), () -> {
         return BlockEntityType.CHEST;
     }, WoodType.BAMBOO);
@@ -62,9 +64,6 @@ public final class RelicsAndRuinsBlocks {
     public static final Block WARPED_CHEST = new ChestBlock(AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.DARK_AQUA), () -> {
         return BlockEntityType.CHEST;
     }, WoodType.WARPED);
-
-    public static final Block BRAZIER = new BrazierBlock(true, 1, AbstractBlock.Settings.create().requiresTool().strength(5f, 4f).nonOpaque().luminance(state -> state.get(Properties.LIT) ? 15 : 0));
-    public static final Block SOUL_BRAZIER = new BrazierBlock(false, 2, AbstractBlock.Settings.create().requiresTool().strength(5f, 4f).nonOpaque().luminance(state -> state.get(Properties.LIT) ? 10 : 0));
 
     public static final Block COBBLESTONE_BRICKS = new Block(AbstractBlock.Settings.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_BRICK_STAIRS = new StairsBlock(COBBLESTONE_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
@@ -127,12 +126,10 @@ public final class RelicsAndRuinsBlocks {
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "acacia_chest"), ACACIA_CHEST);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "mangrove_chest"), MANGROVE_CHEST);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cherry_chest"), CHERRY_CHEST);
+        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "pale_oak_chest"), PALE_OAK_CHEST);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "bamboo_chest"), BAMBOO_CHEST);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "warped_chest"), WARPED_CHEST);
-
-        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "brazier"), BRAZIER);
-        Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "soul_brazier"), SOUL_BRAZIER);
 
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS);
         Registry.register(Registries.BLOCK, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS);

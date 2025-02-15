@@ -28,9 +28,6 @@
   "block.great_big_world.crimson_chest": "Crimson Chest",
   "block.great_big_world.warped_chest": "Warped Chest",
 
-  "block.great_big_world.brazier": "Brazier",
-  "block.great_big_world.soul_brazier": "Soul Brazier",
-
   "block.great_big_world.cobblestone_bricks": "Cobblestone Bricks",
   "block.great_big_world.cobblestone_brick_stairs": "Cobblestone Brick Stairs",
   "block.great_big_world.cobblestone_brick_slab": "Cobblestone Brick Slab",
@@ -65,18 +62,6 @@
   "block.great_big_world.vertical_snow_brick_slab": "Vertical Snow Brick Slab",
   "block.great_big_world.snow_brick_wall": "Snow Brick Wall",
 
-  "item.great_big_world.echoing_blade": "Echoing Blade",
-  "item.great_big_world.rogueish_hood": "Rogueish Hood",
-  "item.great_big_world.crystal_apple": "Crystal Apple",
-  "item.great_big_world.earthshaker_pickaxe": "Earthshaker Pickaxe",
-  "item.great_big_world.mendstone": "Mendstone",
-
-  "item.great_big_world.desert_treasure": "Desert Jewel",
-  "item.great_big_world.jungle_treasure": "Jungle Eye",
-  "item.great_big_world.swamp_treasure": "Swamp Idol",
-
   "item.great_big_world.disc_fragment_relic": "Disc Fragment",
-  "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic",
-
-  "item.tooltip.treasure": "Treasure"
+  "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic"
 }

@@ -67,7 +67,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         this.rightPattern = modelPart2.getChild("right_pattern");
     }
 
-    @Redirect(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V"))
+    @Redirect(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "rend"))
     private void gbw$tintRenders(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, @Local(argsOnly = true) DecoratedPotBlockEntity decoratedPotBlockEntity) {
         if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
             instance.render(matrices, vertices, light, overlay, dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR);
@@ -77,7 +77,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     }
 
     @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;renderDecoratedSide(Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/util/SpriteIdentifier;)V", ordinal = 0), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci, Direction direction, DecoratedPotBlockEntity.WobbleType wobbleType, VertexConsumer vertexConsumer, Sherds sherds) {
+    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci) {
         float[] color;
         if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
             int mapColor = dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR;

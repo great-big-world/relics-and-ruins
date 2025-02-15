@@ -83,18 +83,6 @@
           ]
         }
       ]
-    },
-    {
-      "rolls": {
-        "min": 0,
-        "max": 1
-      },
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "great_big_world:swamp_treasure"
-        }
-      ]
     }
   ]
 }

@@ -3,21 +3,14 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.item.SlabItem;
 import dev.creoii.greatbigworld.architectsassembly.registry.ArchitectsAssemblyItems;
-import dev.creoii.greatbigworld.relicsandruins.util.TreasureType;
-import dev.creoii.greatbigworld.relicsandruins.item.EarthshakerPickaxeItem;
-import dev.creoii.greatbigworld.relicsandruins.item.EchoingBladeItem;
-import dev.creoii.greatbigworld.relicsandruins.item.TreasureItem;
-import dev.creoii.greatbigworld.relicsandruins.util.RelicComponent;
-import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsRarities;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.block.entity.Sherds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ContainerComponent;
-import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.passive.AbstractDonkeyEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -26,9 +19,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-
-import java.util.List;
-import java.util.Optional;
 
 public final class RelicsAndRuinsItems {
     public static final Item BROWN_DECORATED_POT = new BlockItem(RelicsAndRuinsBlocks.BROWN_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
@@ -60,9 +50,6 @@ public final class RelicsAndRuinsItems {
     public static final Item CRIMSON_CHEST = new BlockItem(RelicsAndRuinsBlocks.CRIMSON_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
     public static final Item WARPED_CHEST = new BlockItem(RelicsAndRuinsBlocks.WARPED_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT));
 
-    public static final Item BRAZIER = new BlockItem(RelicsAndRuinsBlocks.BRAZIER, new Item.Settings());
-    public static final Item SOUL_BRAZIER = new BlockItem(RelicsAndRuinsBlocks.SOUL_BRAZIER, new Item.Settings());
-
     public static final Item COBBLESTONE_BRICKS = new BlockItem(RelicsAndRuinsBlocks.COBBLESTONE_BRICKS, new Item.Settings());
     public static final Item COBBLESTONE_BRICK_STAIRS = new BlockItem(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_STAIRS, new Item.Settings());
     public static final Item COBBLESTONE_BRICK_SLAB = new SlabItem(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_COBBLESTONE_BRICK_SLAB, new Item.Settings());
@@ -91,23 +78,6 @@ public final class RelicsAndRuinsItems {
     public static final Item SNOW_BRICK_STAIRS = new BlockItem(RelicsAndRuinsBlocks.SNOW_BRICK_STAIRS, new Item.Settings());
     public static final Item SNOW_BRICK_SLAB = new SlabItem(RelicsAndRuinsBlocks.SNOW_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_SNOW_BRICK_SLAB, new Item.Settings());
     public static final Item SNOW_BRICK_WALL = new BlockItem(RelicsAndRuinsBlocks.SNOW_BRICK_WALL, new Item.Settings());
-
-    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.STONE, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.2f)).component(RelicsAndRuinsComponentTypes.RELIC, new RelicComponent(0, 6, Optional.empty())));
-    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC));
-    public static final Item CRYSTAL_APPLE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).food(new FoodComponent(3, 0f, false, 20, Optional.empty(), List.of())));
-    public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1f, -2.8f)).component(RelicsAndRuinsComponentTypes.RELIC, new RelicComponent(0, 27, Optional.empty())));
-    public static final Item MENDSTONE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC));
-
-    /*  OLD RELIC DEFINITIONS FOR REFERENCE
-    public static final Item ECHOING_BLADE = new EchoingBladeItem(ToolMaterials.STONE, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.STONE, 5, -2.2f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 6, Optional.empty())));
-    public static final Item ROGUEISH_HOOD = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn());
-    public static final Item CRYSTAL_APPLE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().food(new CreoFoodComponent(3, 0f, true, false, 20, true, List.of())));
-    public static final Item EARTHSHAKER_PICKAXE = new EarthshakerPickaxeItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn().attributeModifiers(PickaxeItem.createAttributeModifiers(ToolMaterials.NETHERITE, 1f, -2.8f)).component(RelicsAndRuinsDataComponents.RELIC, new RelicComponent(0, 27, Optional.empty())));
-    public static final Item MENDSTONE = new Item(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC).rotationModifier(0f).clickPickup().cannotDespawn());
-    */
-    public static final Item DESERT_TREASURE = new TreasureItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC), TreasureType.DESERT);
-    public static final Item JUNGLE_TREASURE = new TreasureItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC), TreasureType.JUNGLE);
-    public static final Item SWAMP_TREASURE = new TreasureItem(new Item.Settings().rarity(RelicsAndRuinsRarities.RELIC), TreasureType.SWAMP);
 
     public static final Item DISC_FRAGMENT_RELIC = new DiscFragmentItem(new Item.Settings());
 
@@ -141,9 +111,6 @@ public final class RelicsAndRuinsItems {
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "crimson_chest"), CRIMSON_CHEST);
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "warped_chest"), WARPED_CHEST);
 
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "brazier"), BRAZIER);
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "soul_brazier"), SOUL_BRAZIER);
-
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS);
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS);
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB);
@@ -173,16 +140,6 @@ public final class RelicsAndRuinsItems {
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_slab"), SNOW_BRICK_SLAB);
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), SNOW_BRICK_WALL);
 
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "echoing_blade"), ECHOING_BLADE);
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "rogueish_hood"), ROGUEISH_HOOD);
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "crystal_apple"), CRYSTAL_APPLE);
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "earthshaker_pickaxe"), EARTHSHAKER_PICKAXE);
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "mendstone"), MENDSTONE);
-
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "desert_treasure"), DESERT_TREASURE);
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "jungle_treasure"), JUNGLE_TREASURE);
-        Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "swamp_treasure"), SWAMP_TREASURE);
-
         Registry.register(Registries.ITEM, Identifier.of(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DISC_FRAGMENT_RELIC);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
@@ -193,22 +150,11 @@ public final class RelicsAndRuinsItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.addAfter(Items.CHEST, OAK_CHEST, SPRUCE_CHEST, BIRCH_CHEST, JUNGLE_CHEST, DARK_OAK_CHEST, BIRCH_CHEST, MANGROVE_CHEST, CHERRY_CHEST, BAMBOO_CHEST, CRIMSON_CHEST, WARPED_CHEST);
             entries.addAfter(Items.DECORATED_POT, WHITE_DECORATED_POT, LIGHT_GRAY_DECORATED_POT, GRAY_DECORATED_POT, BLACK_DECORATED_POT, BROWN_DECORATED_POT, RED_DECORATED_POT, ORANGE_DECORATED_POT, YELLOW_DECORATED_POT, LIME_DECORATED_POT, GREEN_DECORATED_POT, CYAN_DECORATED_POT, LIGHT_BLUE_DECORATED_POT, BLUE_DECORATED_POT, PURPLE_DECORATED_POT, MAGENTA_DECORATED_POT, PINK_DECORATED_POT);
-            entries.addAfter(Items.SOUL_CAMPFIRE, BRAZIER, SOUL_BRAZIER);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries -> {
             entries.addAfter(Items.PINK_BANNER, WHITE_DECORATED_POT, LIGHT_GRAY_DECORATED_POT, GRAY_DECORATED_POT, BLACK_DECORATED_POT, BROWN_DECORATED_POT, RED_DECORATED_POT, ORANGE_DECORATED_POT, YELLOW_DECORATED_POT, LIME_DECORATED_POT, GREEN_DECORATED_POT, CYAN_DECORATED_POT, LIGHT_BLUE_DECORATED_POT, BLUE_DECORATED_POT, PURPLE_DECORATED_POT, MAGENTA_DECORATED_POT, PINK_DECORATED_POT);
         });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
-            entries.addAfter(Items.TOTEM_OF_UNDYING, ECHOING_BLADE);
-        });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.addAfter(Items.NETHERITE_HOE, ROGUEISH_HOOD, EARTHSHAKER_PICKAXE, MENDSTONE);
-        });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
-            entries.addAfter(Items.ENCHANTED_GOLDEN_APPLE, CRYSTAL_APPLE);
-        });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.addAfter(Items.OMINOUS_TRIAL_KEY, DESERT_TREASURE, JUNGLE_TREASURE, SWAMP_TREASURE);
             entries.getDisplayStacks().replaceAll(stack -> {
                 if (stack.isOf(Items.DISC_FRAGMENT_5))
                     return DISC_FRAGMENT_RELIC.getDefaultStack();
@@ -221,7 +167,9 @@ public final class RelicsAndRuinsItems {
             });
         });
 
-        FuelRegistry.INSTANCE.add(ConventionalItemTags.CHESTS, 300);
+        FuelRegistryEvents.BUILD.register((builder, context) -> {
+            builder.add(ConventionalItemTags.CHESTS, 300);
+        });
 
         final FallibleItemDispenserBehavior CHEST_DISPENSER_BEHAVIOR = new FallibleItemDispenserBehavior(){
             @Override

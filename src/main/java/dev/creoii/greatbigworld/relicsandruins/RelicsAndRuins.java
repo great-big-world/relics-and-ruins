@@ -1,7 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins;
 
 import dev.creoii.greatbigworld.relicsandruins.registry.*;
-import dev.creoii.greatbigworld.relicsandruins.util.BlockBreakingManager;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
