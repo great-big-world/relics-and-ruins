@@ -5,26 +5,16 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
-    "RarityMixin",
-    "SmithingScreenHandlerMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
     "entity.AbstractDonkeyEntityMixin",
     "entity.CatSitOnBlockGoalMixin",
-    "entity.EntityMixin",
-    "entity.ExperienceOrbEntityMixin",
     "entity.LivingEntityMixin",
-    "entity.PlayerEntityMixin",
-    "entity.PlayerInventoryMixin",
-    "world.StructurePieceMixin",
-    "world.StructureTemplateMixin"
+    "world.StructurePieceMixin"
   ],
   "client": [
-    "client.BuiltinModelItemRendererMixin",
     "client.DecoratedPotBlockEntityRendererMixin",
-    "client.DrawContextMixin",
-    "client.TexturedRenderLayersMixin",
-    "client.screen.SmithingScreenMixin"
+    "client.TexturedRenderLayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1

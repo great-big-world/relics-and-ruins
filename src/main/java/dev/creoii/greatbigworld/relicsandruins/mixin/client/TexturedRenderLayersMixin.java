@@ -3,7 +3,6 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.client;
 import com.google.common.collect.ImmutableMap;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.creoii.greatbigworld.GreatBigWorld;
-import dev.creoii.greatbigworld.relicsandruins.RelicsAndRuins;
 import dev.creoii.greatbigworld.relicsandruins.block.ChestBlock;
 import net.minecraft.block.WoodType;
 import net.minecraft.block.entity.BlockEntity;
@@ -33,6 +32,7 @@ public class TexturedRenderLayersMixin {
             .put(WoodType.ACACIA, new SpriteIdentifier[]{createChestTextureId("acacia"), createChestTextureId("acacia_left"), createChestTextureId("acacia_right")})
             .put(WoodType.MANGROVE, new SpriteIdentifier[]{createChestTextureId("mangrove"), createChestTextureId("mangrove_left"), createChestTextureId("mangrove_right")})
             .put(WoodType.CHERRY, new SpriteIdentifier[]{createChestTextureId("cherry"), createChestTextureId("cherry_left"), createChestTextureId("cherry_right")})
+            .put(WoodType.PALE_OAK, new SpriteIdentifier[]{createChestTextureId("pale_oak"), createChestTextureId("pale_oak_left"), createChestTextureId("pale_oak_right")})
             .put(WoodType.BAMBOO, new SpriteIdentifier[]{createChestTextureId("bamboo"), createChestTextureId("bamboo_left"), createChestTextureId("bamboo_right")})
             .put(WoodType.CRIMSON, new SpriteIdentifier[]{createChestTextureId("crimson"), createChestTextureId("crimson_left"), createChestTextureId("crimson_right")})
             .put(WoodType.WARPED, new SpriteIdentifier[]{createChestTextureId("warped"), createChestTextureId("warped_left"), createChestTextureId("warped_right")})

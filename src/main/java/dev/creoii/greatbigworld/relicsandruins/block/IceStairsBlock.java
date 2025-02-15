@@ -41,7 +41,7 @@ public class IceStairsBlock extends TranslucentStairsBlock {
     }
 
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (world.getLightLevel(LightType.BLOCK, pos) > 11 - state.getOpacity(world, pos)) {
+        if (world.getLightLevel(LightType.BLOCK, pos) > 11 - state.getOpacity()) {
             melt(state, world, pos);
         }
     }
@@ -51,7 +51,7 @@ public class IceStairsBlock extends TranslucentStairsBlock {
             world.removeBlock(pos, false);
         } else {
             world.setBlockState(pos, getMeltedState());
-            world.updateNeighbor(pos, getMeltedState().getBlock(), pos);
+            world.updateNeighbor(pos, getMeltedState().getBlock(), null);
         }
     }
 }

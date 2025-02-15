@@ -10,7 +10,7 @@ public class ChestBlock extends net.minecraft.block.ChestBlock {
     private final WoodType woodType;
 
     public ChestBlock(Settings settings, Supplier<BlockEntityType<? extends ChestBlockEntity>> supplier, WoodType woodType) {
-        super(settings, supplier);
+        super(supplier, settings);
         this.woodType = woodType;
     }
 

@@ -31,7 +31,7 @@ public class DecoratedPotBlockMixin implements DyedDecoratedPot {
     }
 
     @Inject(method = "getPickStack", at = @At(value = "RETURN", ordinal = 0), cancellable = true)
-    private void gbw$fixPotPickStack(WorldView world, BlockPos pos, BlockState state, CallbackInfoReturnable<ItemStack> cir, @Local DecoratedPotBlockEntity decoratedPotBlockEntity) {
+    private void gbw$fixPotPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData, CallbackInfoReturnable<ItemStack> cir, @Local DecoratedPotBlockEntity decoratedPotBlockEntity) {
         ItemStack stack = decoratedPotBlockEntity.getCachedState().getBlock().asItem().getDefaultStack();
         BlockItem.setBlockEntityData(stack, BlockEntityType.DECORATED_POT, decoratedPotBlockEntity.getSherds().toNbt(new NbtCompound()));
         cir.setReturnValue(stack);

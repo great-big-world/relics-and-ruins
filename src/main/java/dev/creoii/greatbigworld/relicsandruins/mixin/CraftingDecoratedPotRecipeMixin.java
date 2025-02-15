@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class CraftingDecoratedPotRecipeMixin {
     @Inject(method = "craft(Lnet/minecraft/recipe/input/CraftingRecipeInput;Lnet/minecraft/registry/RegistryWrapper$WrapperLookup;)Lnet/minecraft/item/ItemStack;", at = @At("RETURN"), cancellable = true)
     private void gbw$makeDecoratedPotsDyeable(CraftingRecipeInput craftingRecipeInput, RegistryWrapper.WrapperLookup wrapperLookup, CallbackInfoReturnable<ItemStack> cir, @Local Sherds sherds) {
-        if (craftingRecipeInput.getStackInSlot(4).getItem() instanceof DyeItem dyeItem) {
+        if (craftingRecipeInput.getStackInSlot(1, 1).getItem() instanceof DyeItem dyeItem) {
             cir.setReturnValue(switch (dyeItem.getColor()) {
                 case BROWN -> getStackWith(RelicsAndRuinsItems.BROWN_DECORATED_POT, sherds);
                 case RED -> getStackWith(RelicsAndRuinsItems.RED_DECORATED_POT, sherds);
@@ -39,11 +39,6 @@ public class CraftingDecoratedPotRecipeMixin {
                 case WHITE -> getStackWith(RelicsAndRuinsItems.WHITE_DECORATED_POT, sherds);
             });
         }
-    }
-
-    @ModifyExpressionValue(method = "matches(Lnet/minecraft/recipe/input/CraftingRecipeInput;Lnet/minecraft/world/World;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
-    private boolean gbw$matchDyeItem(boolean original, @Local int i, @Local ItemStack itemStack) {
-        return original || (i == 4 && itemStack.getItem() instanceof DyeItem);
     }
 
     @Unique

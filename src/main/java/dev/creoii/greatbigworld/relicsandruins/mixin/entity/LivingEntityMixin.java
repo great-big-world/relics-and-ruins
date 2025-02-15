@@ -17,7 +17,7 @@ public abstract class LivingEntityMixin extends Entity {
         super(type, world);
     }
 
-    @WrapOperation(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getVelocityAffectingPos()Lnet/minecraft/util/math/BlockPos;"))
+    @WrapOperation(method = "travelMidAir", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getVelocityAffectingPos()Lnet/minecraft/util/math/BlockPos;"))
     private BlockPos gbw$fixSlipperinessForSlabs(LivingEntity instance, Operation<BlockPos> original) {
         if (instance.getPos().y % 1 == .5d) {
             return new BlockPos(getVelocityAffectingPos().getX(), MathHelper.floor(getPos().y), getVelocityAffectingPos().getZ());

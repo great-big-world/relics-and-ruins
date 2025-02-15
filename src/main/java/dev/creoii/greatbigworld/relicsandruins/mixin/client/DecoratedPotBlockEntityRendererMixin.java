@@ -13,8 +13,8 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.block.entity.DecoratedPotBlockEntityRenderer;
+import net.minecraft.client.render.entity.model.LoadedEntityModels;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
@@ -44,6 +44,9 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     @Shadow @Final private ModelPart back;
     @Shadow @Final private ModelPart left;
     @Shadow @Final private ModelPart right;
+    @Shadow @Final private ModelPart neck;
+    @Shadow @Final private ModelPart top;
+    @Shadow @Final private ModelPart bottom;
     @Unique private static final int BASE_COLOR = 10443081;
     @Unique private static final SpriteIdentifier BASE_SPRITE = new SpriteIdentifier(TexturedRenderLayers.DECORATED_POT_ATLAS_TEXTURE, Identifier.of("entity/decorated_pot/decorated_pot_side"));
     @Unique private ModelPart frontTrim;
@@ -55,8 +58,8 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     @Unique private ModelPart leftPattern;
     @Unique private ModelPart rightPattern;
 
-    @Inject(method = "<init>", at = @At("TAIL"), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void gbw$initDecalParts(BlockEntityRendererFactory.Context context, CallbackInfo ci, ModelPart modelPart, ModelPart modelPart2) {
+    @Inject(method = "<init>(Lnet/minecraft/client/render/entity/model/LoadedEntityModels;)V", at = @At("TAIL"))
+    private void gbw$initDecalParts(LoadedEntityModels models, CallbackInfo ci, @Local(ordinal = 1) ModelPart modelPart2) {
         this.frontTrim = modelPart2.getChild("front_trim");
         this.backTrim = modelPart2.getChild("back_trim");
         this.leftTrim = modelPart2.getChild("left_trim");
@@ -67,49 +70,41 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         this.rightPattern = modelPart2.getChild("right_pattern");
     }
 
-    @Redirect(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "rend"))
-    private void gbw$tintRenders(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, @Local(argsOnly = true) DecoratedPotBlockEntity decoratedPotBlockEntity) {
-        if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
-            instance.render(matrices, vertices, light, overlay, dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR);
-        } else {
-            instance.render(matrices, vertices, light, overlay, BASE_COLOR);
-        }
-    }
-
-    @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;renderDecoratedSide(Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/util/SpriteIdentifier;)V", ordinal = 0), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci) {
+    @Redirect(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/block/entity/Sherds;)V"))
+    private void gbw$renderPotDecals(DecoratedPotBlockEntityRenderer instance, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, Sherds sherds, @Local(argsOnly = true) DecoratedPotBlockEntity decoratedPotBlockEntity) {
+        VertexConsumer vertexConsumer = TexturedRenderLayers.DECORATED_POT_BASE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid);
         float[] color;
         if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
             int mapColor = dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR;
             color = new float[]{red(mapColor), green(mapColor), blue(mapColor)};
         } else color = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
-        renderSide(front, matrixStack, vertexConsumerProvider, i, j, color);
-        renderSide(back, matrixStack, vertexConsumerProvider, i, j, color);
-        renderSide(left, matrixStack, vertexConsumerProvider, i, j, color);
-        renderSide(right, matrixStack, vertexConsumerProvider, i, j, color);
+        neck.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
+        top.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
+        bottom.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
+        renderSide(front, matrices, vertexConsumers, light, overlay, color);
+        renderSide(back, matrices, vertexConsumers, light, overlay, color);
+        renderSide(left, matrices, vertexConsumers, light, overlay, color);
+        renderSide(right, matrices, vertexConsumers, light, overlay, color);
         if (sherds.front().isPresent()) {
-            renderPatternedSide(frontPattern, matrixStack, vertexConsumerProvider, i, j, sherds.front().get(), color);
+            renderPatternedSide(frontPattern, matrices, vertexConsumers, light, overlay, sherds.front().get(), color);
         }
         if (sherds.back().isPresent()) {
-            renderPatternedSide(backPattern, matrixStack, vertexConsumerProvider, i, j, sherds.back().get(), color);
+            renderPatternedSide(backPattern, matrices, vertexConsumers, light, overlay, sherds.back().get(), color);
         }
         if (sherds.left().isPresent()) {
-            renderPatternedSide(leftPattern, matrixStack, vertexConsumerProvider, i, j, sherds.left().get(), color);
+            renderPatternedSide(leftPattern, matrices, vertexConsumers, light, overlay, sherds.left().get(), color);
         }
         if (sherds.right().isPresent()) {
-            renderPatternedSide(rightPattern, matrixStack, vertexConsumerProvider, i, j, sherds.right().get(), color);
+            renderPatternedSide(rightPattern, matrices, vertexConsumers, light, overlay, sherds.right().get(), color);
         }
 
         int trim = ((TrimmedDecoratedPot) decoratedPotBlockEntity).gbw$getTrim();
         if (isSherdNotBrick(sherds.front()) || isSherdNotBrick(sherds.back()) || isSherdNotBrick(sherds.left()) || isSherdNotBrick(sherds.right())) {
-            renderTrimmedSide(frontTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
-            renderTrimmedSide(backTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
-            renderTrimmedSide(leftTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
-            renderTrimmedSide(rightTrim, matrixStack, vertexConsumerProvider, i, j, getTextureIdFromTrim(trim));
+            renderTrimmedSide(frontTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+            renderTrimmedSide(backTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+            renderTrimmedSide(leftTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+            renderTrimmedSide(rightTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
         }
-
-        matrixStack.pop();
-        ci.cancel();
     }
 
     @Inject(method = "getSidesTexturedModelData", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILSOFT)
@@ -146,14 +141,14 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
 
     @Unique
     private void renderSide(ModelPart part, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, float[] color) {
-        part.render(matrices, BASE_SPRITE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid), light, overlay, ColorHelper.Argb.fromFloats(1f, color[0], color[1], color[2]));
+        part.render(matrices, BASE_SPRITE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid), light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
     }
 
     @Unique
     private void renderPatternedSide(ModelPart part, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, @Nullable Item item, float[] color) {
         SpriteIdentifier textureId = getPatternIdFromSherd(item);
         if (textureId != null)
-            part.render(matrices, textureId.getVertexConsumer(vertexConsumers, RenderLayer::getEntityTranslucent), light, overlay, ColorHelper.Argb.fromFloats(1f, color[0], color[1], color[2]));
+            part.render(matrices, textureId.getVertexConsumer(vertexConsumers, RenderLayer::getEntityTranslucent), light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
     }
 
     @Unique
