@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "minecraft:item/decorated_pot",
+    "model": {
+      "type": "great_big_world:dyed_decorated_pot",
+      "color": "purple"
+    }
+  }
+}

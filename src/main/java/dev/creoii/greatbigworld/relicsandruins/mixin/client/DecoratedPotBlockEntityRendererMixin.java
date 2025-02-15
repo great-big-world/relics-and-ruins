@@ -2,10 +2,12 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.client;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
+import dev.creoii.greatbigworld.relicsandruins.util.ExtendedDecoratedPotRender;
 import dev.creoii.greatbigworld.relicsandruins.util.TrimmedDecoratedPot;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.DecoratedPotPatterns;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.block.entity.Sherds;
 import net.minecraft.client.model.*;
@@ -29,7 +31,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
@@ -39,7 +40,7 @@ import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 @Mixin(DecoratedPotBlockEntityRenderer.class)
-public abstract class DecoratedPotBlockEntityRendererMixin {
+public abstract class DecoratedPotBlockEntityRendererMixin implements ExtendedDecoratedPotRender {
     @Shadow @Final private ModelPart front;
     @Shadow @Final private ModelPart back;
     @Shadow @Final private ModelPart left;
@@ -58,6 +59,41 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
     @Unique private ModelPart leftPattern;
     @Unique private ModelPart rightPattern;
 
+    @Override
+    public void gbw$renderDyed(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, Sherds sherds, @Nullable MapColor color, int trim) {
+        VertexConsumer vertexConsumer = TexturedRenderLayers.DECORATED_POT_BASE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid);
+        float[] rgb;
+        if (color != null) {
+            rgb = new float[]{red(color.color), green(color.color), blue(color.color)};
+        } else rgb = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
+        neck.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]));
+        top.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]));
+        bottom.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]));
+        renderSide(front, matrices, vertexConsumers, light, overlay, rgb);
+        renderSide(back, matrices, vertexConsumers, light, overlay, rgb);
+        renderSide(left, matrices, vertexConsumers, light, overlay, rgb);
+        renderSide(right, matrices, vertexConsumers, light, overlay, rgb);
+        if (sherds.front().isPresent()) {
+            renderPatternedSide(frontPattern, matrices, vertexConsumers, light, overlay, sherds.front().get(), rgb);
+        }
+        if (sherds.back().isPresent()) {
+            renderPatternedSide(backPattern, matrices, vertexConsumers, light, overlay, sherds.back().get(), rgb);
+        }
+        if (sherds.left().isPresent()) {
+            renderPatternedSide(leftPattern, matrices, vertexConsumers, light, overlay, sherds.left().get(), rgb);
+        }
+        if (sherds.right().isPresent()) {
+            renderPatternedSide(rightPattern, matrices, vertexConsumers, light, overlay, sherds.right().get(), rgb);
+        }
+
+        if (isSherdNotBrick(sherds.front()) || isSherdNotBrick(sherds.back()) || isSherdNotBrick(sherds.left()) || isSherdNotBrick(sherds.right())) {
+            renderTrimmedSide(frontTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+            renderTrimmedSide(backTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+            renderTrimmedSide(leftTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+            renderTrimmedSide(rightTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+        }
+    }
+
     @Inject(method = "<init>(Lnet/minecraft/client/render/entity/model/LoadedEntityModels;)V", at = @At("TAIL"))
     private void gbw$initDecalParts(LoadedEntityModels models, CallbackInfo ci, @Local(ordinal = 1) ModelPart modelPart2) {
         this.frontTrim = modelPart2.getChild("front_trim");
@@ -70,40 +106,13 @@ public abstract class DecoratedPotBlockEntityRendererMixin {
         this.rightPattern = modelPart2.getChild("right_pattern");
     }
 
-    @Redirect(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/block/entity/Sherds;)V"))
-    private void gbw$renderPotDecals(DecoratedPotBlockEntityRenderer instance, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, Sherds sherds, @Local(argsOnly = true) DecoratedPotBlockEntity decoratedPotBlockEntity) {
-        VertexConsumer vertexConsumer = TexturedRenderLayers.DECORATED_POT_BASE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid);
-        float[] color;
+    @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/block/entity/Sherds;)V"), cancellable = true)
+    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci) {
         if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
-            int mapColor = dyedDecoratedPot.gbw$getColor() != null ? dyedDecoratedPot.gbw$getColor().color : BASE_COLOR;
-            color = new float[]{red(mapColor), green(mapColor), blue(mapColor)};
-        } else color = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
-        neck.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
-        top.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
-        bottom.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, color[0], color[1], color[2]));
-        renderSide(front, matrices, vertexConsumers, light, overlay, color);
-        renderSide(back, matrices, vertexConsumers, light, overlay, color);
-        renderSide(left, matrices, vertexConsumers, light, overlay, color);
-        renderSide(right, matrices, vertexConsumers, light, overlay, color);
-        if (sherds.front().isPresent()) {
-            renderPatternedSide(frontPattern, matrices, vertexConsumers, light, overlay, sherds.front().get(), color);
-        }
-        if (sherds.back().isPresent()) {
-            renderPatternedSide(backPattern, matrices, vertexConsumers, light, overlay, sherds.back().get(), color);
-        }
-        if (sherds.left().isPresent()) {
-            renderPatternedSide(leftPattern, matrices, vertexConsumers, light, overlay, sherds.left().get(), color);
-        }
-        if (sherds.right().isPresent()) {
-            renderPatternedSide(rightPattern, matrices, vertexConsumers, light, overlay, sherds.right().get(), color);
-        }
-
-        int trim = ((TrimmedDecoratedPot) decoratedPotBlockEntity).gbw$getTrim();
-        if (isSherdNotBrick(sherds.front()) || isSherdNotBrick(sherds.back()) || isSherdNotBrick(sherds.left()) || isSherdNotBrick(sherds.right())) {
-            renderTrimmedSide(frontTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
-            renderTrimmedSide(backTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
-            renderTrimmedSide(leftTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
-            renderTrimmedSide(rightTrim, matrices, vertexConsumers, light, overlay, getTextureIdFromTrim(trim));
+            int trim = ((TrimmedDecoratedPot) decoratedPotBlockEntity).gbw$getTrim();
+            gbw$renderDyed(matrixStack, vertexConsumerProvider, i, j, decoratedPotBlockEntity.getSherds(), dyedDecoratedPot.gbw$getColor(), trim);
+            matrixStack.pop();
+            ci.cancel();
         }
     }
 
