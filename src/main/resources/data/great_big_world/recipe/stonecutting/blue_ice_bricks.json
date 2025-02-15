@@ -1,9 +1,7 @@
 {
   "type": "minecraft:stonecutting",
   "count": 1,
-  "ingredient": {
-    "item": "minecraft:blue_ice"
-  },
+  "ingredient": "minecraft:blue_ice",
   "result": {
     "id": "great_big_world:blue_ice_bricks"
   }

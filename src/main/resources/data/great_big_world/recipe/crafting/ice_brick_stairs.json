@@ -7,9 +7,7 @@
     "CCC"
   ],
   "key": {
-    "C": {
-      "item": "great_big_world:ice_bricks"
-    }
+    "C": "great_big_world:ice_bricks"
   },
   "result": {
     "id": "great_big_world:ice_brick_stairs",

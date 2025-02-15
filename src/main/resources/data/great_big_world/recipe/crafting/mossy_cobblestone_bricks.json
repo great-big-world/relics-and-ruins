@@ -6,9 +6,7 @@
     "CC"
   ],
   "key": {
-    "C": {
-      "item": "minecraft:mossy_cobblestone"
-    }
+    "C": "minecraft:mossy_cobblestone"
   },
   "result": {
     "id": "great_big_world:mossy_cobblestone_bricks",

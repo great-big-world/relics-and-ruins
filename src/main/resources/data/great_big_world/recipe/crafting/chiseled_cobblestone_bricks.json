@@ -6,9 +6,7 @@
     "S"
   ],
   "key": {
-    "S": {
-      "item": "great_big_world:cobblestone_brick_slab"
-    }
+    "S": "great_big_world:cobblestone_brick_slab"
   },
   "result": {
     "id": "great_big_world:chiseled_cobblestone_bricks"

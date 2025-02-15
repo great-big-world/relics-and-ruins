@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "wooden_chests",
   "key": {
-    "#": "minecraft:cherry_planks"
+    "#": "minecraft:pale_oak_planks"
   },
   "pattern": [
     "###",
@@ -11,6 +11,6 @@
     "###"
   ],
   "result": {
-    "id": "great_big_world:cherry_chest"
+    "id": "great_big_world:pale_oak_chest"
   }
 }

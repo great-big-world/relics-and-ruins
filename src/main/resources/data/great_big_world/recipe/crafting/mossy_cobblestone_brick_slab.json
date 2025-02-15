@@ -5,9 +5,7 @@
     "CCC"
   ],
   "key": {
-    "C": {
-      "item": "great_big_world:mossy_cobblestone_bricks"
-    }
+    "C": "great_big_world:mossy_cobblestone_bricks"
   },
   "result": {
     "id": "great_big_world:mossy_cobblestone_brick_slab",

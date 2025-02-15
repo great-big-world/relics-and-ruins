@@ -6,9 +6,7 @@
     "CC"
   ],
   "key": {
-    "C": {
-      "item": "minecraft:blue_ice"
-    }
+    "C": "minecraft:blue_ice"
   },
   "result": {
     "id": "great_big_world:blue_ice_bricks",

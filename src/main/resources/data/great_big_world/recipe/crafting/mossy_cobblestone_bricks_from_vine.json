@@ -3,12 +3,8 @@
   "category": "building",
   "group": "mossy_cobblestone_bricks",
   "ingredients": [
-    {
-      "item": "great_big_world:cobblestone_bricks"
-    },
-    {
-      "item": "minecraft:vine"
-    }
+    "great_big_world:cobblestone_bricks",
+    "minecraft:vine"
   ],
   "result": {
     "id": "great_big_world:mossy_cobblestone_bricks"

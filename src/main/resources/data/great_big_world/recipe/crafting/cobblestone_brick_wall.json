@@ -6,9 +6,7 @@
     "CCC"
   ],
   "key": {
-    "C": {
-      "item": "great_big_world:cobblestone_bricks"
-    }
+    "C": "great_big_world:cobblestone_bricks"
   },
   "result": {
     "id": "great_big_world:cobblestone_brick_wall",

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "decorated_pots",
   "key": {
-    "#": {
-      "item": "minecraft:brick"
-    },
-    "D": {
-      "item": "minecraft:yellow_dye"
-    }
+    "#": "minecraft:brick",
+    "D": "minecraft:yellow_dye"
   },
   "pattern": [
     " # ",
