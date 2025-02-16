@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": [
+    "minecraft:snow_block",
+    "great_big_world:snow_bricks"
+  ],
+  "result": {
+    "id": "great_big_world:snow_brick_slab"
+  }
+}

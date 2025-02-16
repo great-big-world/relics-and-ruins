@@ -1,7 +1,10 @@
 {
   "type": "minecraft:stonecutting",
   "count": 2,
-  "ingredient": "great_big_world:cobblestone_bricks",
+  "ingredient": [
+    "minecraft:cobblestone",
+    "great_big_world:cobblestone_bricks"
+  ],
   "result": {
     "id": "great_big_world:cobblestone_brick_slab"
   }

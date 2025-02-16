@@ -1,7 +1,10 @@
 {
   "type": "minecraft:stonecutting",
   "count": 1,
-  "ingredient": "great_big_world:blue_ice_bricks",
+  "ingredient": [
+    "minecraft:blue_ice",
+    "great_big_world:blue_ice_bricks"
+  ],
   "result": {
     "id": "great_big_world:blue_ice_brick_stairs"
   }

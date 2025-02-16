@@ -1,7 +1,10 @@
 {
   "type": "minecraft:stonecutting",
   "count": 1,
-  "ingredient": "great_big_world:mossy_cobblestone_bricks",
+  "ingredient": [
+    "minecraft:mossy_cobblestone",
+    "great_big_world:mossy_cobblestone_bricks"
+  ],
   "result": {
     "id": "great_big_world:mossy_cobblestone_brick_wall"
   }

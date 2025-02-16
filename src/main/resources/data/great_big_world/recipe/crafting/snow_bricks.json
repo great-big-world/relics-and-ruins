@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CC",
+    "CC"
+  ],
+  "key": {
+    "C": "minecraft:snow_block"
+  },
+  "result": {
+    "id": "great_big_world:snow_bricks",
+    "count": 4
+  }
+}

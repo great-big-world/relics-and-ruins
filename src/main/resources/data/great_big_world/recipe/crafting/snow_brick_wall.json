@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": "great_big_world:snow_bricks"
+  },
+  "result": {
+    "id": "great_big_world:snow_brick_wall",
+    "count": 6
+  },
+  "show_notification": true
+}

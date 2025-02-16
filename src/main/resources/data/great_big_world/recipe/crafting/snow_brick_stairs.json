@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "C  ",
+    "CC ",
+    "CCC"
+  ],
+  "key": {
+    "C": "great_big_world:snow_bricks"
+  },
+  "result": {
+    "id": "great_big_world:snow_brick_stairs",
+    "count": 4
+  },
+  "show_notification": true
+}

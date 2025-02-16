@@ -1,7 +1,10 @@
 {
   "type": "minecraft:stonecutting",
   "count": 2,
-  "ingredient": "great_big_world:packed_ice_bricks",
+  "ingredient": [
+    "minecraft:packed_ice",
+    "great_big_world:packed_ice_bricks"
+  ],
   "result": {
     "id": "great_big_world:packed_ice_brick_slab"
   }
