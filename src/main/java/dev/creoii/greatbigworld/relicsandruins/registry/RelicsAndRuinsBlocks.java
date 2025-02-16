@@ -2,7 +2,6 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.block.VerticalSlabBlock;
-import dev.creoii.greatbigworld.relicsandruins.block.ChestBlock;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
@@ -25,19 +24,6 @@ public final class RelicsAndRuinsBlocks {
     public static Block GRAY_DECORATED_POT;
     public static Block LIGHT_GRAY_DECORATED_POT;
     public static Block WHITE_DECORATED_POT;
-
-    public static Block OAK_CHEST;
-    public static Block SPRUCE_CHEST;
-    public static Block BIRCH_CHEST;
-    public static Block JUNGLE_CHEST;
-    public static Block DARK_OAK_CHEST;
-    public static Block ACACIA_CHEST;
-    public static Block MANGROVE_CHEST;
-    public static Block CHERRY_CHEST;
-    public static Block PALE_OAK_CHEST;
-    public static Block BAMBOO_CHEST;
-    public static Block CRIMSON_CHEST;
-    public static Block WARPED_CHEST;
 
     public static Block COBBLESTONE_BRICKS;
     public static Block COBBLESTONE_BRICK_STAIRS;
@@ -92,43 +78,6 @@ public final class RelicsAndRuinsBlocks {
         LIGHT_GRAY_DECORATED_POT = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "light_gray_decorated_pot"), DecoratedPotBlock::new, AbstractBlock.Settings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY));
         WHITE_DECORATED_POT = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "white_decorated_pot"), DecoratedPotBlock::new, AbstractBlock.Settings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_BROWN));
 
-        OAK_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "oak_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.OAK), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.OAK_TAN));
-        SPRUCE_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "spruce_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.SPRUCE), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.SPRUCE_BROWN));
-        BIRCH_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "birch_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.BIRCH), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.PALE_YELLOW));
-        JUNGLE_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "jungle_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.JUNGLE), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.DIRT_BROWN));
-        DARK_OAK_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "dark_oak_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.DARK_OAK), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.BROWN));
-        ACACIA_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "acacia_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.ACACIA), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.ORANGE));
-        MANGROVE_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "mangrove_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.MANGROVE), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.RED));
-        CHERRY_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "cherry_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.CHERRY), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.TERRACOTTA_WHITE));
-        PALE_OAK_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "pale_oak_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.PALE_OAK), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.OFF_WHITE));
-        BAMBOO_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "bamboo_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.BAMBOO), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.YELLOW));
-        CRIMSON_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "crimson_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.CRIMSON), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.DULL_PINK));
-        WARPED_CHEST = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "warped_chest"), settings -> new ChestBlock(settings, () -> {
-            return BlockEntityType.CHEST;
-        }, WoodType.WARPED), AbstractBlock.Settings.copy(Blocks.CHEST).mapColor(MapColor.DARK_AQUA));
-
         COBBLESTONE_BRICKS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_bricks"), AbstractBlock.Settings.copy(Blocks.COBBLESTONE));
         COBBLESTONE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_stairs"), settings -> new StairsBlock(COBBLESTONE_BRICKS.getDefaultState(), settings), AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
         COBBLESTONE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_slab"), SlabBlock::new, AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
@@ -180,17 +129,5 @@ public final class RelicsAndRuinsBlocks {
         BlockEntityType.DECORATED_POT.addSupportedBlock(GRAY_DECORATED_POT);
         BlockEntityType.DECORATED_POT.addSupportedBlock(LIGHT_GRAY_DECORATED_POT);
         BlockEntityType.DECORATED_POT.addSupportedBlock(WHITE_DECORATED_POT);
-
-        BlockEntityType.CHEST.addSupportedBlock(OAK_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(SPRUCE_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(BIRCH_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(JUNGLE_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(DARK_OAK_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(ACACIA_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(MANGROVE_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(CHERRY_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(BAMBOO_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(WARPED_CHEST);
-        BlockEntityType.CHEST.addSupportedBlock(CRIMSON_CHEST);
     }
 }

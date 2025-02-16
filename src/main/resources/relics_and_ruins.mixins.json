@@ -7,15 +7,11 @@
     "CraftingDecoratedPotRecipeMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
-    "entity.AbstractDonkeyEntityMixin",
-    "entity.CatSitOnBlockGoalMixin",
-    "entity.LivingEntityMixin",
-    "world.StructurePieceMixin"
+    "entity.LivingEntityMixin"
   ],
   "client": [
     "client.DecoratedPotBlockEntityRendererMixin",
-    "client.SpecialModelTypesMixin",
-    "client.TexturedRenderLayersMixin"
+    "client.SpecialModelTypesMixin"
   ],
   "injectors": {
     "defaultRequire": 1
