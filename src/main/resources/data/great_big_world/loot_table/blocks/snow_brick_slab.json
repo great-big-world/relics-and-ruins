@@ -9,11 +9,6 @@
           "type": "minecraft:item",
           "name": "great_big_world:snow_brick_slab"
         }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
       ]
     }
   ],
