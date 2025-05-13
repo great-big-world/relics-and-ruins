@@ -10,6 +10,9 @@ import net.minecraft.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
@@ -26,14 +29,17 @@ public class DecoratedPotBlockMixin implements DyedDecoratedPot {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void gbw$setColor(AbstractBlock.Settings settings, CallbackInfo ci) {
-        if ((DecoratedPotBlock) (Object) this != Blocks.DECORATED_POT)
+        if ((Object) this != Blocks.DECORATED_POT)
             color = ((DecoratedPotBlock) (Object) this).getDefaultMapColor();
     }
 
     @Inject(method = "getPickStack", at = @At(value = "RETURN", ordinal = 0), cancellable = true)
     private void gbw$fixPotPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData, CallbackInfoReturnable<ItemStack> cir, @Local DecoratedPotBlockEntity decoratedPotBlockEntity) {
         ItemStack stack = decoratedPotBlockEntity.getCachedState().getBlock().asItem().getDefaultStack();
-        BlockItem.setBlockEntityData(stack, BlockEntityType.DECORATED_POT, decoratedPotBlockEntity.getSherds().toNbt(new NbtCompound()));
+        NbtCompound nbtCompound = new NbtCompound();
+        nbtCompound.put("sherds", new NbtList());
+        decoratedPotBlockEntity.getSherds().toList().forEach(item -> nbtCompound.getList("sherds").get().add(NbtString.of(Registries.ITEM.getId(item).toString())));
+        BlockItem.setBlockEntityData(stack, BlockEntityType.DECORATED_POT, nbtCompound);
         cir.setReturnValue(stack);
     }
 

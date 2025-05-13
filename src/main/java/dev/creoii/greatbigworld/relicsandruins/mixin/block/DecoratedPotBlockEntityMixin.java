@@ -33,7 +33,7 @@ public class DecoratedPotBlockEntityMixin implements DyedDecoratedPot, TrimmedDe
 
     @Inject(method = "readNbt", at = @At("TAIL"))
     private void gbw$readTrimNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup, CallbackInfo ci) {
-        trim = nbt.getInt(TRIM_KEY);
+        trim = nbt.getInt(TRIM_KEY, 0);
     }
 
     @Override

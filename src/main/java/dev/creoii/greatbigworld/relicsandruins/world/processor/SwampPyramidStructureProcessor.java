@@ -13,7 +13,7 @@ import net.minecraft.structure.StructureTemplate;
 import net.minecraft.structure.processor.StructureProcessor;
 import net.minecraft.structure.processor.StructureProcessorType;
 import net.minecraft.util.Util;
-import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.WorldView;
@@ -27,10 +27,10 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
     public static final MapCodec<SwampPyramidStructureProcessor> CODEC = MapCodec.unit(() -> INSTANCE);
     private static final RegistryEntryList<Block> STAIRS = RegistryEntryList.of(RegistryEntry::of, Blocks.COBBLESTONE_STAIRS, RelicsAndRuinsBlocks.COBBLESTONE_BRICK_STAIRS, Blocks.MOSSY_COBBLESTONE_STAIRS, RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS);
     private static final Map<Block, BlockStateProvider> REPLACEMENT_MAP = Util.make(Maps.newHashMap(), replacements -> {
-        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICKS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 2).add(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 5).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 9).add(RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), 1).build()));
-        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_SLAB, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_SLAB.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_SLAB.getDefaultState(), 3).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.getDefaultState(), 5).build()));
-        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_STAIRS.getDefaultState(), 3).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 5).build()));
-        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_WALL, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_WALL.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_WALL.getDefaultState(), 3).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_WALL.getDefaultState(), 5).build()));
+        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICKS, new WeightedBlockStateProvider(Pool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 2).add(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 5).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 9).add(RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), 1).build()));
+        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_SLAB, new WeightedBlockStateProvider(Pool.<BlockState>builder().add(Blocks.COBBLESTONE_SLAB.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_SLAB.getDefaultState(), 3).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.getDefaultState(), 5).build()));
+        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_STAIRS, new WeightedBlockStateProvider(Pool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_STAIRS.getDefaultState(), 3).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 5).build()));
+        replacements.put(RelicsAndRuinsBlocks.COBBLESTONE_BRICK_WALL, new WeightedBlockStateProvider(Pool.<BlockState>builder().add(Blocks.COBBLESTONE_WALL.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_WALL.getDefaultState(), 3).add(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_WALL.getDefaultState(), 5).build()));
     });
 
     public StructureTemplate.StructureBlockInfo process(WorldView world, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo currentBlockInfo, StructurePlacementData data) {

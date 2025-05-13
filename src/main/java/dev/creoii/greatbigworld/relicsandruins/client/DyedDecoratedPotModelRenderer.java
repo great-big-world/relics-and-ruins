@@ -12,8 +12,8 @@ import net.minecraft.client.render.entity.model.LoadedEntityModels;
 import net.minecraft.client.render.item.model.special.SpecialModelRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
 import net.minecraft.util.DyeColor;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,9 +34,10 @@ public class DyedDecoratedPotModelRenderer implements SpecialModelRenderer<Sherd
         return itemStack.get(DataComponentTypes.POT_DECORATIONS);
     }
 
-    public void render(@Nullable Sherds sherds, ModelTransformationMode modelTransformationMode, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, boolean bl) {
+    @Override
+    public void render(@Nullable Sherds data, ItemDisplayContext displayContext, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, boolean glint) {
         if (blockEntityRenderer instanceof ExtendedDecoratedPotRender extendedDecoratedPotRender) {
-            extendedDecoratedPotRender.gbw$renderDyed(matrixStack, vertexConsumerProvider, i, j, Objects.requireNonNullElse(sherds, Sherds.DEFAULT), color.getMapColor(), 0);
+            extendedDecoratedPotRender.gbw$renderDyed(matrices, vertexConsumers, light, overlay, Objects.requireNonNullElse(data, Sherds.DEFAULT), color.getMapColor(), 0);
         }
     }
 

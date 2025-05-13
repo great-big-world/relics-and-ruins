@@ -24,6 +24,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -62,10 +63,12 @@ public abstract class DecoratedPotBlockEntityRendererMixin implements ExtendedDe
     @Override
     public void gbw$renderDyed(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, Sherds sherds, @Nullable MapColor color, int trim) {
         VertexConsumer vertexConsumer = TexturedRenderLayers.DECORATED_POT_BASE.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid);
+
         float[] rgb;
         if (color != null) {
             rgb = new float[]{red(color.color), green(color.color), blue(color.color)};
         } else rgb = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
+
         neck.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]));
         top.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]));
         bottom.render(matrices, vertexConsumer, light, overlay, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]));
@@ -73,6 +76,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin implements ExtendedDe
         renderSide(back, matrices, vertexConsumers, light, overlay, rgb);
         renderSide(left, matrices, vertexConsumers, light, overlay, rgb);
         renderSide(right, matrices, vertexConsumers, light, overlay, rgb);
+
         if (sherds.front().isPresent()) {
             renderPatternedSide(frontPattern, matrices, vertexConsumers, light, overlay, sherds.front().get(), rgb);
         }
@@ -106,8 +110,8 @@ public abstract class DecoratedPotBlockEntityRendererMixin implements ExtendedDe
         this.rightPattern = modelPart2.getChild("right_pattern");
     }
 
-    @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/block/entity/Sherds;)V"), cancellable = true)
-    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, CallbackInfo ci) {
+    @Inject(method = "render(Lnet/minecraft/block/entity/DecoratedPotBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/util/math/Vec3d;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/block/entity/DecoratedPotBlockEntityRenderer;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/block/entity/Sherds;)V"), cancellable = true)
+    private void gbw$renderPotDecals(DecoratedPotBlockEntity decoratedPotBlockEntity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j, Vec3d vec3d, CallbackInfo ci) {
         if (decoratedPotBlockEntity instanceof DyedDecoratedPot dyedDecoratedPot) {
             int trim = ((TrimmedDecoratedPot) decoratedPotBlockEntity).gbw$getTrim();
             gbw$renderDyed(matrixStack, vertexConsumerProvider, i, j, decoratedPotBlockEntity.getSherds(), dyedDecoratedPot.gbw$getColor(), trim);
@@ -145,7 +149,7 @@ public abstract class DecoratedPotBlockEntityRendererMixin implements ExtendedDe
         if (item == Items.BRICK)
             return null;
         SpriteIdentifier id = TexturedRenderLayers.getDecoratedPotPatternTextureId(DecoratedPotPatterns.fromSherd(item));
-        return id == null ? null : new SpriteIdentifier(id.getAtlasId(), Identifier.of(id.getTextureId().getNamespace(), id.getTextureId().getPath().replace("pot/", "pot/pattern/").replace("_pottery_pattern", "")));
+        return id == null ? null : new SpriteIdentifier(id.getAtlasId(), Identifier.of(id.getTextureId().getNamespace(), id.getTextureId().getPath().replace("decorated_pot/", "decorated_pot/pattern/").replace("_pottery_pattern", "")));
     }
 
     @Unique

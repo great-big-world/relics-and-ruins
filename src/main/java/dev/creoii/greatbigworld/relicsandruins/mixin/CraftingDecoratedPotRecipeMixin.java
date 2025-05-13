@@ -1,6 +1,5 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsItems;
 import net.minecraft.block.entity.Sherds;
