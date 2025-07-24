@@ -5,6 +5,7 @@ import dev.creoii.greatbigworld.architectsassembly.block.VerticalSlabBlock;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 public final class RelicsAndRuinsBlocks {
@@ -107,7 +108,7 @@ public final class RelicsAndRuinsBlocks {
         VERTICAL_BLUE_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "vertical_blue_ice_brick_slab"), VerticalSlabBlock::new, AbstractBlock.Settings.copy(BLUE_ICE_BRICKS));
         BLUE_ICE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "blue_ice_brick_wall"), WallBlock::new, AbstractBlock.Settings.copy(BLUE_ICE_BRICKS));
 
-        SNOW_BRICKS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "snow_bricks"), AbstractBlock.Settings.copy(Blocks.SNOW_BLOCK).strength(.3f));
+        SNOW_BRICKS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "snow_bricks"), AbstractBlock.Settings.create().mapColor(MapColor.WHITE).strength(.35f).sounds(BlockSoundGroup.SNOW));
         SNOW_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_stairs"), settings -> new StairsBlock(SNOW_BRICKS.getDefaultState(), settings), AbstractBlock.Settings.copy(SNOW_BRICKS));
         SNOW_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_slab"), SlabBlock::new, AbstractBlock.Settings.copy(SNOW_BRICKS));
         VERTICAL_SNOW_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "vertical_snow_brick_slab"), VerticalSlabBlock::new, AbstractBlock.Settings.copy(SNOW_BRICKS));
