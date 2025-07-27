@@ -51,6 +51,21 @@
     "minecraft:frozen_peaks",
     "minecraft:dripstone_caves",
     "minecraft:lush_caves",
-    "minecraft:deep_dark"
+    {
+      "id": "great_big_world:swamp_river",
+      "required": false
+    },
+    {
+      "id": "great_big_world:jungle_river",
+      "required": false
+    },
+    {
+      "id": "great_big_world:cold_river",
+      "required": false
+    },
+    {
+      "id": "great_big_world:desert_river",
+      "required": false
+    }
   ]
 }

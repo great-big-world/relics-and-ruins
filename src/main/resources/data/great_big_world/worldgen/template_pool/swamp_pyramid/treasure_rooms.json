@@ -17,6 +17,15 @@
         "projection": "rigid"
       },
       "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/treasure_rooms/portal",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
     }
   ],
   "fallback": "minecraft:empty"

@@ -4,7 +4,9 @@ import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsBlocks;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsStructureProcessors;
+import dev.creoii.greatbigworld.thealterworld.registry.TheAlterworldBlocks;
 import net.minecraft.block.*;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.state.property.Properties;
@@ -17,6 +19,7 @@ import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.dimension.DimensionTypes;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
@@ -35,6 +38,11 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
 
     public StructureTemplate.StructureBlockInfo process(WorldView world, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo currentBlockInfo, StructurePlacementData data) {
         Random random = data.getRandom(currentBlockInfo.pos().up());
+        
+        if (currentBlockInfo.state().isOf(TheAlterworldBlocks.ANCIENT_MOSAIC) && !world.getRegistryManager().getOptional(RegistryKeys.DIMENSION_TYPE).get().getEntry(world.getDimension()).matchesKey(DimensionTypes.OVERWORLD)) {
+            return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos(), RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), currentBlockInfo.nbt());
+        }
+
         if (random.nextFloat() < .95f && world.getBlockState(currentBlockInfo.pos().up()).isIn(STAIRS)) {
             if (currentBlockInfo.state().isOf(RelicsAndRuinsBlocks.COBBLESTONE_BRICKS)) {
                 return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos(), RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), currentBlockInfo.nbt());
