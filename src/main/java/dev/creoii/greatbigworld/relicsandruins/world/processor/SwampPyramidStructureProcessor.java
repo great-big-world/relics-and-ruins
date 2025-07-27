@@ -52,7 +52,8 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
         BlockState current = currentBlockInfo.state();
         Block block = current.getBlock();
         if (random.nextFloat() < .6f && REPLACEMENT_MAP.containsKey(block)) {
-            if (random.nextFloat() < .08f) return null;
+            if (random.nextFloat() < .08f)
+                return null;
             BlockState state = REPLACEMENT_MAP.get(block).get(random, currentBlockInfo.pos());
             if (current.contains(StairsBlock.FACING)) {
                 state = state.with(StairsBlock.FACING, current.get(StairsBlock.FACING));
