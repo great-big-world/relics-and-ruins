@@ -37,7 +37,6 @@ public class IceStairsBlock extends TranslucentStairsBlock {
                 world.setBlockState(pos, getMeltedState());
             }
         }
-
     }
 
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

@@ -11,5 +11,6 @@
   "start_pool": "great_big_world:swamp_pyramid/pyramids",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
-  "use_expansion_hack": false
+  "use_expansion_hack": false,
+  "liquid_settings": "ignore_waterlogging"
 }

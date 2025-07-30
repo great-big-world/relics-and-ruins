@@ -41,7 +41,6 @@ public class IceVerticalSlabBlock extends TranslucentVerticalSlabBlock {
                 world.setBlockState(pos, getMeltedState());
             }
         }
-
     }
 
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

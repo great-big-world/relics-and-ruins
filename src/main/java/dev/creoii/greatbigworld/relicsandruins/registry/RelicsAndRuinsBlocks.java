@@ -2,6 +2,10 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.block.VerticalSlabBlock;
+import dev.creoii.greatbigworld.relicsandruins.block.IceSlabBlock;
+import dev.creoii.greatbigworld.relicsandruins.block.IceStairsBlock;
+import dev.creoii.greatbigworld.relicsandruins.block.IceVerticalSlabBlock;
+import dev.creoii.greatbigworld.relicsandruins.block.IceWallBlock;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
@@ -93,10 +97,10 @@ public final class RelicsAndRuinsBlocks {
         MOSSY_COBBLESTONE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_wall"), WallBlock::new, AbstractBlock.Settings.copy(MOSSY_COBBLESTONE_BRICKS));
 
         ICE_BRICKS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ice_bricks"), AbstractBlock.Settings.copy(Blocks.ICE));
-        ICE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_stairs"), settings -> new StairsBlock(ICE_BRICKS.getDefaultState(), settings), AbstractBlock.Settings.copy(ICE_BRICKS));
-        ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_slab"), SlabBlock::new, AbstractBlock.Settings.copy(ICE_BRICKS));
-        VERTICAL_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "vertical_ice_brick_slab"), VerticalSlabBlock::new, AbstractBlock.Settings.copy(ICE_BRICKS));
-        ICE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_wall"), WallBlock::new, AbstractBlock.Settings.copy(ICE_BRICKS));
+        ICE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_stairs"), settings -> new IceStairsBlock(ICE_BRICKS.getDefaultState(), settings), AbstractBlock.Settings.copy(ICE_BRICKS));
+        ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_slab"), IceSlabBlock::new, AbstractBlock.Settings.copy(ICE_BRICKS));
+        VERTICAL_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "vertical_ice_brick_slab"), IceVerticalSlabBlock::new, AbstractBlock.Settings.copy(ICE_BRICKS));
+        ICE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ice_brick_wall"), IceWallBlock::new, AbstractBlock.Settings.copy(ICE_BRICKS));
         PACKED_ICE_BRICKS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "packed_ice_bricks"), AbstractBlock.Settings.copy(Blocks.PACKED_ICE));
         PACKED_ICE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "packed_ice_brick_stairs"), settings -> new StairsBlock(PACKED_ICE_BRICKS.getDefaultState(), settings), AbstractBlock.Settings.copy(PACKED_ICE_BRICKS));
         PACKED_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "packed_ice_brick_slab"), SlabBlock::new, AbstractBlock.Settings.copy(PACKED_ICE_BRICKS));
