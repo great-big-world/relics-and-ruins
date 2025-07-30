@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:ice_temple/temple/corner_pits",
+        "location": "great_big_world:ice_temple/chamber/chamber_arena",
         "projection": "rigid",
         "processors": "minecraft:empty"
       },
@@ -12,7 +12,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:ice_temple/temple/center_pit",
+        "location": "great_big_world:ice_temple/chamber/chamber_arena",
         "projection": "rigid",
         "processors": "minecraft:empty"
       },
@@ -21,7 +21,16 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:ice_temple/temple/stair_pits",
+        "location": "great_big_world:ice_temple/chamber/chamber_arena",
+        "projection": "rigid",
+        "processors": "minecraft:empty"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:ice_temple/chamber/wall",
         "projection": "rigid",
         "processors": "minecraft:empty"
       },
