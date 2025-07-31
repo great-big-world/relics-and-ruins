@@ -2,20 +2,37 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {
-        "min": 1,
-        "max": 3
-      },
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 1,
-          "name": "minecraft:clay_ball",
+          "name": "minecraft:spruce_log",
+          "weight": 2,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2,
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fire_charge"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stick",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
                 "max": 4
               }
             }
@@ -23,26 +40,35 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:snowball",
           "weight": 2,
-          "name": "minecraft:wheat",
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2,
-                "max": 6
-              }
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              },
+              "conditions": []
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.5
             }
           ]
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:charcoal",
           "weight": 2,
-          "name": "minecraft:bone",
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 3
               }
@@ -51,117 +77,117 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 2,
-          "name": "minecraft:paper",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 4
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
+          "name": "minecraft:iron_ingot",
           "weight": 1,
-          "name": "minecraft:gunpowder",
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "weight": 2,
-          "name": "minecraft:gold_ingot",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 1,
-          "name": "minecraft:redstone",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
                 "max": 5
               }
             }
           ]
-        }
-      ]
-    },
-    {
-      "rolls": {
-        "min": 1,
-        "max": 2
-      },
-      "entries": [
+        },
         {
           "type": "minecraft:item",
-          "name": "minecraft:brick",
+          "name": "minecraft:ice",
+          "weight": 2,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2,
+                "type": "minecraft:uniform",
+                "min": 1,
                 "max": 4
               }
             }
           ]
         }
-      ]
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 10,
+        "min": 5
+      }
     },
     {
       "rolls": {
-        "min": 0,
-        "max": 2
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 3
       },
+      "bonus_rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:cod",
+          "name": "minecraft:rabbit_foot",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:rabbit_hide",
+          "weight": 2,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
+                "type": "minecraft:uniform",
                 "min": 1,
-                "max": 3
+                "max": 2
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:salmon",
+          "name": "minecraft:rabbit",
+          "weight": 2,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 1,
-                "max": 3
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 4
               }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:mutton",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:sweet_berries",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 5
+              },
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.5
+                }
+              ]
             }
           ]
         }
@@ -176,13 +202,31 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:lime_bundle"
+          "name": "minecraft:blue_bundle"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.5
+          "chance": 0.75
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 1
+      },
+      "bonus_rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bucket"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:powder_snow_bucket"
         }
       ]
     },
@@ -196,18 +240,18 @@
           "functions": [
             {
               "function": "minecraft:set_potion",
-              "id": "minecraft:invisibility"
+              "id": "minecraft:healing"
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "weight": 1,
+          "weight": 4,
           "name": "minecraft:potion",
           "functions": [
             {
               "function": "minecraft:set_potion",
-              "id": "minecraft:long_invisibility"
+              "id": "minecraft:strong_healing"
             }
           ]
         }
@@ -220,5 +264,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:chests/desert_pyramid"
+  "random_sequence": "great_big_world:chests/ice_temple"
 }
