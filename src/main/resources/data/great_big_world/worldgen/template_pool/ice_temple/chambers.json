@@ -12,7 +12,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:ice_temple/chamber/chamber_arena",
+        "location": "great_big_world:ice_temple/chamber/chamber_hall",
         "projection": "rigid",
         "processors": "minecraft:empty"
       },
@@ -21,7 +21,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:ice_temple/chamber/chamber_arena",
+        "location": "great_big_world:ice_temple/chamber/chamber_portal",
         "projection": "rigid",
         "processors": "minecraft:empty"
       },
