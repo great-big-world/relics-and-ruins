@@ -3,8 +3,10 @@ package dev.creoii.greatbigworld.relicsandruins.client;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.creoii.greatbigworld.relicsandruins.util.ExtendedDecoratedPotRender;
+import dev.creoii.greatbigworld.util.ColorHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.Sherds;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.DecoratedPotBlockEntityRenderer;
@@ -37,14 +39,14 @@ public class DyedDecoratedPotModelRenderer implements SpecialModelRenderer<Sherd
     @Override
     public void render(@Nullable Sherds data, ItemDisplayContext displayContext, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, boolean glint) {
         if (blockEntityRenderer instanceof ExtendedDecoratedPotRender extendedDecoratedPotRender) {
-            extendedDecoratedPotRender.gbw$renderDyed(matrices, vertexConsumers, light, overlay, Objects.requireNonNullElse(data, Sherds.DEFAULT), color.getMapColor(), 0);
+            extendedDecoratedPotRender.gbw$renderDyed(matrices, vertexConsumers, light, overlay, Objects.requireNonNullElse(data, Sherds.DEFAULT), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
         }
     }
 
     @Environment(EnvType.CLIENT)
-    public record Unbaked(DyeColor color) implements SpecialModelRenderer.Unbaked {
+    public record Unbaked(@Nullable DyeColor color) implements SpecialModelRenderer.Unbaked {
         public static final MapCodec<DyedDecoratedPotModelRenderer.Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> {
-            return instance.group(DyeColor.CODEC.fieldOf("color").forGetter(unbaked -> unbaked.color)).apply(instance, Unbaked::new);
+            return instance.group(DyeColor.CODEC.fieldOf("color").orElse(null).forGetter(unbaked -> unbaked.color)).apply(instance, Unbaked::new);
         });
 
         public MapCodec<DyedDecoratedPotModelRenderer.Unbaked> getCodec() {
