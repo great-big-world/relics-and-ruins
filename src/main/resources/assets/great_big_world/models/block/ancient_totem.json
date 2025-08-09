@@ -1,7 +1,11 @@
 {
-  "parent": "block/cube_column",
+  "parent": "block/cube",
   "textures": {
-    "side": "great_big_world:block/ancient_totem_cracked",
-    "end": "great_big_world:block/ancient_totem_top"
+    "north": "great_big_world:block/ancient_totem_cracked",
+    "south": "great_big_world:block/ancient_totem",
+    "east": "great_big_world:block/ancient_totem",
+    "west": "great_big_world:block/ancient_totem",
+    "up": "great_big_world:block/ancient_totem_top",
+    "down": "great_big_world:block/ancient_totem_top"
   }
 }
