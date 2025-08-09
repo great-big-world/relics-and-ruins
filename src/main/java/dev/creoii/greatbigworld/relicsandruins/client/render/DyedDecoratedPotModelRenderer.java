@@ -1,4 +1,4 @@
-package dev.creoii.greatbigworld.relicsandruins.client;
+package dev.creoii.greatbigworld.relicsandruins.client.render;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -6,7 +6,6 @@ import dev.creoii.greatbigworld.relicsandruins.util.ExtendedDecoratedPotRender;
 import dev.creoii.greatbigworld.util.ColorHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.Sherds;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.DecoratedPotBlockEntityRenderer;

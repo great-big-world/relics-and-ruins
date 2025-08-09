@@ -2,7 +2,7 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.client;
 
 import com.mojang.serialization.MapCodec;
 import dev.creoii.greatbigworld.GreatBigWorld;
-import dev.creoii.greatbigworld.relicsandruins.client.DyedDecoratedPotModelRenderer;
+import dev.creoii.greatbigworld.relicsandruins.client.render.DyedDecoratedPotModelRenderer;
 import net.minecraft.client.render.item.model.special.SpecialModelRenderer;
 import net.minecraft.client.render.item.model.special.SpecialModelTypes;
 import net.minecraft.util.Identifier;

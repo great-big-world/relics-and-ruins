@@ -1,4 +1,4 @@
-package dev.creoii.greatbigworld.relicsandruins.client;
+package dev.creoii.greatbigworld.relicsandruins.client.render;
 
 import dev.creoii.greatbigworld.relicsandruins.block.entity.AncientTotemBlockEntity;
 import net.fabricmc.api.EnvType;

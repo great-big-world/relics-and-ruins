@@ -3,6 +3,7 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.block.VerticalSlabBlock;
 import dev.creoii.greatbigworld.relicsandruins.block.*;
+import dev.creoii.greatbigworld.thealterworld.block.AncientPedestalBlock;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;

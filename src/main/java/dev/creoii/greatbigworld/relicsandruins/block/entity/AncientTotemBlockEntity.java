@@ -1,10 +1,10 @@
 package dev.creoii.greatbigworld.relicsandruins.block.entity;
 
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsBlockEntityTypes;
+import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
@@ -16,7 +16,7 @@ public class AncientTotemBlockEntity extends BlockEntity {
 
     public AncientTotemBlockEntity(BlockPos pos, BlockState state) {
         super(RelicsAndRuinsBlockEntityTypes.ANCIENT_TOTEM, pos, state);
-        stack = Items.ENCHANTED_GOLDEN_APPLE.getDefaultStack();
+        stack = RelicsAndRuinsItems.TEST_RELIC.getDefaultStack();
     }
 
     public ItemStack getStack() {

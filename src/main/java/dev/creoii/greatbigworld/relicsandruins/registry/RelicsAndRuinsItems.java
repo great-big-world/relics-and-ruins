@@ -3,6 +3,7 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.item.SlabItem;
 import dev.creoii.greatbigworld.architectsassembly.registry.ArchitectsAssemblyItems;
+import dev.creoii.greatbigworld.relicsandruins.item.RelicItem;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
@@ -61,6 +62,8 @@ public final class RelicsAndRuinsItems {
 
     public static Item ANCIENT_TOTEM;
 
+    public static Item TEST_RELIC;
+
     public static Item DISC_FRAGMENT_RELIC;
 
     public static void register() {
@@ -112,6 +115,8 @@ public final class RelicsAndRuinsItems {
 
         ANCIENT_TOTEM = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "ancient_totem"), RelicsAndRuinsBlocks.ANCIENT_TOTEM);
 
+        TEST_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "test_relic"), RelicItem::new);
+
         DISC_FRAGMENT_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DiscFragmentItem::new);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
@@ -137,6 +142,9 @@ public final class RelicsAndRuinsItems {
                     return DISC_FRAGMENT_RELIC.getDefaultStack();
                 return stack;
             });
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
+            entries.add(TEST_RELIC);
         });
 
         FuelRegistryEvents.BUILD.register((builder, context) -> {

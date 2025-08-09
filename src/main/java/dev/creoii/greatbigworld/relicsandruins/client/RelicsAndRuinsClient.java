@@ -1,5 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.client;
 
+import dev.creoii.greatbigworld.relicsandruins.client.render.AncientTotemBlockEntityRenderer;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsBlockEntityTypes;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsBlocks;
 import net.fabricmc.api.ClientModInitializer;
