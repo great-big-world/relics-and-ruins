@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column_horizontal",
+  "textures": {
+    "side": "great_big_world:block/ancient_totem_cracked",
+    "end": "great_big_world:block/ancient_totem_top"
+  }
+}

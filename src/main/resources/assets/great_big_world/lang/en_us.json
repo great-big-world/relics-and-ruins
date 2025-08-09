@@ -50,6 +50,8 @@
   "block.great_big_world.vertical_snow_brick_slab": "Vertical Snow Brick Slab",
   "block.great_big_world.snow_brick_wall": "Snow Brick Wall",
 
+  "block.great_big_world.ancient_totem": "Ancient Totem",
+
   "item.great_big_world.disc_fragment_relic": "Disc Fragment",
   "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic"
 }

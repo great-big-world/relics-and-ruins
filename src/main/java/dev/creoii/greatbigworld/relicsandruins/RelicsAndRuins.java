@@ -14,6 +14,7 @@ public class RelicsAndRuins implements ModInitializer {
     public void onInitialize() {
         RelicsAndRuinsBlocks.register();
         RelicsAndRuinsItems.register();
+        RelicsAndRuinsBlockEntityTypes.register();
         RelicsAndRuinsStructureProcessors.register();
         RelicsAndRuinsPotions.register();
 

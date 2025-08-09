@@ -2,10 +2,7 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.block.VerticalSlabBlock;
-import dev.creoii.greatbigworld.relicsandruins.block.IceSlabBlock;
-import dev.creoii.greatbigworld.relicsandruins.block.IceStairsBlock;
-import dev.creoii.greatbigworld.relicsandruins.block.IceVerticalSlabBlock;
-import dev.creoii.greatbigworld.relicsandruins.block.IceWallBlock;
+import dev.creoii.greatbigworld.relicsandruins.block.*;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
@@ -65,6 +62,8 @@ public final class RelicsAndRuinsBlocks {
     public static Block VERTICAL_SNOW_BRICK_SLAB;
     public static Block SNOW_BRICK_WALL;
 
+    public static Block ANCIENT_TOTEM;
+
     public static void register() {
         BROWN_DECORATED_POT = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "brown_decorated_pot"), DecoratedPotBlock::new, AbstractBlock.Settings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_BROWN));
         RED_DECORATED_POT = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "red_decorated_pot"), DecoratedPotBlock::new, AbstractBlock.Settings.copy(Blocks.DECORATED_POT).mapColor(MapColor.TERRACOTTA_RED));
@@ -117,6 +116,8 @@ public final class RelicsAndRuinsBlocks {
         SNOW_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_slab"), SlabBlock::new, AbstractBlock.Settings.copy(SNOW_BRICKS));
         VERTICAL_SNOW_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "vertical_snow_brick_slab"), VerticalSlabBlock::new, AbstractBlock.Settings.copy(SNOW_BRICKS));
         SNOW_BRICK_WALL = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), WallBlock::new, AbstractBlock.Settings.copy(SNOW_BRICKS));
+
+        ANCIENT_TOTEM = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "ancient_totem"), AncientTotemBlock::new, AbstractBlock.Settings.copy(Blocks.END_STONE).mapColor(MapColor.TERRACOTTA_GREEN).strength(40f, 40f));
 
         BlockEntityType.DECORATED_POT.addSupportedBlock(BROWN_DECORATED_POT);
         BlockEntityType.DECORATED_POT.addSupportedBlock(RED_DECORATED_POT);
