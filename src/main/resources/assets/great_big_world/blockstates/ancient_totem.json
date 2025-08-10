@@ -1,59 +1,19 @@
 {
   "variants": {
-    "axis=x,facing=north": {
-      "model": "great_big_world:block/ancient_totem",
-      "y": 90,
-      "z": 90
-    },
-    "axis=x,facing=south": {
-      "model": "great_big_world:block/ancient_totem",
-      "x": 180,
-      "y": 90,
-      "z": 270
-    },
-    "axis=x,facing=up": {
-      "model": "great_big_world:block/ancient_totem",
-      "x": 270,
-      "y": 90
-    },
-    "axis=x,facing=down": {
-      "model": "great_big_world:block/ancient_totem",
-      "x": 90,
-      "y": 90
-    },
-    "axis=y,facing=north": {
+    "facing=north": {
       "model": "great_big_world:block/ancient_totem"
     },
-    "axis=y,facing=south": {
+    "facing=south": {
       "model": "great_big_world:block/ancient_totem",
       "y": 180
     },
-    "axis=y,facing=east": {
+    "facing=east": {
       "model": "great_big_world:block/ancient_totem",
       "y": 90
     },
-    "axis=y,facing=west": {
+    "facing=west": {
       "model": "great_big_world:block/ancient_totem",
       "y": 270
-    },
-    "axis=z,facing=up": {
-      "model": "great_big_world:block/ancient_totem",
-      "x": 90,
-      "z": 180
-    },
-    "axis=z,facing=down": {
-      "model": "great_big_world:block/ancient_totem",
-      "x": 90
-    },
-    "axis=z,facing=east": {
-      "model": "great_big_world:block/ancient_totem",
-      "x": 90,
-      "z": 90
-    },
-    "axis=z,facing=west": {
-      "model": "great_big_world:block/ancient_totem",
-      "x": 90,
-      "z": 90
     }
   }
 }

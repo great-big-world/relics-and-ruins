@@ -3,7 +3,7 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.item.SlabItem;
 import dev.creoii.greatbigworld.architectsassembly.registry.ArchitectsAssemblyItems;
-import dev.creoii.greatbigworld.relicsandruins.item.RelicItem;
+import dev.creoii.greatbigworld.thealterworld.item.RelicItem;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;

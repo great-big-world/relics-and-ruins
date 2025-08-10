@@ -22,9 +22,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class AncientTotemBlock extends PillarBlock implements BlockEntityProvider {
+public class AncientTotemBlock extends Block implements BlockEntityProvider {
     public static final MapCodec<AncientTotemBlock> CODEC = createCodec(AncientTotemBlock::new);
-    public static final EnumProperty<Direction> FACING = Properties.FACING;
+    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
 
     public MapCodec<? extends AncientTotemBlock> getCodec() {
         return CODEC;
@@ -32,7 +32,7 @@ public class AncientTotemBlock extends PillarBlock implements BlockEntityProvide
 
     public AncientTotemBlock(Settings settings) {
         super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(AXIS, Direction.Axis.Y).with(FACING, Direction.NORTH));
+        setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override
@@ -41,36 +41,16 @@ public class AncientTotemBlock extends PillarBlock implements BlockEntityProvide
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        Direction.Axis axis = ctx.getSide().getAxis();
-
-        Direction playerDir = ctx.getPlayerLookDirection();
-        if (playerDir.getAxis() == axis) {
-            Direction lookDir = Direction.getFacing(ctx.getPlayer().getRotationVec(1f));
-            if (lookDir.getAxis() == axis) {
-                for (Direction dir : Direction.values()) {
-                    if (dir.getAxis() != axis) {
-                        playerDir = dir;
-                        break;
-                    }
-                }
-            } else playerDir = lookDir;
-        }
-
-        return getDefaultState().with(AXIS, axis).with(FACING, playerDir.getOpposite());
+        return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
     }
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        Direction.Axis hitAxis = hit.getSide().getAxis();
-        if (state.get(AXIS) == hitAxis || hit.getSide() != state.get(FACING))
+        if (hit.getSide() != state.get(FACING))
             return ActionResult.PASS;
 
         Vec3d hitPos = hit.getPos().subtract(pos.getX(), pos.getY(), pos.getZ());
-        boolean center = switch (hitAxis) {
-            case Y -> hitPos.x > .25f && hitPos.x < .75f && hitPos.z > .25f && hitPos.z < .75f;
-            case X -> hitPos.y > .25f && hitPos.y < .75f && hitPos.z > .25f && hitPos.z < .75f;
-            case Z -> hitPos.x > .25f && hitPos.x < .75f && hitPos.y > .25f && hitPos.y < .75f;
-        };
+        boolean center = hitPos.x > .25f && hitPos.x < .75f && hitPos.z > .25f && hitPos.z < .75f;
 
         if (center) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
