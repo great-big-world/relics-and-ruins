@@ -17,8 +17,10 @@ import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DyeColor;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Environment(EnvType.CLIENT)
 public class DyedDecoratedPotModelRenderer implements SpecialModelRenderer<Sherds> {
@@ -40,6 +42,11 @@ public class DyedDecoratedPotModelRenderer implements SpecialModelRenderer<Sherd
         if (blockEntityRenderer instanceof ExtendedDecoratedPotRender extendedDecoratedPotRender) {
             extendedDecoratedPotRender.gbw$renderDyed(matrices, vertexConsumers, light, overlay, Objects.requireNonNullElse(data, Sherds.DEFAULT), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
         }
+    }
+
+    @Override
+    public void collectVertices(Set<Vector3f> vertices) {
+        blockEntityRenderer.collectVertices(vertices);
     }
 
     @Environment(EnvType.CLIENT)

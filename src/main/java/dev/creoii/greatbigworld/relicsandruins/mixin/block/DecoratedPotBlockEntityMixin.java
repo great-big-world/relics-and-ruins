@@ -5,8 +5,8 @@ import dev.creoii.greatbigworld.relicsandruins.util.TrimmedDecoratedPot;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,14 +26,14 @@ public class DecoratedPotBlockEntityMixin implements DyedDecoratedPot, TrimmedDe
         trim = 0;
     }
 
-    @Inject(method = "writeNbt", at = @At("TAIL"))
-    private void gbw$writeTrimNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup, CallbackInfo ci) {
-        nbt.putInt(TRIM_KEY, trim);
+    @Inject(method = "writeData", at = @At("TAIL"))
+    private void gbw$writeTrimNbt(WriteView view, CallbackInfo ci) {
+        view.putInt(TRIM_KEY, trim);
     }
 
-    @Inject(method = "readNbt", at = @At("TAIL"))
-    private void gbw$readTrimNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup, CallbackInfo ci) {
-        trim = nbt.getInt(TRIM_KEY, 0);
+    @Inject(method = "readData", at = @At("TAIL"))
+    private void gbw$readTrimNbt(ReadView view, CallbackInfo ci) {
+        trim = view.getInt(TRIM_KEY, 0);
     }
 
     @Override

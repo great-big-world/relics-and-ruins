@@ -2,6 +2,7 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.block;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import com.mojang.serialization.Codec;
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -9,10 +10,9 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.DecoratedPotBlockEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.nbt.NbtString;
 import net.minecraft.registry.Registries;
+import net.minecraft.storage.NbtWriteView;
+import net.minecraft.util.ErrorReporter;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
@@ -22,6 +22,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(DecoratedPotBlock.class)
 public class DecoratedPotBlockMixin implements DyedDecoratedPot {
@@ -36,10 +39,11 @@ public class DecoratedPotBlockMixin implements DyedDecoratedPot {
     @Inject(method = "getPickStack", at = @At(value = "RETURN", ordinal = 0), cancellable = true)
     private void gbw$fixPotPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData, CallbackInfoReturnable<ItemStack> cir, @Local DecoratedPotBlockEntity decoratedPotBlockEntity) {
         ItemStack stack = decoratedPotBlockEntity.getCachedState().getBlock().asItem().getDefaultStack();
-        NbtCompound nbtCompound = new NbtCompound();
-        nbtCompound.put("sherds", new NbtList());
-        decoratedPotBlockEntity.getSherds().toList().forEach(item -> nbtCompound.getList("sherds").get().add(NbtString.of(Registries.ITEM.getId(item).toString())));
-        BlockItem.setBlockEntityData(stack, BlockEntityType.DECORATED_POT, nbtCompound);
+        NbtWriteView nbtWriteView = NbtWriteView.create(ErrorReporter.EMPTY, world.getRegistryManager());
+        List<String> list = new ArrayList<>();
+        decoratedPotBlockEntity.getSherds().toList().forEach(item -> list.add(Registries.ITEM.getId(item).toString()));
+        nbtWriteView.put("sherds", Codec.STRING.listOf(), list);
+        BlockItem.setBlockEntityData(stack, BlockEntityType.DECORATED_POT, nbtWriteView);
         cir.setReturnValue(stack);
     }
 
