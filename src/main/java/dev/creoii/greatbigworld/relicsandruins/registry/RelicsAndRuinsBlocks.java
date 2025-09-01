@@ -2,6 +2,7 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.block.VerticalSlabBlock;
+import dev.creoii.greatbigworld.block.FacingBlock;
 import dev.creoii.greatbigworld.relicsandruins.block.*;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.minecraft.block.*;
@@ -86,7 +87,7 @@ public final class RelicsAndRuinsBlocks {
         VERTICAL_COBBLESTONE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "vertical_cobblestone_brick_slab"), VerticalSlabBlock::new, AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
         COBBLESTONE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_wall"), WallBlock::new, AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
         CHISELED_COBBLESTONE_BRICKS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "chiseled_cobblestone_bricks"), AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
-        COBBLESTONE_BRICK_PILLAR = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_pillar"), PillarBlock::new, AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
+        COBBLESTONE_BRICK_PILLAR = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "cobblestone_brick_pillar"), FacingBlock::new, AbstractBlock.Settings.copy(COBBLESTONE_BRICKS));
         MOSSY_COBBLESTONE_BRICKS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_bricks"), AbstractBlock.Settings.copy(Blocks.MOSSY_COBBLESTONE));
         MOSSY_COBBLESTONE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_stairs"), settings -> new StairsBlock(MOSSY_COBBLESTONE_BRICKS.getDefaultState(), settings), AbstractBlock.Settings.copy(MOSSY_COBBLESTONE_BRICKS));
         MOSSY_COBBLESTONE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_slab"), SlabBlock::new, AbstractBlock.Settings.copy(MOSSY_COBBLESTONE_BRICKS));

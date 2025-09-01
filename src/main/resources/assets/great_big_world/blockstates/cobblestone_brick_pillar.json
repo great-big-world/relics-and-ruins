@@ -1,16 +1,29 @@
 {
   "variants": {
-    "axis=x": {
-      "model": "great_big_world:block/cobblestone_brick_pillar_horizontal",
+    "facing=up": {
+      "model": "great_big_world:block/cobblestone_brick_pillar"
+    },
+    "facing=down": {
+      "model": "great_big_world:block/cobblestone_brick_pillar",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "great_big_world:block/cobblestone_brick_pillar",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "great_big_world:block/cobblestone_brick_pillar",
+      "x": -90
+    },
+    "facing=east": {
+      "model": "great_big_world:block/cobblestone_brick_pillar",
       "x": 90,
       "y": 90
     },
-    "axis=y": {
-      "model": "great_big_world:block/cobblestone_brick_pillar"
-    },
-    "axis=z": {
-      "model": "great_big_world:block/cobblestone_brick_pillar_horizontal",
-      "x": 90
+    "facing=west": {
+      "model": "great_big_world:block/cobblestone_brick_pillar",
+      "x": -90,
+      "y": 90
     }
   }
 }
