@@ -4,6 +4,7 @@ import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.item.SlabItem;
 import dev.creoii.greatbigworld.architectsassembly.registry.ArchitectsAssemblyItems;
 import dev.creoii.greatbigworld.thealterworld.item.RelicItem;
+import dev.creoii.greatbigworld.thealterworld.registry.TheAlterworldDataComponentTypes;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
@@ -12,6 +13,7 @@ import net.minecraft.block.entity.Sherds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Unit;
 
 public final class RelicsAndRuinsItems {
     public static Item BROWN_DECORATED_POT;
@@ -111,7 +113,7 @@ public final class RelicsAndRuinsItems {
         SNOW_BRICK_SLAB = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.SNOW_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_SNOW_BRICK_SLAB, settings.useBlockPrefixedTranslationKey()));
         SNOW_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), RelicsAndRuinsBlocks.SNOW_BRICK_WALL);
 
-        TEST_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "test_relic"), RelicItem::new);
+        TEST_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "test_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE)));
 
         DISC_FRAGMENT_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DiscFragmentItem::new);
 
