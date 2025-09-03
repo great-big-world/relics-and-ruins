@@ -460,6 +460,10 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:gray_bundle"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:clock"
         }
       ],
       "conditions": [
