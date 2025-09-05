@@ -2,7 +2,6 @@ package dev.creoii.greatbigworld.relicsandruins;
 
 import dev.creoii.greatbigworld.relicsandruins.registry.*;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
-import dev.creoii.greatbigworld.thealterworld.TheAlterworld;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -22,8 +21,5 @@ public class RelicsAndRuins implements ModInitializer {
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_LOWER);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK), GenerationStep.Feature.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_UPPER_COMMON);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK), GenerationStep.Feature.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_LOWER_COMMON);
-
-        TheAlterworld.registerRelic(TheAlterworld.RelicStructureType.JUNGLE_TEMPLE, RelicsAndRuinsItems.TEST_RELIC);
-        TheAlterworld.registerRelic(TheAlterworld.RelicStructureType.DESERT_TEMPLE, RelicsAndRuinsItems.TEST_RELIC);
     }
 }
