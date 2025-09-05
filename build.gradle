@@ -16,4 +16,5 @@ dependencies {
     common(project(path: ':swords-and-shields', configuration: 'namedElements')) { transitive false }
 
     common(project(path: ':lightning-flash', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':rotatable-sculk', configuration: 'namedElements')) { transitive false }
 }
