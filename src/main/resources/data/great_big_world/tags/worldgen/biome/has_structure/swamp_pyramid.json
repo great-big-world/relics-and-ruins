@@ -1,9 +1,9 @@
 {
   "values": [
     "minecraft:swamp",
-    "minecraft:swamp_river",
+    "great_big_world:swamp_river",
     "great_big_world:alter_swamp",
     "great_big_world:alter_swamp_river",
-    "great_big_world:mangrove_swamp"
+    "minecraft:mangrove_swamp"
   ]
 }
