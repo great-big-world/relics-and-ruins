@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:ice_spikes",
-    "minecraft:frozen_peaks"
+    "minecraft:frozen_peaks",
+    "great_big_world:alter_frozen_peaks"
   ]
 }
