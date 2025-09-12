@@ -62,7 +62,7 @@ public final class RelicsAndRuinsItems {
     public static Item SNOW_BRICK_SLAB;
     public static Item SNOW_BRICK_WALL;
 
-    public static Item TEST_RELIC;
+    public static Item MENDING_RELIC;
 
     public static Item DISC_FRAGMENT_RELIC;
 
@@ -113,7 +113,7 @@ public final class RelicsAndRuinsItems {
         SNOW_BRICK_SLAB = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.SNOW_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_SNOW_BRICK_SLAB, settings.useBlockPrefixedTranslationKey()));
         SNOW_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), RelicsAndRuinsBlocks.SNOW_BRICK_WALL);
 
-        TEST_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "test_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE)));
+        MENDING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "mending_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
 
         DISC_FRAGMENT_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DiscFragmentItem::new);
 
@@ -141,7 +141,7 @@ public final class RelicsAndRuinsItems {
             });
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.add(TEST_RELIC);
+            entries.add(MENDING_RELIC);
         });
 
         FuelRegistryEvents.BUILD.register((builder, context) -> {

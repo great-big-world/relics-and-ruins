@@ -39,7 +39,7 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
     public StructureTemplate.StructureBlockInfo process(WorldView world, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo currentBlockInfo, StructurePlacementData data) {
         Random random = data.getRandom(currentBlockInfo.pos().up());
 
-        if (currentBlockInfo.state().isOf(TheAlterworldBlocks.ANCIENT_MOSAIC) && !world.getRegistryManager().getOptional(RegistryKeys.DIMENSION_TYPE).get().getEntry(world.getDimension()).matchesKey(DimensionTypes.OVERWORLD)) {
+        if (currentBlockInfo.state().isOf(TheAlterworldBlocks.REINFORCED_DEEPSLATE) && !world.getRegistryManager().getOptional(RegistryKeys.DIMENSION_TYPE).get().getEntry(world.getDimension()).matchesKey(DimensionTypes.OVERWORLD)) {
             return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos(), RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), currentBlockInfo.nbt());
         }
 
