@@ -51,5 +51,19 @@
   "block.great_big_world.snow_brick_wall": "Snow Brick Wall",
 
   "item.great_big_world.disc_fragment_relic": "Disc Fragment",
-  "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic"
+  "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic",
+
+  "item.great_big_world.mending_relic": "Relic of Mending",
+  "item.great_big_world.infinity_relic": "Relic of Infinity",
+  "item.great_big_world.taming_relic": "Relic of Taming",
+  "item.great_big_world.reaching_relic": "Relic of Reaching",
+  "item.great_big_world.vision_relic": "Relic of Vision",
+  "item.great_big_world.thorns_relic": "Relic of Thorns",
+  "item.great_big_world.insight_relic": "Relic of Insight",
+  "item.great_big_world.fortune_relic": "Relic of Fortune",
+  "item.great_big_world.purging_relic": "Relic of Purging",
+  "item.great_big_world.silence_relic": "Relic of Silence",
+  "item.great_big_world.rampage_relic": "Relic of Rampage",
+  "item.great_big_world.nourishing_relic": "Relic of Nourishment",
+  "item.great_big_world.beheading_relic": "Relic of Beheading"
 }

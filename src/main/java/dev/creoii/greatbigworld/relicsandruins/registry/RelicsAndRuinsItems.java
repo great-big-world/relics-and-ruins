@@ -63,6 +63,18 @@ public final class RelicsAndRuinsItems {
     public static Item SNOW_BRICK_WALL;
 
     public static Item MENDING_RELIC;
+    public static Item INFINITY_RELIC;
+    public static Item TAMING_RELIC;
+    public static Item REACHING_RELIC;
+    public static Item VISION_RELIC;
+    public static Item THORNS_RELIC;
+    public static Item INSIGHT_RELIC;
+    public static Item FORTUNE_RELIC;
+    public static Item PURGING_RELIC;
+    public static Item SILENCE_RELIC;
+    public static Item RAMPAGE_RELIC;
+    public static Item NOURISHING_RELIC;
+    public static Item BEHEADING_RELIC;
 
     public static Item DISC_FRAGMENT_RELIC;
 
@@ -114,6 +126,18 @@ public final class RelicsAndRuinsItems {
         SNOW_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), RelicsAndRuinsBlocks.SNOW_BRICK_WALL);
 
         MENDING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "mending_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        INFINITY_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "infinity_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        TAMING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "taming_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        REACHING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "reaching_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        VISION_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "vision_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        THORNS_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "thorns_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        INSIGHT_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "insight_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        FORTUNE_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "fortune_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        PURGING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "purging_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        SILENCE_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "silence_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        RAMPAGE_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "rampage_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        NOURISHING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "nourishing_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
+        BEHEADING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "beheading_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
 
         DISC_FRAGMENT_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DiscFragmentItem::new);
 
@@ -141,7 +165,7 @@ public final class RelicsAndRuinsItems {
             });
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.add(MENDING_RELIC);
+            entries.addAfter(Items.SADDLE, MENDING_RELIC, INFINITY_RELIC, TAMING_RELIC, REACHING_RELIC, VISION_RELIC, THORNS_RELIC, INSIGHT_RELIC, FORTUNE_RELIC, PURGING_RELIC, SILENCE_RELIC, RAMPAGE_RELIC, NOURISHING_RELIC, BEHEADING_RELIC);
         });
 
         FuelRegistryEvents.BUILD.register((builder, context) -> {

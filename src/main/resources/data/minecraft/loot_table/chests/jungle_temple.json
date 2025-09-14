@@ -233,6 +233,20 @@
           "chance": 0.5
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:beheading_relic"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:infinity_relic"
+        }
+      ],
+      "conditions": []
     }
   ],
   "random_sequence": "minecraft:chests/jungle_temple"

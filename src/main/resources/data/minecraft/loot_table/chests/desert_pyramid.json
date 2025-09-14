@@ -218,6 +218,20 @@
           "chance": 0.5
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:thorns_relic"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:nourishing_relic"
+        }
+      ],
+      "conditions": []
     }
   ],
   "random_sequence": "minecraft:chests/desert_pyramid"

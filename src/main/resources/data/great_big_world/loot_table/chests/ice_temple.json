@@ -262,6 +262,20 @@
           "chance": 0.5
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:taming_relic"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:silence_relic"
+        }
+      ],
+      "conditions": []
     }
   ],
   "random_sequence": "great_big_world:chests/ice_temple"

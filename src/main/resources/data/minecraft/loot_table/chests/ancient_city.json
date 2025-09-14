@@ -345,6 +345,20 @@
           "chance": 0.25
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:mending_relic"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:rampage_relic"
+        }
+      ],
+      "conditions": []
     }
   ],
   "random_sequence": "minecraft:chests/ancient_city"
