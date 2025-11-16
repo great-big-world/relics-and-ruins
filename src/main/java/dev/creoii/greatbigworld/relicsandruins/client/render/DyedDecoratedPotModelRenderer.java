@@ -7,9 +7,8 @@ import dev.creoii.greatbigworld.util.ColorHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.entity.Sherds;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.DecoratedPotBlockEntityRenderer;
-import net.minecraft.client.render.entity.model.LoadedEntityModels;
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.item.model.special.SpecialModelRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.component.DataComponentTypes;
@@ -23,24 +22,16 @@ import java.util.Objects;
 import java.util.Set;
 
 @Environment(EnvType.CLIENT)
-public class DyedDecoratedPotModelRenderer implements SpecialModelRenderer<Sherds> {
-    private final DecoratedPotBlockEntityRenderer blockEntityRenderer;
-    private final DyeColor color;
-
-    public DyedDecoratedPotModelRenderer(DecoratedPotBlockEntityRenderer blockEntityRenderer, DyeColor color) {
-        this.blockEntityRenderer = blockEntityRenderer;
-        this.color = color;
-    }
-
+public record DyedDecoratedPotModelRenderer(DecoratedPotBlockEntityRenderer blockEntityRenderer, DyeColor color) implements SpecialModelRenderer<Sherds> {
     @Nullable
     public Sherds getData(ItemStack itemStack) {
         return itemStack.get(DataComponentTypes.POT_DECORATIONS);
     }
 
     @Override
-    public void render(@Nullable Sherds data, ItemDisplayContext displayContext, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, boolean glint) {
+    public void render(@Nullable Sherds data, ItemDisplayContext displayContext, MatrixStack matrices, OrderedRenderCommandQueue queue, int light, int overlay, boolean glint, int i) {
         if (blockEntityRenderer instanceof ExtendedDecoratedPotRender extendedDecoratedPotRender) {
-            extendedDecoratedPotRender.gbw$renderDyed(matrices, vertexConsumers, light, overlay, Objects.requireNonNullElse(data, Sherds.DEFAULT), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
+            extendedDecoratedPotRender.gbw$renderDyed(matrices, queue, light, overlay, Objects.requireNonNullElse(data, Sherds.DEFAULT), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
         }
     }
 
@@ -51,16 +42,17 @@ public class DyedDecoratedPotModelRenderer implements SpecialModelRenderer<Sherd
 
     @Environment(EnvType.CLIENT)
     public record Unbaked(@Nullable DyeColor color) implements SpecialModelRenderer.Unbaked {
-        public static final MapCodec<DyedDecoratedPotModelRenderer.Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> {
+        public static final MapCodec<Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> {
             return instance.group(DyeColor.CODEC.fieldOf("color").orElse(null).forGetter(unbaked -> unbaked.color)).apply(instance, Unbaked::new);
         });
 
-        public MapCodec<DyedDecoratedPotModelRenderer.Unbaked> getCodec() {
+        public MapCodec<Unbaked> getCodec() {
             return CODEC;
         }
 
-        public SpecialModelRenderer<?> bake(LoadedEntityModels entityModels) {
-            return new DyedDecoratedPotModelRenderer(new DecoratedPotBlockEntityRenderer(entityModels), color);
+        @Override
+        public @Nullable SpecialModelRenderer<?> bake(BakeContext context) {
+            return new DyedDecoratedPotModelRenderer(new DecoratedPotBlockEntityRenderer(context), color);
         }
     }
 }
