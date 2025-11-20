@@ -84,10 +84,11 @@ public abstract class DecoratedPotBlockEntityRendererMixin implements ExtendedDe
             rgb = new float[]{red(color.color), green(color.color), blue(color.color)};
         } else rgb = new float[]{red(BASE_COLOR), green(BASE_COLOR), blue(BASE_COLOR)};
 
+        RenderLayer renderLayer = BASE_SPRITE_ID.getRenderLayer(RenderLayer::getEntitySolid);
         Sprite sprite = materials.getSprite(BASE_SPRITE_ID);
-        queue.submitModelPart(neck, matrices, BASE_SPRITE_ID.getRenderLayer(RenderLayer::getEntitySolid), light, overlay, sprite, false, false, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]), null, 0);
-        queue.submitModelPart(top, matrices, BASE_SPRITE_ID.getRenderLayer(RenderLayer::getEntitySolid), light, overlay, sprite, false, false, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]), null, 0);
-        queue.submitModelPart(bottom, matrices, BASE_SPRITE_ID.getRenderLayer(RenderLayer::getEntitySolid), light, overlay, sprite, false, false, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]), null, 0);
+        queue.submitModelPart(neck, matrices, renderLayer, light, overlay, sprite, false, false, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]), null, 0);
+        queue.submitModelPart(top, matrices, renderLayer, light, overlay, sprite, false, false, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]), null, 0);
+        queue.submitModelPart(bottom, matrices, renderLayer, light, overlay, sprite, false, false, ColorHelper.fromFloats(1f, rgb[0], rgb[1], rgb[2]), null, 0);
         renderSide(front, matrices, queue, light, overlay, rgb);
         renderSide(back, matrices, queue, light, overlay, rgb);
         renderSide(left, matrices, queue, light, overlay, rgb);

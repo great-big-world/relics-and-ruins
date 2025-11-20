@@ -15,6 +15,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemDisplayContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DyeColor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
@@ -51,7 +52,7 @@ public record DyedDecoratedPotModelRenderer(DecoratedPotBlockEntityRenderer bloc
         }
 
         @Override
-        public @Nullable SpecialModelRenderer<?> bake(BakeContext context) {
+        public @NotNull SpecialModelRenderer<?> bake(BakeContext context) {
             return new DyedDecoratedPotModelRenderer(new DecoratedPotBlockEntityRenderer(context), color);
         }
     }
