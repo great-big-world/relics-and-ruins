@@ -64,29 +64,6 @@ public final class RelicsAndRuinsItems {
     public static Item SNOW_BRICK_WALL;
 
     public static Item ENGRAVED_STONE;
-    public static Item ENGRAVED_STONE_ANGLER;
-    public static Item ENGRAVED_STONE_ARCHER;
-    public static Item ENGRAVED_STONE_ARMS_UP;
-    public static Item ENGRAVED_STONE_BLADE;
-    public static Item ENGRAVED_STONE_BREWER;
-    public static Item ENGRAVED_STONE_BURN;
-    public static Item ENGRAVED_STONE_DANGER;
-    public static Item ENGRAVED_STONE_EXPLORER;
-    public static Item ENGRAVED_STONE_FLOW;
-    public static Item ENGRAVED_STONE_FRIEND;
-    public static Item ENGRAVED_STONE_GUSTER;
-    public static Item ENGRAVED_STONE_HEART;
-    public static Item ENGRAVED_STONE_HEARTBREAK;
-    public static Item ENGRAVED_STONE_HOWL;
-    public static Item ENGRAVED_STONE_MINER;
-    public static Item ENGRAVED_STONE_MOURNER;
-    public static Item ENGRAVED_STONE_PLENTY;
-    public static Item ENGRAVED_STONE_PRIZE;
-    public static Item ENGRAVED_STONE_SCRAPE;
-    public static Item ENGRAVED_STONE_SHEAF;
-    public static Item ENGRAVED_STONE_SHELTER;
-    public static Item ENGRAVED_STONE_SKULL;
-    public static Item ENGRAVED_STONE_SNORT;
 
     public static Item MENDING_RELIC;
     public static Item INFINITY_RELIC;
@@ -152,29 +129,6 @@ public final class RelicsAndRuinsItems {
         SNOW_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), RelicsAndRuinsBlocks.SNOW_BRICK_WALL);
 
         ENGRAVED_STONE = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone"), RelicsAndRuinsBlocks.ENGRAVED_STONE);
-        ENGRAVED_STONE_ANGLER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_angler"), RelicsAndRuinsBlocks.ENGRAVED_STONE_ANGLER);
-        ENGRAVED_STONE_ARCHER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_archer"), RelicsAndRuinsBlocks.ENGRAVED_STONE_ARCHER);
-        ENGRAVED_STONE_ARMS_UP = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_arms_up"), RelicsAndRuinsBlocks.ENGRAVED_STONE_ARMS_UP);
-        ENGRAVED_STONE_BLADE = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_blade"), RelicsAndRuinsBlocks.ENGRAVED_STONE_BLADE);
-        ENGRAVED_STONE_BREWER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_brewer"), RelicsAndRuinsBlocks.ENGRAVED_STONE_BREWER);
-        ENGRAVED_STONE_BURN = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_burn"), RelicsAndRuinsBlocks.ENGRAVED_STONE_BURN);
-        ENGRAVED_STONE_DANGER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_danger"), RelicsAndRuinsBlocks.ENGRAVED_STONE_DANGER);
-        ENGRAVED_STONE_EXPLORER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_explorer"), RelicsAndRuinsBlocks.ENGRAVED_STONE_EXPLORER);
-        ENGRAVED_STONE_FLOW = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_flow"), RelicsAndRuinsBlocks.ENGRAVED_STONE_FLOW);
-        ENGRAVED_STONE_FRIEND = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_friend"), RelicsAndRuinsBlocks.ENGRAVED_STONE_FRIEND);
-        ENGRAVED_STONE_GUSTER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_guster"), RelicsAndRuinsBlocks.ENGRAVED_STONE_GUSTER);
-        ENGRAVED_STONE_HEART = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_heart"), RelicsAndRuinsBlocks.ENGRAVED_STONE_HEART);
-        ENGRAVED_STONE_HEARTBREAK = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_heartbreak"), RelicsAndRuinsBlocks.ENGRAVED_STONE_HEARTBREAK);
-        ENGRAVED_STONE_HOWL = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_howl"), RelicsAndRuinsBlocks.ENGRAVED_STONE_HOWL);
-        ENGRAVED_STONE_MINER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_miner"), RelicsAndRuinsBlocks.ENGRAVED_STONE_MINER);
-        ENGRAVED_STONE_MOURNER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_mourner"), RelicsAndRuinsBlocks.ENGRAVED_STONE_MOURNER);
-        ENGRAVED_STONE_PLENTY = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_plenty"), RelicsAndRuinsBlocks.ENGRAVED_STONE_PLENTY);
-        ENGRAVED_STONE_PRIZE = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_prize"), RelicsAndRuinsBlocks.ENGRAVED_STONE_PRIZE);
-        ENGRAVED_STONE_SCRAPE = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_scrape"), RelicsAndRuinsBlocks.ENGRAVED_STONE_SCRAPE);
-        ENGRAVED_STONE_SHEAF = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_sheaf"), RelicsAndRuinsBlocks.ENGRAVED_STONE_SHEAF);
-        ENGRAVED_STONE_SHELTER = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_shelter"), RelicsAndRuinsBlocks.ENGRAVED_STONE_SHELTER);
-        ENGRAVED_STONE_SKULL = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_skull"), RelicsAndRuinsBlocks.ENGRAVED_STONE_SKULL);
-        ENGRAVED_STONE_SNORT = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone_snort"), RelicsAndRuinsBlocks.ENGRAVED_STONE_SNORT);
 
         MENDING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "mending_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
         INFINITY_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "infinity_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
