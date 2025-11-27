@@ -14,6 +14,7 @@ import net.minecraft.block.entity.Sherds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.Unit;
 
 public final class RelicsAndRuinsItems {
@@ -128,7 +129,7 @@ public final class RelicsAndRuinsItems {
         SNOW_BRICK_SLAB = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.SNOW_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_SNOW_BRICK_SLAB, settings.useBlockPrefixedTranslationKey()));
         SNOW_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), RelicsAndRuinsBlocks.SNOW_BRICK_WALL);
 
-        ENGRAVED_STONE = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone"), RelicsAndRuinsBlocks.ENGRAVED_STONE);
+        ENGRAVED_STONE = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone"), RelicsAndRuinsBlocks.ENGRAVED_STONE, new Item.Settings().rarity(Rarity.UNCOMMON));
 
         MENDING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "mending_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
         INFINITY_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "infinity_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
