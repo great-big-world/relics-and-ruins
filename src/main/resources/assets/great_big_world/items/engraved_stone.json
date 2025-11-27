@@ -1,0 +1,170 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "great_big_world:engraving",
+    "cases": [
+      {
+        "when": "angler",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler"
+        }
+      },
+      {
+        "when": "archer",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer"
+        }
+      },
+      {
+        "when": "arms_up",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up"
+        }
+      },
+      {
+        "when": "blade",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade"
+        }
+      },
+      {
+        "when": "brewer",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer"
+        }
+      },
+      {
+        "when": "burn",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn"
+        }
+      },
+      {
+        "when": "danger",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger"
+        }
+      },
+      {
+        "when": "explorer",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer"
+        }
+      },
+      {
+        "when": "flow",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow"
+        }
+      },
+      {
+        "when": "friend",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend"
+        }
+      },
+      {
+        "when": "guster",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster"
+        }
+      },
+      {
+        "when": "heart",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart"
+        }
+      },
+      {
+        "when": "heartbreak",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak"
+        }
+      },
+      {
+        "when": "howl",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl"
+        }
+      },
+      {
+        "when": "miner",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner"
+        }
+      },
+      {
+        "when": "mourner",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner"
+        }
+      },
+      {
+        "when": "plenty",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty"
+        }
+      },
+      {
+        "when": "prize",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize"
+        }
+      },
+      {
+        "when": "scrape",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape"
+        }
+      },
+      {
+        "when": "sheaf",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf"
+        }
+      },
+      {
+        "when": "shelter",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter"
+        }
+      },
+      {
+        "when": "skull",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull"
+        }
+      },
+      {
+        "when": "snort",
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort"
+        }
+      }
+    ]
+  }
+}

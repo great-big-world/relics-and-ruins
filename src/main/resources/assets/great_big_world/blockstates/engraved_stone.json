@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "engraving=angler": { "model": "great_big_world:block/engraved_stone_angler" },
+    "engraving=archer": { "model": "great_big_world:block/engraved_stone_archer" },
+    "engraving=arms_up": { "model": "great_big_world:block/engraved_stone_arms_up" },
+    "engraving=blade": { "model": "great_big_world:block/engraved_stone_blade" },
+    "engraving=brewer": { "model": "great_big_world:block/engraved_stone_brewer" },
+    "engraving=burn": { "model": "great_big_world:block/engraved_stone_burn" },
+    "engraving=danger": { "model": "great_big_world:block/engraved_stone_danger" },
+    "engraving=explorer": { "model": "great_big_world:block/engraved_stone_explorer" },
+    "engraving=flow": { "model": "great_big_world:block/engraved_stone_flow" },
+    "engraving=friend": { "model": "great_big_world:block/engraved_stone_friend" },
+    "engraving=guster": { "model": "great_big_world:block/engraved_stone_guster" },
+    "engraving=heart": { "model": "great_big_world:block/engraved_stone_heart" },
+    "engraving=heartbreak": { "model": "great_big_world:block/engraved_stone_heartbreak" },
+    "engraving=howl": { "model": "great_big_world:block/engraved_stone_howl" },
+    "engraving=miner": { "model": "great_big_world:block/engraved_stone_miner" },
+    "engraving=mourner": { "model": "great_big_world:block/engraved_stone_mourner" },
+    "engraving=plenty": { "model": "great_big_world:block/engraved_stone_plenty" },
+    "engraving=prize": { "model": "great_big_world:block/engraved_stone_prize" },
+    "engraving=scrape": { "model": "great_big_world:block/engraved_stone_scrape" },
+    "engraving=sheaf": { "model": "great_big_world:block/engraved_stone_sheaf" },
+    "engraving=shelter": { "model": "great_big_world:block/engraved_stone_shelter" },
+    "engraving=skull": { "model": "great_big_world:block/engraved_stone_skull" },
+    "engraving=snort": { "model": "great_big_world:block/engraved_stone_snort" }
+  }
+}

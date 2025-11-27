@@ -46,6 +46,7 @@ public class RelicsAndRuins implements ModInitializer {
         RelicsAndRuinsItems.register();
         RelicsAndRuinsStructureProcessors.register();
         RelicsAndRuinsPotions.register();
+        RelicsAndRuinsDataComponentTypes.register();
 
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_UPPER);
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_LOWER);
