@@ -17,21 +17,21 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class KnowledgeBlock extends Block {
+public abstract class KnowledgeBlock extends Block {
     public static final BooleanProperty NATURAL = BooleanProperty.of("natural");
-    private final Pool<Knowledge> knowledgePool;
 
-    public KnowledgeBlock(Settings settings, Pool<Knowledge> knowledgePool) {
+    public KnowledgeBlock(Settings settings) {
         super(settings);
-        this.knowledgePool = knowledgePool;
         setDefaultState(getStateManager().getDefaultState().with(NATURAL, true));
     }
+
+    public abstract Pool<Knowledge> getKnowledgePool(BlockState state);
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient() && state.get(NATURAL) && player.getStackInHand(player.getActiveHand()).isEmpty()) {
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-            Knowledge knowledge = knowledgePool.get(world.random);
+            Knowledge knowledge = getKnowledgePool(state).get(world.random);
             if (knowledgeManager.learn(player, knowledge)) {
                 ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(knowledge.type(), Sets.newHashSet(knowledge)));
                 return ActionResult.SUCCESS_SERVER;

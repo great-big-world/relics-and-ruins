@@ -122,7 +122,8 @@ public final class RelicsAndRuinsBlocks {
         VERTICAL_SNOW_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "vertical_snow_brick_slab"), VerticalSlabBlock::new, AbstractBlock.Settings.copy(SNOW_BRICKS));
         SNOW_BRICK_WALL = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "snow_brick_wall"), WallBlock::new, AbstractBlock.Settings.copy(SNOW_BRICKS));
 
-        ENGRAVED_STONE = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone"), settings -> new EngravedStoneBlock(settings, Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FIRE_ASPECT.getValue())).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FLAME.getValue())).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FIRE_PROTECTION.getValue())).add(new Knowledge(Knowledge.Type.POTTERY_SHERD, DecoratedPotPatterns.BURN.getValue())).add(new Knowledge(Knowledge.Type.ARMOR_TRIM, ArmorTrimPatterns.RIB.getValue())).build()), AbstractBlock.Settings.copy(Blocks.STONE));
+        ENGRAVED_STONE = RegistryHelper.registerBlock(Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone"), EngravedStoneBlock::new, AbstractBlock.Settings.copy(Blocks.STONE));
+
         BlockEntityType.DECORATED_POT.addSupportedBlock(BROWN_DECORATED_POT);
         BlockEntityType.DECORATED_POT.addSupportedBlock(RED_DECORATED_POT);
         BlockEntityType.DECORATED_POT.addSupportedBlock(ORANGE_DECORATED_POT);

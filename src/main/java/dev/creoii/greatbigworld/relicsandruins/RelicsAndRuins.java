@@ -7,6 +7,7 @@ import dev.creoii.greatbigworld.knowledge.KnowledgeManager;
 import dev.creoii.greatbigworld.knowledge.KnowledgeUtil;
 import dev.creoii.greatbigworld.relicsandruins.registry.*;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
+import dev.creoii.greatbigworld.thealterworld.TheAlterworld;
 import dev.creoii.greatbigworld.util.network.LearnKnowledgeS2C;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -46,12 +47,15 @@ public class RelicsAndRuins implements ModInitializer {
         RelicsAndRuinsItems.register();
         RelicsAndRuinsStructureProcessors.register();
         RelicsAndRuinsPotions.register();
+        RelicsAndRuinsFeatures.register();
         RelicsAndRuinsDataComponentTypes.register();
 
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_UPPER);
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_LOWER);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK), GenerationStep.Feature.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_UPPER_COMMON);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK), GenerationStep.Feature.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_LOWER_COMMON);
+
+        BiomeModifications.addFeature(TheAlterworld.foundInOverworldLike(), GenerationStep.Feature.UNDERGROUND_ORES, RelicsAndRuinsPlacedFeatures.CAVE_PAINTING);
 
         ItemEvents.PICKUP.register((player, itemEntity) -> {
             ItemStack stack = itemEntity.getStack();

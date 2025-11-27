@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "great_big_world:block/tinted_overlay_cube_all",
   "textures": {
-    "all": "great_big_world:block/engraved_stone_explorer"
+    "all": "block/stone",
+    "overlay": "great_big_world:block/engraving_explorer"
   }
 }

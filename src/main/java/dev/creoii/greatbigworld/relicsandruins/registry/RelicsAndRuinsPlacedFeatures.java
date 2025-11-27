@@ -9,4 +9,5 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 public final class RelicsAndRuinsPlacedFeatures {
     public static final RegistryKey<PlacedFeature> FOSSIL_UPPER_COMMON = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(GreatBigWorld.NAMESPACE, "fossil_upper_common"));
     public static final RegistryKey<PlacedFeature> FOSSIL_LOWER_COMMON = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(GreatBigWorld.NAMESPACE, "fossil_lower_common"));
+    public static final RegistryKey<PlacedFeature> CAVE_PAINTING = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(GreatBigWorld.NAMESPACE, "cave_painting"));
 }

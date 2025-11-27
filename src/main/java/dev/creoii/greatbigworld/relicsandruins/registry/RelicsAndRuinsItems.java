@@ -13,6 +13,7 @@ import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.block.entity.Sherds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.*;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Unit;
@@ -156,7 +157,7 @@ public final class RelicsAndRuinsItems {
             entries.addAfter(Items.DECORATED_POT, WHITE_DECORATED_POT, LIGHT_GRAY_DECORATED_POT, GRAY_DECORATED_POT, BLACK_DECORATED_POT, BROWN_DECORATED_POT, RED_DECORATED_POT, ORANGE_DECORATED_POT, YELLOW_DECORATED_POT, LIME_DECORATED_POT, GREEN_DECORATED_POT, CYAN_DECORATED_POT, LIGHT_BLUE_DECORATED_POT, BLUE_DECORATED_POT, PURPLE_DECORATED_POT, MAGENTA_DECORATED_POT, PINK_DECORATED_POT);
             for (EngravedStoneBlock.Engraving engraving : EngravedStoneBlock.Engraving.values()) {
                 ItemStack stack = new ItemStack(ENGRAVED_STONE);
-                stack.set(RelicsAndRuinsDataComponentTypes.ENGRAVING, engraving);
+                stack.set(RelicsAndRuinsDataComponentTypes.ENGRAVING, new EngravedStoneBlock.Data(engraving, DyeColor.WHITE));
                 entries.addAfter(Items.WAXED_OXIDIZED_COPPER_GOLEM_STATUE, stack);
             }
         });
