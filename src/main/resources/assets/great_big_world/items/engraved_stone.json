@@ -5,164 +5,2962 @@
     "component": "great_big_world:engraving",
     "cases": [
       {
-        "when": "angler",
+        "when": {"engraving": "angler"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_angler"
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "archer",
+        "when": {"engraving": "archer"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_archer"
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "arms_up",
+        "when": {"engraving": "arms_up"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_arms_up"
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "blade",
+        "when": {"engraving": "blade"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_blade"
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "brewer",
+        "when": {"engraving": "brewer"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_brewer"
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "burn",
+        "when": {"engraving": "burn"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_burn"
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "danger",
+        "when": {"engraving": "danger"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_danger"
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "explorer",
+        "when": {"engraving": "explorer"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_explorer"
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "flow",
+        "when": {"engraving": "flow"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_flow"
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "friend",
+        "when": {"engraving": "friend"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_friend"
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "guster",
+        "when": {"engraving": "guster"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_guster"
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "heart",
+        "when": {"engraving": "heart"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_heart"
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "heartbreak",
+        "when": {"engraving": "heartbreak"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_heartbreak"
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "howl",
+        "when": {"engraving": "howl"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_howl"
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "miner",
+        "when": {"engraving": "miner"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_miner"
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "mourner",
+        "when": {"engraving": "mourner"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_mourner"
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "plenty",
+        "when": {"engraving": "plenty"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_plenty"
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "prize",
+        "when": {"engraving": "prize"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_prize"
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "scrape",
+        "when": {"engraving": "scrape"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_scrape"
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "sheaf",
+        "when": {"engraving": "sheaf"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_sheaf"
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "shelter",
+        "when": {"engraving": "shelter"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_shelter"
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "skull",
+        "when": {"engraving": "skull"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_skull"
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       },
       {
-        "when": "snort",
+        "when": {"engraving": "snort"},
         "model": {
           "type": "minecraft:model",
-          "model": "great_big_world:block/engraved_stone_snort"
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "light_gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "gray"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "black"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "brown"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "red"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "orange"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "yellow"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "lime"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "green"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "light_blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "cyan"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "blue"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "purple"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "magenta"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+
+      {
+        "when": {"engraving": "angler","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_angler",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "archer","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_archer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "arms_up","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_arms_up",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "blade","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_blade",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "brewer","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_brewer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "burn","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_burn",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "danger","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_danger",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "explorer","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_explorer",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "flow","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_flow",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "friend","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_friend",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "guster","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_guster",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heart","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heart",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "heartbreak","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_heartbreak",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "howl","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_howl",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "miner","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_miner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "mourner","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_mourner",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "plenty","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_plenty",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "prize","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_prize",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "scrape","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_scrape",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "sheaf","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_sheaf",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "shelter","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_shelter",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "skull","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_skull",
+          "tints": [{"type": "great_big_world:engraving_color"}]
+        }
+      },
+      {
+        "when": {"engraving": "snort","color": "pink"},
+        "model": {
+          "type": "minecraft:model",
+          "model": "great_big_world:block/engraved_stone_snort",
+          "tints": [{"type": "great_big_world:engraving_color"}]
         }
       }
     ]

@@ -1,4 +1,24 @@
 {
   "type": "great_big_world:cave_painting",
-  "config": {}
+  "config": {
+    "state_provider": {
+      "type": "great_big_world:engraved_stone"
+    },
+    "line_length": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 1,
+      "max_inclusive": 5
+    },
+    "line_count": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 2,
+      "max_inclusive": 3
+    },
+    "line_padding": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 0,
+      "max_inclusive": 2
+    },
+    "search_radius": 2
+  }
 }

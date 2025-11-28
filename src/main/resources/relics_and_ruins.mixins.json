@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
+    "ItemStackMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
     "entity.LivingEntityMixin"
@@ -12,7 +13,8 @@
   "client": [
     "client.DecoratedPotBlockEntityRendererMixin",
     "client.DecoratedPotBlockEntityRenderStateMixin",
-    "client.SpecialModelTypesMixin"
+    "client.SpecialModelTypesMixin",
+    "client.TintSourceTypesMixin"
   ],
   "injectors": {
     "defaultRequire": 1

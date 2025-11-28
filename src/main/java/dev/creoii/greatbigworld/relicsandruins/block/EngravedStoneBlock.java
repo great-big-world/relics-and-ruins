@@ -8,29 +8,33 @@ import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.component.ComponentsAccess;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipAppender;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.loot.context.LootWorldContext;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DyeColor;
-import net.minecraft.util.Hand;
-import net.minecraft.util.StringIdentifiable;
+import net.minecraft.text.Text;
+import net.minecraft.util.*;
 import net.minecraft.util.collection.Pool;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class EngravedStoneBlock extends KnowledgeBlock {
     public static final EnumProperty<Engraving> ENGRAVING = EnumProperty.of("engraving", Engraving.class);
@@ -140,11 +144,11 @@ public class EngravedStoneBlock extends KnowledgeBlock {
         }
     }
 
-    public record Data(Engraving engraving, DyeColor color) {
+    public record Data(Engraving engraving, DyeColor color) implements TooltipAppender {
         public static final Codec<Data> CODEC = RecordCodecBuilder.create(instance -> {
             return instance.group(
                     Engraving.CODEC.fieldOf("engraving").forGetter(Data::engraving),
-                    DyeColor.CODEC.fieldOf("color").forGetter(Data::color)
+                    DyeColor.CODEC.fieldOf("color").orElse(DyeColor.WHITE).forGetter(Data::color)
             ).apply(instance, Data::new);
         });
         public static final PacketCodec<RegistryByteBuf, Data> PACKET_CODEC = PacketCodec.of(Data::write, Data::read);
@@ -158,6 +162,11 @@ public class EngravedStoneBlock extends KnowledgeBlock {
             Engraving engraving = Engraving.values()[buf.readInt()];
             DyeColor color = DyeColor.values()[buf.readInt()];
             return new Data(engraving, color);
+        }
+
+        @Override
+        public void appendTooltip(Item.TooltipContext context, Consumer<Text> textConsumer, TooltipType type, ComponentsAccess components) {
+            textConsumer.accept(Text.translatable("item.engraving", StringUtils.capitalize(engraving.asString())).formatted(Formatting.GRAY));
         }
     }
 }

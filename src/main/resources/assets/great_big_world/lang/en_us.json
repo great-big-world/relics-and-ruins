@@ -67,5 +67,7 @@
   "item.great_big_world.silence_relic": "Relic of Silence",
   "item.great_big_world.rampage_relic": "Relic of Rampage",
   "item.great_big_world.nourishing_relic": "Relic of Nourishment",
-  "item.great_big_world.beheading_relic": "Relic of Beheading"
+  "item.great_big_world.beheading_relic": "Relic of Beheading",
+
+  "item.engraving": "%s"
 }
