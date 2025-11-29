@@ -1,5 +1,6 @@
 package dev.creoii.greatbigworld.relicsandruins.mixin;
 
+import dev.creoii.greatbigworld.registry.GBWDataComponentTypes;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponentTypes;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.type.TooltipDisplayComponent;
@@ -25,5 +26,6 @@ public abstract class ItemStackMixin {
     @Inject(method = "appendTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;appendComponentTooltip(Lnet/minecraft/component/ComponentType;Lnet/minecraft/item/Item$TooltipContext;Lnet/minecraft/component/type/TooltipDisplayComponent;Ljava/util/function/Consumer;Lnet/minecraft/item/tooltip/TooltipType;)V", ordinal = 2))
     private void gbw$appendCustomComponentTooltips(Item.TooltipContext context, TooltipDisplayComponent displayComponent, PlayerEntity player, TooltipType type, Consumer<Text> textConsumer, CallbackInfo ci) {
         appendComponentTooltip(RelicsAndRuinsDataComponentTypes.ENGRAVING, context, displayComponent, textConsumer, type);
+        appendComponentTooltip(GBWDataComponentTypes.KNOWLEDGE, context, displayComponent, textConsumer, type);
     }
 }

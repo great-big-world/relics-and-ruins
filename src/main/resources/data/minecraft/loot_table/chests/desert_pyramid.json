@@ -224,14 +224,47 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "great_big_world:thorns_relic"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "great_big_world:nourishing_relic"
+          "name": "great_big_world:knowledge_book",
+          "functions": [
+            {
+              "function": "great_big_world:random_knowledge",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "knowledge": [
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:bane_of_arthropods"
+                },
+                {
+                  "type": "armor_trim",
+                  "data": "minecraft:dune"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:flow"
+                },
+                {
+                  "type": "banner_pattern",
+                  "data": "minecraft:flow"
+                },
+                {
+                  "type": "banner_pattern",
+                  "data": "minecraft:bricks"
+                }
+              ]
+            }
+          ]
         }
       ],
-      "conditions": []
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.25
+        }
+      ]
     }
   ],
   "random_sequence": "minecraft:chests/desert_pyramid"

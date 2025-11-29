@@ -4,6 +4,7 @@ import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.architectsassembly.item.SlabItem;
 import dev.creoii.greatbigworld.architectsassembly.registry.ArchitectsAssemblyItems;
 import dev.creoii.greatbigworld.relicsandruins.block.EngravedStoneBlock;
+import dev.creoii.greatbigworld.relicsandruins.item.KnowledgeBookItem;
 import dev.creoii.greatbigworld.thealterworld.item.RelicItem;
 import dev.creoii.greatbigworld.thealterworld.registry.TheAlterworldDataComponentTypes;
 import dev.creoii.greatbigworld.util.RegistryHelper;
@@ -83,6 +84,8 @@ public final class RelicsAndRuinsItems {
 
     public static Item DISC_FRAGMENT_RELIC;
 
+    public static Item KNOWLEDGE_BOOK;
+
     public static void register() {
         BROWN_DECORATED_POT = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "brown_decorated_pot"), RelicsAndRuinsBlocks.BROWN_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
         RED_DECORATED_POT = RegistryHelper.registerBlockItem(Identifier.of(GreatBigWorld.NAMESPACE, "red_decorated_pot"), RelicsAndRuinsBlocks.RED_DECORATED_POT, new Item.Settings().component(DataComponentTypes.POT_DECORATIONS, Sherds.DEFAULT));
@@ -147,6 +150,8 @@ public final class RelicsAndRuinsItems {
         BEHEADING_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "beheading_relic"), settings -> new RelicItem(settings.maxDamage(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
 
         DISC_FRAGMENT_RELIC = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DiscFragmentItem::new);
+
+        KNOWLEDGE_BOOK = RegistryHelper.registerItem(Identifier.of(GreatBigWorld.NAMESPACE, "knowledge_book"), settings -> new KnowledgeBookItem(settings.rarity(Rarity.UNCOMMON)));
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.addAfter(Items.COBBLESTONE_WALL, COBBLESTONE_BRICKS, COBBLESTONE_BRICK_STAIRS, COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_WALL, COBBLESTONE_BRICK_PILLAR, CHISELED_COBBLESTONE_BRICKS);

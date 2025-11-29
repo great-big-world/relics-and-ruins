@@ -11,14 +11,14 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5,
+                "max": 3,
                 "min": 1
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:gold_nugget",
-          "weight": 10
+          "name": "minecraft:diamond",
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -27,7 +27,7 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5,
+                "max": 3,
                 "min": 1
               },
               "function": "minecraft:set_count"
@@ -38,19 +38,28 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:golden_sword",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_chestplate",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:flint",
+          "weight": 5,
           "functions": [
             {
-              "add": false,
+              "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
-                "max": 7,
-                "min": 2
-              },
-              "function": "minecraft:set_count"
+                "min": 2,
+                "max": 6
+              }
             }
-          ],
-          "name": "minecraft:bamboo",
-          "weight": 15
+          ]
         },
         {
           "type": "minecraft:item",
@@ -59,134 +68,75 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 2,
-                "min": 1
+                "max": 7,
+                "min": 3
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:emerald",
+          "name": "minecraft:nether_wart",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4,
+                "min": 2
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:obsidian",
           "weight": 2
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 6,
-                "min": 2
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:bone",
-          "weight": 20
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 7,
-                "min": 2
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:rotten_flesh",
-          "weight": 16
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4,
-                "min": 2
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:moss_block",
-          "weight": 16
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 5,
-                "min": 1
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:vine",
-          "weight": 16
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 4,
-                "min": 1
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:cookie",
-          "weight": 16
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 7,
-                "min": 2
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:melon_slice",
-          "weight": 16
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 6,
+        "max": 4,
         "min": 2
       }
     },
     {
       "rolls": {
         "type": "minecraft:uniform",
-        "min": 0,
-        "max": 1
+        "max": 2,
+        "min": 0
       },
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:red_bundle"
-        }
-      ],
-      "conditions": [
+          "name": "minecraft:golden_horse_armor",
+          "weight": 8
+        },
         {
-          "condition": "minecraft:random_chance",
-          "chance": 0.75
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_horse_armor",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:awkward"
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1,
+                "min": 3
+              },
+              "add": false
+            }
+          ]
         }
       ]
     },
@@ -200,7 +150,7 @@
           "functions": [
             {
               "function": "minecraft:set_potion",
-              "id": "minecraft:leaping"
+              "id": "minecraft:fire_resistance"
             }
           ]
         },
@@ -211,18 +161,7 @@
           "functions": [
             {
               "function": "minecraft:set_potion",
-              "id": "minecraft:long_leaping"
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 1,
-          "name": "minecraft:potion",
-          "functions": [
-            {
-              "function": "minecraft:set_potion",
-              "id": "minecraft:strong_leaping"
+              "id": "minecraft:long_fire_resistance"
             }
           ]
         }
@@ -235,7 +174,7 @@
       ]
     },
     {
-      "rolls": 1,
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:item",
@@ -246,32 +185,64 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min_inclusive": 1,
-                "max_inclusive": 2
+                "max_inclusive": 3
               },
               "knowledge": [
                 {
                   "type": "enchantment",
-                  "data": "minecraft:bane_of_arthropods"
+                  "data": "minecraft:soul_speed"
                 },
                 {
                   "type": "enchantment",
-                  "data": "minecraft:projectile_protection"
+                  "data": "minecraft:smite"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:flame"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:fire_aspect"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:fire_protection"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:fortune"
                 },
                 {
                   "type": "armor_trim",
-                  "data": "minecraft:wild"
+                  "data": "minecraft:rib"
                 },
                 {
                   "type": "pottery_sherd",
-                  "data": "minecraft:archer"
+                  "data": "minecraft:burn"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:blade"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:skull"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:brewer"
                 },
                 {
                   "type": "banner_pattern",
-                  "data": "minecraft:creeper"
+                  "data": "minecraft:curly_border"
                 },
                 {
                   "type": "banner_pattern",
-                  "data": "minecraft:flower"
+                  "data": "minecraft:skull"
+                },
+                {
+                  "type": "banner_pattern",
+                  "data": "minecraft:bricks"
                 }
               ]
             }
@@ -283,8 +254,9 @@
           "condition": "minecraft:random_chance",
           "chance": 0.25
         }
-      ]
+      ],
+      "rolls": 1
     }
   ],
-  "random_sequence": "minecraft:chests/jungle_temple"
+  "random_sequence": "minecraft:chests/nether_bridge"
 }

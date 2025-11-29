@@ -351,14 +351,71 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "great_big_world:mending_relic"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "great_big_world:rampage_relic"
+          "name": "great_big_world:knowledge_book",
+          "functions": [
+            {
+              "function": "great_big_world:random_knowledge",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 3
+              },
+              "knowledge": [
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:swift_sneak"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:mending"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:vanishing_curse"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:binding_curse"
+                },
+                {
+                  "type": "armor_trim",
+                  "data": "minecraft:silence"
+                },
+                {
+                  "type": "armor_trim",
+                  "data": "minecraft:ward"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:mourner"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:skull"
+                },
+                {
+                  "type": "banner_pattern",
+                  "data": "minecraft:skull"
+                },
+                {
+                  "type": "banner_pattern",
+                  "data": "minecraft:globe"
+                },
+                {
+                  "type": "banner_pattern",
+                  "data": "minecraft:mojang"
+                }
+              ]
+            }
+          ]
         }
       ],
-      "conditions": []
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.25
+        }
+      ]
     }
   ],
   "random_sequence": "minecraft:chests/ancient_city"

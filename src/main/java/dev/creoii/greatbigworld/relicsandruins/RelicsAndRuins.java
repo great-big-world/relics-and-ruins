@@ -20,6 +20,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.SmithingTemplateItem;
@@ -50,6 +51,7 @@ public class RelicsAndRuins implements ModInitializer {
         RelicsAndRuinsFeatures.register();
         RelicsAndRuinsDataComponentTypes.register();
         RelicsAndRuinsBlockStateProviderTypes.register();
+        RelicsAndRuinsLootFunctionTypes.register();
 
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_UPPER);
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_LOWER);
@@ -59,120 +61,122 @@ public class RelicsAndRuins implements ModInitializer {
         BiomeModifications.addFeature(TheAlterworld.foundInOverworldLike(), GenerationStep.Feature.UNDERGROUND_ORES, RelicsAndRuinsPlacedFeatures.CAVE_PAINTING);
 
         ItemEvents.PICKUP.register((player, itemEntity) -> {
-            ItemStack stack = itemEntity.getStack();
+            tryLearnFrom(player, itemEntity.getStack());
+        });
+    }
 
-            if (stack.contains(DataComponentTypes.POT_DECORATIONS)) {
-                World world = player.getEntityWorld();
-                Sherds sherds = stack.get(DataComponentTypes.POT_DECORATIONS);
+    private static void tryLearnFrom(PlayerEntity player, ItemStack stack) {
+        if (stack.contains(DataComponentTypes.POT_DECORATIONS)) {
+            World world = player.getEntityWorld();
+            Sherds sherds = stack.get(DataComponentTypes.POT_DECORATIONS);
 
-                if (sherds == Sherds.DEFAULT || world.isClient())
-                    return;
+            if (sherds == Sherds.DEFAULT || world.isClient())
+                return;
 
-                KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Set<Knowledge> knowledges = new HashSet<>();
-                sherds.toList().forEach(item -> {
-                    if (item != Items.BRICK) {
-                        Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, Registries.ITEM.getId(item));
-                        knowledges.add(knowledge);
-                        knowledgeManager.learn(player, knowledge);
-                    }
-                });
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, knowledges));
-            } else if (stack.isIn(ItemTags.DECORATED_POT_SHERDS)) {
-                World world = player.getEntityWorld();
-
-                if (world.isClient())
-                    return;
-
-                KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, Registries.ITEM.getId(stack.getItem()));
-                knowledgeManager.learn(player, knowledge);
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, Sets.newHashSet(knowledge)));
-            } else if (stack.hasEnchantments()) {
-                World world = player.getEntityWorld();
-                ItemEnchantmentsComponent itemEnchantmentsComponent = stack.getEnchantments();
-
-                if (world.isClient())
-                    return;
-
-                Registry<Enchantment> enchantmentRegistry = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
-                KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Set<Knowledge> knowledges = new HashSet<>();
-                itemEnchantmentsComponent.getEnchantments().forEach(enchantmentRegistryEntry -> {
-                    Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getId(enchantmentRegistryEntry.value()));
+            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
+            Set<Knowledge> knowledges = new HashSet<>();
+            sherds.toList().forEach(item -> {
+                if (item != Items.BRICK) {
+                    Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, Registries.ITEM.getId(item));
                     knowledges.add(knowledge);
                     knowledgeManager.learn(player, knowledge);
-                });
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
-            } else if (stack.contains(DataComponentTypes.STORED_ENCHANTMENTS)) {
-                World world = player.getEntityWorld();
-                ItemEnchantmentsComponent itemEnchantmentsComponent = stack.get(DataComponentTypes.STORED_ENCHANTMENTS);
-
-                if (world.isClient())
-                    return;
-
-                Registry<Enchantment> enchantmentRegistry = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
-                KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Set<Knowledge> knowledges = new HashSet<>();
-                itemEnchantmentsComponent.getEnchantments().forEach(enchantmentRegistryEntry -> {
-                    Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getId(enchantmentRegistryEntry.value()));
-                    knowledges.add(knowledge);
-                    knowledgeManager.learn(player, knowledge);
-                });
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
-            } else if (stack.getItem() instanceof SmithingTemplateItem smithingTemplateItem) {
-                if (stack.isOf(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
-                    return;
-                
-                RegistryKey<ArmorTrimPattern> armorTrimPattern = KnowledgeUtil.getArmorTrimPatternFromStack(stack);
-
-                if (armorTrimPattern != null) {
-                    World world = player.getEntityWorld();
-                    Registry<ArmorTrimPattern> armorTrimPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN);
-                    KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                    Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getId(armorTrimPatterns.get(armorTrimPattern)));
-                    if (knowledgeManager.learn(player, knowledge)) {
-                        ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
-                    }
                 }
-            } else if (stack.contains(DataComponentTypes.TRIM)) {
+            });
+            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, knowledges));
+        } else if (stack.isIn(ItemTags.DECORATED_POT_SHERDS)) {
+            World world = player.getEntityWorld();
+
+            if (world.isClient())
+                return;
+
+            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
+            Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, Registries.ITEM.getId(stack.getItem()));
+            knowledgeManager.learn(player, knowledge);
+            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, Sets.newHashSet(knowledge)));
+        } else if (stack.hasEnchantments()) {
+            World world = player.getEntityWorld();
+            ItemEnchantmentsComponent itemEnchantmentsComponent = stack.getEnchantments();
+
+            if (world.isClient())
+                return;
+
+            Registry<Enchantment> enchantmentRegistry = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
+            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
+            Set<Knowledge> knowledges = new HashSet<>();
+            itemEnchantmentsComponent.getEnchantments().forEach(enchantmentRegistryEntry -> {
+                Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getId(enchantmentRegistryEntry.value()));
+                knowledges.add(knowledge);
+                knowledgeManager.learn(player, knowledge);
+            });
+            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+        } else if (stack.contains(DataComponentTypes.STORED_ENCHANTMENTS)) {
+            World world = player.getEntityWorld();
+            ItemEnchantmentsComponent itemEnchantmentsComponent = stack.get(DataComponentTypes.STORED_ENCHANTMENTS);
+
+            if (world.isClient())
+                return;
+
+            Registry<Enchantment> enchantmentRegistry = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
+            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
+            Set<Knowledge> knowledges = new HashSet<>();
+            itemEnchantmentsComponent.getEnchantments().forEach(enchantmentRegistryEntry -> {
+                Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getId(enchantmentRegistryEntry.value()));
+                knowledges.add(knowledge);
+                knowledgeManager.learn(player, knowledge);
+            });
+            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+        } else if (stack.getItem() instanceof SmithingTemplateItem smithingTemplateItem) {
+            if (stack.isOf(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+                return;
+
+            RegistryKey<ArmorTrimPattern> armorTrimPattern = KnowledgeUtil.getArmorTrimPatternFromStack(stack);
+
+            if (armorTrimPattern != null) {
                 World world = player.getEntityWorld();
-                ArmorTrim armorTrim = stack.get(DataComponentTypes.TRIM);
                 Registry<ArmorTrimPattern> armorTrimPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN);
                 KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getId(armorTrim.pattern().value()));
+                Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getId(armorTrimPatterns.get(armorTrimPattern)));
                 if (knowledgeManager.learn(player, knowledge)) {
                     ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
                 }
-            } else if (stack.contains(DataComponentTypes.PROVIDES_BANNER_PATTERNS)) {
-                World world = player.getEntityWorld();
-                TagKey<BannerPattern> bannerPatternTagKey = stack.get(DataComponentTypes.PROVIDES_BANNER_PATTERNS);
+            }
+        } else if (stack.contains(DataComponentTypes.TRIM)) {
+            World world = player.getEntityWorld();
+            ArmorTrim armorTrim = stack.get(DataComponentTypes.TRIM);
+            Registry<ArmorTrimPattern> armorTrimPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN);
+            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
+            Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getId(armorTrim.pattern().value()));
+            if (knowledgeManager.learn(player, knowledge)) {
+                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
+            }
+        } else if (stack.contains(DataComponentTypes.PROVIDES_BANNER_PATTERNS)) {
+            World world = player.getEntityWorld();
+            TagKey<BannerPattern> bannerPatternTagKey = stack.get(DataComponentTypes.PROVIDES_BANNER_PATTERNS);
 
-                RegistryKey<BannerPattern> pattern = KnowledgeUtil.getBannerPatternFromTag(bannerPatternTagKey);
+            RegistryKey<BannerPattern> pattern = KnowledgeUtil.getBannerPatternFromTag(bannerPatternTagKey);
 
-                if (pattern != null) {
-                    Registry<BannerPattern> bannerPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.BANNER_PATTERN);
-                    KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                    Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getId(bannerPatterns.get(pattern)));
-                    if (knowledgeManager.learn(player, knowledge)) {
-                        ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, Sets.newHashSet(knowledge)));
-                    }
-                }
-            } else if (stack.contains(DataComponentTypes.BANNER_PATTERNS)) {
-                World world = player.getEntityWorld();
-                BannerPatternsComponent bannerPatternsComponent = stack.get(DataComponentTypes.BANNER_PATTERNS);
+            if (pattern != null) {
                 Registry<BannerPattern> bannerPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.BANNER_PATTERN);
                 KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Set<Knowledge> knowledges = new HashSet<>();
-                bannerPatternsComponent.layers().forEach(layer -> {
-                    if (layer.pattern().matches(bannerPatternRegistryKey -> bannerPatternRegistryKey != BannerPatterns.BASE)) {
-                        Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getId(layer.pattern().value()));
-                        knowledges.add(knowledge);
-                        knowledgeManager.learn(player, knowledge);
-                    }
-                });
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, knowledges));
+                Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getId(bannerPatterns.get(pattern)));
+                if (knowledgeManager.learn(player, knowledge)) {
+                    ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, Sets.newHashSet(knowledge)));
+                }
             }
-        });
+        } else if (stack.contains(DataComponentTypes.BANNER_PATTERNS)) {
+            World world = player.getEntityWorld();
+            BannerPatternsComponent bannerPatternsComponent = stack.get(DataComponentTypes.BANNER_PATTERNS);
+            Registry<BannerPattern> bannerPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.BANNER_PATTERN);
+            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
+            Set<Knowledge> knowledges = new HashSet<>();
+            bannerPatternsComponent.layers().forEach(layer -> {
+                if (layer.pattern().matches(bannerPatternRegistryKey -> bannerPatternRegistryKey != BannerPatterns.BASE)) {
+                    Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getId(layer.pattern().value()));
+                    knowledges.add(knowledge);
+                    knowledgeManager.learn(player, knowledge);
+                }
+            });
+            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, knowledges));
+        }
     }
 }
