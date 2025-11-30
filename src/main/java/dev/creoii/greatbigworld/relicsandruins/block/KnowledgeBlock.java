@@ -29,7 +29,7 @@ public abstract class KnowledgeBlock extends Block {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!world.isClient() && state.get(NATURAL) && player.getStackInHand(player.getActiveHand()).isEmpty()) {
+        if (!world.isClient() && state.get(NATURAL)) {
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
             Knowledge knowledge = getKnowledgePool(state).get(world.random);
             if (knowledgeManager.learn(player, knowledge)) {
