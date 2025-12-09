@@ -12,6 +12,7 @@ import dev.creoii.greatbigworld.util.network.LearnKnowledgeS2C;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.item.v1.ComponentTooltipAppenderRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.entity.BannerPattern;
 import net.minecraft.block.entity.BannerPatterns;
@@ -63,6 +64,8 @@ public class RelicsAndRuins implements ModInitializer {
         ItemEvents.PICKUP.register((player, itemEntity) -> {
             tryLearnFrom(player, itemEntity.getStack());
         });
+
+        ComponentTooltipAppenderRegistry.addBefore(DataComponentTypes.MAP_ID, RelicsAndRuinsDataComponentTypes.ENGRAVING);
     }
 
     private static void tryLearnFrom(PlayerEntity player, ItemStack stack) {

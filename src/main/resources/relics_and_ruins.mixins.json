@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CraftingDecoratedPotRecipeMixin",
-    "ItemStackMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
     "entity.LivingEntityMixin"
