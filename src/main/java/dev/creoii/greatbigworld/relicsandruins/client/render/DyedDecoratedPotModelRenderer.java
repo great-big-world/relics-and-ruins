@@ -36,14 +36,14 @@ public record DyedDecoratedPotModelRenderer(DecoratedPotRenderer blockEntityRend
     }
 
     @Override
-    public @Nullable PotDecorations extractArgument(ItemStack itemStack) {
+    public PotDecorations extractArgument(ItemStack itemStack) {
         return itemStack.get(DataComponents.POT_DECORATIONS);
     }
 
     @Environment(EnvType.CLIENT)
-    public record Unbaked(@Nullable DyeColor color) implements SpecialModelRenderer.Unbaked {
-        public static final MapCodec<dev.creoii.greatbigworld.relicsandruins.client.render.DyedDecoratedPotModelRenderer.Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> {
-            return instance.group(DyeColor.CODEC.fieldOf("color").orElse(null).forGetter(unbaked -> unbaked.color)).apply(instance, dev.creoii.greatbigworld.relicsandruins.client.render.DyedDecoratedPotModelRenderer.Unbaked::new);
+    public record Unbaked(DyeColor color) implements SpecialModelRenderer.Unbaked {
+        public static final MapCodec<Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> {
+            return instance.group(DyeColor.CODEC.fieldOf("color").orElse(null).forGetter(unbaked -> unbaked.color)).apply(instance, Unbaked::new);
         });
 
         @Override
@@ -52,7 +52,7 @@ public record DyedDecoratedPotModelRenderer(DecoratedPotRenderer blockEntityRend
         }
 
         @Override
-        public @org.jspecify.annotations.Nullable SpecialModelRenderer<?> bake(BakingContext bakingContext) {
+        public SpecialModelRenderer<?> bake(BakingContext bakingContext) {
             return new DyedDecoratedPotModelRenderer(new DecoratedPotRenderer(bakingContext), color);
         }
     }
