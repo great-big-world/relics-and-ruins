@@ -1,59 +1,59 @@
 package dev.creoii.greatbigworld.relicsandruins.client.render;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.creoii.greatbigworld.relicsandruins.util.ExtendedDecoratedPotRender;
 import dev.creoii.greatbigworld.util.ColorHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.entity.Sherds;
-import net.minecraft.client.render.block.entity.DecoratedPotBlockEntityRenderer;
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-import net.minecraft.client.render.item.model.special.SpecialModelRenderer;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.item.ItemDisplayContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.DyeColor;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.blockentity.DecoratedPotRenderer;
+import net.minecraft.client.renderer.special.SpecialModelRenderer;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.PotDecorations;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.function.Consumer;
 
 @Environment(EnvType.CLIENT)
-public record DyedDecoratedPotModelRenderer(DecoratedPotBlockEntityRenderer blockEntityRenderer, DyeColor color) implements SpecialModelRenderer<Sherds> {
-    @Nullable
-    public Sherds getData(ItemStack itemStack) {
-        return itemStack.get(DataComponentTypes.POT_DECORATIONS);
-    }
-
+public record DyedDecoratedPotModelRenderer(DecoratedPotRenderer blockEntityRenderer, DyeColor color) implements SpecialModelRenderer<PotDecorations> {
     @Override
-    public void render(@Nullable Sherds data, ItemDisplayContext displayContext, MatrixStack matrices, OrderedRenderCommandQueue queue, int light, int overlay, boolean glint, int i) {
+    public void submit(@Nullable PotDecorations object, ItemDisplayContext itemDisplayContext, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, int j, boolean bl, int k) {
         if (blockEntityRenderer instanceof ExtendedDecoratedPotRender extendedDecoratedPotRender) {
-            extendedDecoratedPotRender.gbw$renderDyed(matrices, queue, light, overlay, Objects.requireNonNullElse(data, Sherds.DEFAULT), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
+            extendedDecoratedPotRender.gbw$renderDyed(poseStack, submitNodeCollector, i, j, Objects.requireNonNullElse(object, PotDecorations.EMPTY), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
         }
     }
 
     @Override
-    public void collectVertices(Set<Vector3f> vertices) {
-        blockEntityRenderer.collectVertices(vertices);
+    public void getExtents(Consumer<Vector3fc> consumer) {
+        blockEntityRenderer.getExtents(consumer);
+    }
+
+    @Override
+    public @Nullable PotDecorations extractArgument(ItemStack itemStack) {
+        return itemStack.get(DataComponents.POT_DECORATIONS);
     }
 
     @Environment(EnvType.CLIENT)
     public record Unbaked(@Nullable DyeColor color) implements SpecialModelRenderer.Unbaked {
-        public static final MapCodec<Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> {
-            return instance.group(DyeColor.CODEC.fieldOf("color").orElse(null).forGetter(unbaked -> unbaked.color)).apply(instance, Unbaked::new);
+        public static final MapCodec<dev.creoii.greatbigworld.relicsandruins.client.render.DyedDecoratedPotModelRenderer.Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> {
+            return instance.group(DyeColor.CODEC.fieldOf("color").orElse(null).forGetter(unbaked -> unbaked.color)).apply(instance, dev.creoii.greatbigworld.relicsandruins.client.render.DyedDecoratedPotModelRenderer.Unbaked::new);
         });
 
-        public MapCodec<Unbaked> getCodec() {
+        @Override
+        public MapCodec<? extends SpecialModelRenderer.Unbaked> type() {
             return CODEC;
         }
 
         @Override
-        public @NotNull SpecialModelRenderer<?> bake(BakeContext context) {
-            return new DyedDecoratedPotModelRenderer(new DecoratedPotBlockEntityRenderer(context), color);
+        public @org.jspecify.annotations.Nullable SpecialModelRenderer<?> bake(BakingContext bakingContext) {
+            return new DyedDecoratedPotModelRenderer(new DecoratedPotRenderer(bakingContext), color);
         }
     }
 }

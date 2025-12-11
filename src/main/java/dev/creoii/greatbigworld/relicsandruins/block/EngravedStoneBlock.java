@@ -5,168 +5,172 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponentTypes;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.component.ComponentsAccess;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.DyeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipAppender;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.loot.context.LootWorldContext;
-import net.minecraft.network.RegistryByteBuf;
-import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.text.Text;
+import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentGetter;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.*;
-import net.minecraft.util.collection.Pool;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.DyeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipProvider;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.phys.BlockHitResult;
 import org.apache.commons.lang3.StringUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 public class EngravedStoneBlock extends KnowledgeBlock {
-    public static final EnumProperty<Engraving> ENGRAVING = EnumProperty.of("engraving", Engraving.class);
-    public static final EnumProperty<DyeColor> COLOR = EnumProperty.of("color", DyeColor.class);
+    public static final EnumProperty<Engraving> ENGRAVING = EnumProperty.create("engraving", Engraving.class);
+    public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
 
-    public EngravedStoneBlock(Settings settings) {
+    public EngravedStoneBlock(Properties settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(NATURAL, true).with(ENGRAVING, Engraving.ANGLER).with(COLOR, DyeColor.WHITE));
+        registerDefaultState(defaultBlockState().setValue(NATURAL, true).setValue(ENGRAVING, Engraving.ANGLER).setValue(COLOR, DyeColor.WHITE));
     }
 
     @Override
-    public Pool<Knowledge> getKnowledgePool(BlockState state) {
-        return state.get(ENGRAVING).pool;
+    public WeightedList<Knowledge> getKnowledgePool(BlockState state) {
+        return state.getValue(ENGRAVING).pool;
     }
 
     @Override
-    protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
-        ItemStack stack = super.getPickStack(world, pos, state, includeData);
-        stack.set(RelicsAndRuinsDataComponentTypes.ENGRAVING, new Data(state.get(ENGRAVING), state.get(COLOR)));
+    protected ItemStack getCloneItemStack(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean bl) {
+        ItemStack stack = super.getCloneItemStack(levelReader, blockPos, blockState, bl);
+        stack.set(RelicsAndRuinsDataComponentTypes.ENGRAVING, new Data(blockState.getValue(ENGRAVING), blockState.getValue(COLOR)));
         return stack;
     }
 
     @Override
-    protected List<ItemStack> getDroppedStacks(BlockState state, LootWorldContext.Builder builder) {
-        List<ItemStack> stacks = super.getDroppedStacks(state, builder);
+    protected List<ItemStack> getDrops(BlockState blockState, LootParams.Builder builder) {
+        List<ItemStack> stacks = super.getDrops(blockState, builder);
         stacks.forEach(stack -> {
-            if (stack.isIn(RelicsAndRuinsTags.ENGRAVED_STONE_ITEMS)) {
-                stack.set(RelicsAndRuinsDataComponentTypes.ENGRAVING, new Data(state.get(ENGRAVING), state.get(COLOR)));
+            if (stack.is(RelicsAndRuinsTags.ENGRAVED_STONE_ITEMS)) {
+                stack.set(RelicsAndRuinsDataComponentTypes.ENGRAVING, new Data(blockState.getValue(ENGRAVING), blockState.getValue(COLOR)));
             }
         });
         return stacks;
     }
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockState state = getDefaultState();
-        if (ctx.getStack().contains(RelicsAndRuinsDataComponentTypes.ENGRAVING)) {
-            EngravedStoneBlock.Data data = ctx.getStack().get(RelicsAndRuinsDataComponentTypes.ENGRAVING);
-            state = state.with(ENGRAVING, data.engraving).with(COLOR, data.color);
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+        BlockState state = defaultBlockState();
+        if (blockPlaceContext.getItemInHand().has(RelicsAndRuinsDataComponentTypes.ENGRAVING)) {
+            EngravedStoneBlock.Data data = blockPlaceContext.getItemInHand().get(RelicsAndRuinsDataComponentTypes.ENGRAVING);
+            state = state.setValue(ENGRAVING, data.engraving).setValue(COLOR, data.color);
         }
-        return state.with(NATURAL, ctx.getPlayer().isInCreativeMode());
+        return state.setValue(NATURAL, blockPlaceContext.getPlayer().isCreative());
     }
 
     @Override
-    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (stack.getItem() instanceof DyeItem dyeItem && dyeItem.getColor() != state.get(COLOR)) {
-            BlockState newState = state.with(COLOR, dyeItem.getColor());
-            world.setBlockState(pos, newState, 11);
-            if (!world.isClient())
-                Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) player, pos, stack);
-            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, newState));
-            stack.decrementUnlessCreative(1, player);
-            return ActionResult.SUCCESS;
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        if (stack.getItem() instanceof DyeItem dyeItem && dyeItem.getDyeColor() != state.getValue(COLOR)) {
+            BlockState newState = state.setValue(COLOR, dyeItem.getDyeColor());
+            world.setBlock(pos, newState, 11);
+            if (!world.isClientSide())
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, pos, stack);
+            world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+            stack.consume(1, player);
+            return InteractionResult.SUCCESS;
         }
-        return ActionResult.PASS_TO_DEFAULT_BLOCK_ACTION;
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
         builder.add(ENGRAVING, COLOR);
     }
 
-    public enum Engraving implements StringIdentifiable {
-        ANGLER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LUCK_OF_THE_SEA)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LURE)).build()),
-        ARCHER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.POWER)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PUNCH)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.INFINITY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.MULTISHOT)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PIERCING)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.QUICK_CHARGE)).build()),
-        ARMS_UP(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.KNOCKBACK)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PROTECTION)).build()),
-        BLADE(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SHARPNESS)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SMITE)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BANE_OF_ARTHROPODS)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.IMPALING)).build()),
+    public enum Engraving implements StringRepresentable {
+        ANGLER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LUCK_OF_THE_SEA)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LURE)).build()),
+        ARCHER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.POWER)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PUNCH)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.INFINITY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.MULTISHOT)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PIERCING)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.QUICK_CHARGE)).build()),
+        ARMS_UP(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.KNOCKBACK)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PROTECTION)).build()),
+        BLADE(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SHARPNESS)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SMITE)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BANE_OF_ARTHROPODS)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.IMPALING)).build()),
         BREWER,
-        BURN(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FLAME)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FIRE_ASPECT)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FIRE_PROTECTION)).build()),
-        DANGER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.THORNS)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BLAST_PROTECTION)).build()),
-        EXPLORER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.RIPTIDE)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.RESPIRATION)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.DEPTH_STRIDER)).build()),
-        FLOW(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.CHANNELING)).build()),
-        FRIEND(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FEATHER_FALLING)).build()),
-        GUSTER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.WIND_BURST)).build()),
-        HEART(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.MENDING)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BINDING_CURSE)).build()),
-        HEARTBREAK(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.VANISHING_CURSE)).build()),
-        HOWL(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FROST_WALKER)).build()),
-        MINER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.EFFICIENCY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.AQUA_AFFINITY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SILK_TOUCH)).build()),
-        MOURNER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SWIFT_SNEAK)).build()),
-        PLENTY(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LOOTING)).build()),
-        PRIZE(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FORTUNE)).build()),
-        SCRAPE(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SWEEPING_EDGE)).build()),
-        SHEAF(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PROJECTILE_PROTECTION)).build()),
-        SHELTER(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.UNBREAKING)).build()),
-        SKULL(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.DENSITY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BREACH)).build()),
-        SNORT(Pool.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SOUL_SPEED)).build());
+        BURN(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FLAME)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FIRE_ASPECT)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FIRE_PROTECTION)).build()),
+        DANGER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.THORNS)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BLAST_PROTECTION)).build()),
+        EXPLORER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.RIPTIDE)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.RESPIRATION)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.DEPTH_STRIDER)).build()),
+        FLOW(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.CHANNELING)).build()),
+        FRIEND(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FEATHER_FALLING)).build()),
+        GUSTER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.WIND_BURST)).build()),
+        HEART(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.MENDING)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BINDING_CURSE)).build()),
+        HEARTBREAK(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.VANISHING_CURSE)).build()),
+        HOWL(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FROST_WALKER)).build()),
+        MINER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.EFFICIENCY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.AQUA_AFFINITY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SILK_TOUCH)).build()),
+        MOURNER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SWIFT_SNEAK)).build()),
+        PLENTY(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LOOTING)).build()),
+        PRIZE(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.FORTUNE)).build()),
+        SCRAPE(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SWEEPING_EDGE)).build()),
+        SHEAF(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PROJECTILE_PROTECTION)).build()),
+        SHELTER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.UNBREAKING)).build()),
+        SKULL(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.DENSITY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.BREACH)).build()),
+        SNORT(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.SOUL_SPEED)).build());
 
-        public static final Codec<Engraving> CODEC = StringIdentifiable.createCodec(Engraving::values);
-        private final Pool<Knowledge> pool;
+        public static final Codec<Engraving> CODEC = StringRepresentable.fromValues(Engraving::values);
+        private final WeightedList<Knowledge> pool;
 
-        Engraving(Pool<Knowledge> pool) {
+        Engraving(WeightedList<Knowledge> pool) {
             this.pool = pool;
         }
 
         Engraving() {
-            this.pool = Pool.<Knowledge>builder().build();
+            this.pool = WeightedList.<Knowledge>builder().build();
         }
 
-        public Pool<Knowledge> getPool() {
+        public WeightedList<Knowledge> getPool() {
             return pool;
         }
 
         @Override
-        public String asString() {
+        public String getSerializedName() {
             return name().toLowerCase();
         }
     }
 
-    public record Data(Engraving engraving, DyeColor color) implements TooltipAppender {
+    public record Data(Engraving engraving, DyeColor color) implements TooltipProvider {
         public static final Codec<Data> CODEC = RecordCodecBuilder.create(instance -> {
             return instance.group(
                     Engraving.CODEC.fieldOf("engraving").forGetter(Data::engraving),
                     DyeColor.CODEC.fieldOf("color").orElse(DyeColor.WHITE).forGetter(Data::color)
             ).apply(instance, Data::new);
         });
-        public static final PacketCodec<RegistryByteBuf, Data> PACKET_CODEC = PacketCodec.of(Data::write, Data::read);
+        public static final StreamCodec<RegistryFriendlyByteBuf, Data> PACKET_CODEC = StreamCodec.ofMember(Data::write, Data::read);
 
-        public void write(RegistryByteBuf buf) {
+        public void write(RegistryFriendlyByteBuf buf) {
             buf.writeInt(engraving.ordinal());
             buf.writeInt(color.ordinal());
         }
 
-        public static Data read(RegistryByteBuf buf) {
+        public static Data read(RegistryFriendlyByteBuf buf) {
             Engraving engraving = Engraving.values()[buf.readInt()];
             DyeColor color = DyeColor.values()[buf.readInt()];
             return new Data(engraving, color);
         }
 
         @Override
-        public void appendTooltip(Item.TooltipContext context, Consumer<Text> textConsumer, TooltipType type, ComponentsAccess components) {
-            textConsumer.accept(Text.translatable("item.engraving", StringUtils.capitalize(engraving.asString())).formatted(Formatting.GRAY));
+        public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
+            consumer.accept(Component.translatable("item.engraving", StringUtils.capitalize(engraving.getSerializedName())).withStyle(ChatFormatting.GRAY));
         }
     }
 }

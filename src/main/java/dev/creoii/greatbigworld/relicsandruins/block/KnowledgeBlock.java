@@ -5,43 +5,43 @@ import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.knowledge.KnowledgeManager;
 import dev.creoii.greatbigworld.util.network.LearnKnowledgeS2C;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.collection.Pool;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.BlockHitResult;
 
 public abstract class KnowledgeBlock extends Block {
-    public static final BooleanProperty NATURAL = BooleanProperty.of("natural");
+    public static final BooleanProperty NATURAL = BooleanProperty.create("natural");
 
-    public KnowledgeBlock(Settings settings) {
+    public KnowledgeBlock(Properties settings) {
         super(settings);
-        setDefaultState(getStateManager().getDefaultState().with(NATURAL, true));
+        registerDefaultState(defaultBlockState().setValue(NATURAL, true));
     }
 
-    public abstract Pool<Knowledge> getKnowledgePool(BlockState state);
+    public abstract WeightedList<Knowledge> getKnowledgePool(BlockState state);
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!world.isClient() && state.get(NATURAL)) {
-            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-            Knowledge knowledge = getKnowledgePool(state).get(world.random);
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        if (!level.isClientSide() && blockState.getValue(NATURAL)) {
+            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(level.getServer());
+            Knowledge knowledge = getKnowledgePool(blockState).getRandomOrThrow(level.random);
             if (knowledgeManager.learn(player, knowledge)) {
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(knowledge.type(), Sets.newHashSet(knowledge)));
-                return ActionResult.SUCCESS_SERVER;
+                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(knowledge.type(), Sets.newHashSet(knowledge)));
+                return InteractionResult.SUCCESS_SERVER;
             }
         }
-        return super.onUse(state, world, pos, player, hit);
+        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(NATURAL);
     }
 }

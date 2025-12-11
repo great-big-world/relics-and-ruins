@@ -2,15 +2,15 @@ package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.relicsandruins.util.stateprovider.EngravedStoneStateProvider;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.stateprovider.BlockStateProviderType;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 
 public final class RelicsAndRuinsBlockStateProviderTypes {
     public static BlockStateProviderType<EngravedStoneStateProvider> ENGRAVED_STONE;
 
     public static void register() {
-        ENGRAVED_STONE = Registry.register(Registries.BLOCK_STATE_PROVIDER_TYPE, Identifier.of(GreatBigWorld.NAMESPACE, "engraved_stone"), new BlockStateProviderType<>(EngravedStoneStateProvider.CODEC));
+        ENGRAVED_STONE = Registry.register(BuiltInRegistries.BLOCKSTATE_PROVIDER_TYPE, Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "engraved_stone"), new BlockStateProviderType<>(EngravedStoneStateProvider.CODEC));
     }
 }

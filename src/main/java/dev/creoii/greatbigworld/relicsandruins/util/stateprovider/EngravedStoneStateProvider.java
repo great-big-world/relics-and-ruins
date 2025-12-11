@@ -6,12 +6,12 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.creoii.greatbigworld.relicsandruins.block.EngravedStoneBlock;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsBlockStateProviderTypes;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.DyeColor;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.BlockStateProviderType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -47,12 +47,12 @@ public class EngravedStoneStateProvider extends BlockStateProvider {
     }
 
     @Override
-    protected BlockStateProviderType<?> getType() {
+    protected BlockStateProviderType<?> type() {
         return RelicsAndRuinsBlockStateProviderTypes.ENGRAVED_STONE;
     }
 
     @Override
-    public BlockState get(Random random, BlockPos pos) {
-        return RelicsAndRuinsBlocks.ENGRAVED_STONE.getDefaultState().with(EngravedStoneBlock.ENGRAVING, engravings.get(random.nextInt(engravings.size()))).with(EngravedStoneBlock.COLOR, colors.get(random.nextInt(colors.size()))).with(EngravedStoneBlock.NATURAL, natural);
+    public BlockState getState(RandomSource randomSource, BlockPos blockPos) {
+        return RelicsAndRuinsBlocks.ENGRAVED_STONE.defaultBlockState().setValue(EngravedStoneBlock.ENGRAVING, engravings.get(randomSource.nextInt(engravings.size()))).setValue(EngravedStoneBlock.COLOR, colors.get(randomSource.nextInt(colors.size()))).setValue(EngravedStoneBlock.NATURAL, natural);
     }
 }

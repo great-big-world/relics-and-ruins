@@ -2,13 +2,13 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.client;
 
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
 import dev.creoii.greatbigworld.relicsandruins.util.TrimmedDecoratedPot;
-import net.minecraft.block.MapColor;
-import net.minecraft.client.render.block.entity.state.DecoratedPotBlockEntityRenderState;
+import net.minecraft.client.renderer.blockentity.state.DecoratedPotRenderState;
+import net.minecraft.world.level.material.MapColor;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(DecoratedPotBlockEntityRenderState.class)
+@Mixin(DecoratedPotRenderState.class)
 public class DecoratedPotBlockEntityRenderStateMixin implements DyedDecoratedPot, TrimmedDecoratedPot {
     @Unique private MapColor color;
     @Unique private int trim;

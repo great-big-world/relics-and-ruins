@@ -1,13 +1,13 @@
 package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import dev.creoii.greatbigworld.GreatBigWorld;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public final class RelicsAndRuinsPlacedFeatures {
-    public static final RegistryKey<PlacedFeature> FOSSIL_UPPER_COMMON = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(GreatBigWorld.NAMESPACE, "fossil_upper_common"));
-    public static final RegistryKey<PlacedFeature> FOSSIL_LOWER_COMMON = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(GreatBigWorld.NAMESPACE, "fossil_lower_common"));
-    public static final RegistryKey<PlacedFeature> CAVE_PAINTING = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(GreatBigWorld.NAMESPACE, "cave_painting"));
+    public static final ResourceKey<PlacedFeature> FOSSIL_UPPER_COMMON = ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "fossil_upper_common"));
+    public static final ResourceKey<PlacedFeature> FOSSIL_LOWER_COMMON = ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "fossil_lower_common"));
+    public static final ResourceKey<PlacedFeature> CAVE_PAINTING = ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cave_painting"));
 }

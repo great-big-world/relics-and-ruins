@@ -1,11 +1,11 @@
 package dev.creoii.greatbigworld.relicsandruins.util;
 
-import net.minecraft.block.MapColor;
-import net.minecraft.block.entity.Sherds;
-import net.minecraft.client.render.command.OrderedRenderCommandQueue;
-import net.minecraft.client.util.math.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.world.level.block.entity.PotDecorations;
+import net.minecraft.world.level.material.MapColor;
 import org.jetbrains.annotations.Nullable;
 
 public interface ExtendedDecoratedPotRender {
-    void gbw$renderDyed(MatrixStack matrices, OrderedRenderCommandQueue queue, int light, int overlay, Sherds sherds, @Nullable MapColor color, int trim);
+    void gbw$renderDyed(PoseStack matrices, SubmitNodeCollector queue, int light, int overlay, PotDecorations sherds, @Nullable MapColor color, int trim);
 }

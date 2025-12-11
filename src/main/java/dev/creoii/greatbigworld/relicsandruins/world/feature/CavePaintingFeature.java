@@ -1,16 +1,16 @@
 package dev.creoii.greatbigworld.relicsandruins.world.feature;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
 public class CavePaintingFeature extends Feature<CavePaintingFeatureConfig> {
     public CavePaintingFeature(Codec<CavePaintingFeatureConfig> codec) {
@@ -18,22 +18,22 @@ public class CavePaintingFeature extends Feature<CavePaintingFeatureConfig> {
     }
 
     @Override
-    public boolean generate(FeatureContext<CavePaintingFeatureConfig> context) {
-        StructureWorldAccess world = context.getWorld();
-        BlockPos origin = context.getOrigin();
-        Random random = context.getRandom();
-        CavePaintingFeatureConfig config = context.getConfig();
+    public boolean place(FeaturePlaceContext<CavePaintingFeatureConfig> context) {
+        WorldGenLevel world = context.level();
+        BlockPos origin = context.origin();
+        RandomSource random = context.random();
+        CavePaintingFeatureConfig config = context.config();
 
         // Must be stone where the feature spawns
-        if (!world.getBlockState(origin).isOf(Blocks.STONE))
+        if (!world.getBlockState(origin).is(Blocks.STONE))
             return false;
 
-        BlockPos.Mutable mutable = new BlockPos.Mutable();
+        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
 
         // --- 1. Detect exposed face ---
         Direction exposedDir = null;
         for (Direction dir : Direction.values()) {
-            mutable.set(origin, dir);
+            mutable.setWithOffset(origin, dir);
             if (isExposed(world, mutable)) {  // water OR air counts
                 exposedDir = dir;
                 break;
@@ -47,7 +47,7 @@ public class CavePaintingFeature extends Feature<CavePaintingFeatureConfig> {
         Direction lineDir =
                 (exposedDir.getAxis() == Direction.Axis.Y)
                         ? Direction.NORTH     // ceiling/floor = north/south
-                        : exposedDir.rotateYClockwise(); // wall = horizontal line
+                        : exposedDir.getCounterClockWise(); // wall = horizontal line
 
         // The perpendicular offset direction for stacking bands
         Direction bandOffsetDir =
@@ -56,16 +56,16 @@ public class CavePaintingFeature extends Feature<CavePaintingFeatureConfig> {
         // If on wall → shift deeper/shallower along the exposed direction
 
         // --- 3. Generate multiple lines ---
-        for (int band = 0; band < config.lineCount().get(random); band++) {
+        for (int band = 0; band < config.lineCount().sample(random); band++) {
 
-            int length = config.lineLength().get(random);
+            int length = config.lineLength().sample(random);
 
-            BlockPos current = origin.offset(
-                    bandOffsetDir, band * config.linePadding().get(random)
+            BlockPos current = origin.relative(
+                    bandOffsetDir, band * config.linePadding().sample(random)
             );
 
             drawPaintingLine(world, current, exposedDir, lineDir, length,
-                    config.searchRadius().get(random), config.provider(), random);
+                    config.searchRadius().sample(random), config.provider(), random);
         }
 
         return true;
@@ -74,14 +74,14 @@ public class CavePaintingFeature extends Feature<CavePaintingFeatureConfig> {
     // ---- LINE DRAWING ---- //
 
     private void drawPaintingLine(
-            StructureWorldAccess world,
+            WorldGenLevel world,
             BlockPos start,
             Direction exposedDir,
             Direction lineDir,
             int length,
             int searchRadius,
             BlockStateProvider provider,
-            Random random) {
+            RandomSource random) {
 
         BlockPos current = start;
 
@@ -98,37 +98,37 @@ public class CavePaintingFeature extends Feature<CavePaintingFeatureConfig> {
                 placePainting(world, current, provider, random);
             }
 
-            current = current.offset(lineDir);
+            current = current.relative(lineDir);
         }
     }
 
     // --- Valid placement: must be STONE + exposed to air/water --- //
 
-    private static boolean canPlacePainting(StructureWorldAccess world, BlockPos pos, Direction exposedDir) {
-        return world.getBlockState(pos).isOf(Blocks.STONE)
-                && isExposed(world, pos.offset(exposedDir));
+    private static boolean canPlacePainting(WorldGenLevel world, BlockPos pos, Direction exposedDir) {
+        return world.getBlockState(pos).is(Blocks.STONE)
+                && isExposed(world, pos.relative(exposedDir));
     }
 
     /** Air OR water counts as exposed surface. */
-    private static boolean isExposed(StructureWorldAccess world, BlockPos pos) {
+    private static boolean isExposed(WorldGenLevel world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);
-        return state.isAir() || state.getFluidState().isIn(FluidTags.WATER);
+        return state.isAir() || state.getFluidState().is(FluidTags.WATER);
     }
 
     /** Search along the line direction for the next valid stone face. */
     private static BlockPos findFallback(
-            StructureWorldAccess world,
+            WorldGenLevel world,
             BlockPos pos,
             Direction lineDir,
             Direction exposedDir,
             int radius) {
 
         for (int offset = 1; offset <= radius; offset++) {
-            BlockPos f = pos.offset(lineDir, offset);
+            BlockPos f = pos.relative(lineDir, offset);
             if (canPlacePainting(world, f, exposedDir))
                 return f;
 
-            BlockPos b = pos.offset(lineDir, -offset);
+            BlockPos b = pos.relative(lineDir, -offset);
             if (canPlacePainting(world, b, exposedDir))
                 return b;
         }
@@ -137,7 +137,7 @@ public class CavePaintingFeature extends Feature<CavePaintingFeatureConfig> {
 
     // --- Place one painting block from provider --- //
 
-    private static void placePainting(StructureWorldAccess world, BlockPos pos, BlockStateProvider provider, Random random) {
-        world.setBlockState(pos, provider.get(random, pos), 3);
+    private static void placePainting(WorldGenLevel world, BlockPos pos, BlockStateProvider provider, RandomSource random) {
+        world.setBlock(pos, provider.getState(random, pos), 3);
     }
 }

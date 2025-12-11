@@ -14,30 +14,30 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.ComponentTooltipAppenderRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.block.entity.BannerPattern;
-import net.minecraft.block.entity.BannerPatterns;
-import net.minecraft.block.entity.Sherds;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.BannerPatternsComponent;
-import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.SmithingTemplateItem;
-import net.minecraft.item.equipment.trim.ArmorTrim;
-import net.minecraft.item.equipment.trim.ArmorTrimPattern;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.UndergroundPlacedFeatures;
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.placement.CavePlacements;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SmithingTemplateItem;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
+import net.minecraft.world.item.equipment.trim.ArmorTrim;
+import net.minecraft.world.item.equipment.trim.TrimPattern;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.block.entity.BannerPattern;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
+import net.minecraft.world.level.block.entity.BannerPatterns;
+import net.minecraft.world.level.block.entity.PotDecorations;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -54,132 +54,132 @@ public class RelicsAndRuins implements ModInitializer {
         RelicsAndRuinsBlockStateProviderTypes.register();
         RelicsAndRuinsLootFunctionTypes.register();
 
-        BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_UPPER);
-        BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Feature.UNDERGROUND_STRUCTURES, UndergroundPlacedFeatures.FOSSIL_LOWER);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK), GenerationStep.Feature.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_UPPER_COMMON);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DEEP_DARK), GenerationStep.Feature.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_LOWER_COMMON);
+        BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, CavePlacements.FOSSIL_LOWER);
+        BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, CavePlacements.FOSSIL_UPPER);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DEEP_DARK), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_UPPER_COMMON);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DEEP_DARK), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, RelicsAndRuinsPlacedFeatures.FOSSIL_LOWER_COMMON);
 
-        BiomeModifications.addFeature(TheAlterworld.foundInOverworldLike(), GenerationStep.Feature.UNDERGROUND_ORES, RelicsAndRuinsPlacedFeatures.CAVE_PAINTING);
+        BiomeModifications.addFeature(TheAlterworld.foundInOverworldLike(), GenerationStep.Decoration.UNDERGROUND_ORES, RelicsAndRuinsPlacedFeatures.CAVE_PAINTING);
 
         ItemEvents.PICKUP.register((player, itemEntity) -> {
-            tryLearnFrom(player, itemEntity.getStack());
+            tryLearnFrom(player, itemEntity.getItem());
         });
 
-        ComponentTooltipAppenderRegistry.addBefore(DataComponentTypes.MAP_ID, RelicsAndRuinsDataComponentTypes.ENGRAVING);
+        ComponentTooltipAppenderRegistry.addBefore(DataComponents.MAP_ID, RelicsAndRuinsDataComponentTypes.ENGRAVING);
     }
 
-    private static void tryLearnFrom(PlayerEntity player, ItemStack stack) {
-        if (stack.contains(DataComponentTypes.POT_DECORATIONS)) {
-            World world = player.getEntityWorld();
-            Sherds sherds = stack.get(DataComponentTypes.POT_DECORATIONS);
+    private static void tryLearnFrom(Player player, ItemStack stack) {
+        if (stack.has(DataComponents.POT_DECORATIONS)) {
+            Level world = player.level();
+            PotDecorations sherds = stack.get(DataComponents.POT_DECORATIONS);
 
-            if (sherds == Sherds.DEFAULT || world.isClient())
+            if (sherds == PotDecorations.EMPTY || world.isClientSide())
                 return;
 
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
             Set<Knowledge> knowledges = new HashSet<>();
-            sherds.toList().forEach(item -> {
+            sherds.ordered().forEach(item -> {
                 if (item != Items.BRICK) {
-                    Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, Registries.ITEM.getId(item));
+                    Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, BuiltInRegistries.ITEM.getKey(item));
                     knowledges.add(knowledge);
                     knowledgeManager.learn(player, knowledge);
                 }
             });
-            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, knowledges));
-        } else if (stack.isIn(ItemTags.DECORATED_POT_SHERDS)) {
-            World world = player.getEntityWorld();
+            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, knowledges));
+        } else if (stack.is(ItemTags.DECORATED_POT_SHERDS)) {
+            Level world = player.level();
 
-            if (world.isClient())
+            if (world.isClientSide())
                 return;
 
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-            Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, Registries.ITEM.getId(stack.getItem()));
+            Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, BuiltInRegistries.ITEM.getKey(stack.getItem()));
             knowledgeManager.learn(player, knowledge);
-            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, Sets.newHashSet(knowledge)));
-        } else if (stack.hasEnchantments()) {
-            World world = player.getEntityWorld();
-            ItemEnchantmentsComponent itemEnchantmentsComponent = stack.getEnchantments();
+            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, Sets.newHashSet(knowledge)));
+        } else if (stack.isEnchanted()) {
+            Level world = player.level();
+            ItemEnchantments itemEnchantmentsComponent = stack.getEnchantments();
 
-            if (world.isClient())
+            if (world.isClientSide())
                 return;
 
-            Registry<Enchantment> enchantmentRegistry = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
+            Registry<Enchantment> enchantmentRegistry = world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
             Set<Knowledge> knowledges = new HashSet<>();
-            itemEnchantmentsComponent.getEnchantments().forEach(enchantmentRegistryEntry -> {
-                Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getId(enchantmentRegistryEntry.value()));
+            itemEnchantmentsComponent.entrySet().forEach(enchantmentRegistryEntry -> {
+                Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getKey(enchantmentRegistryEntry.getKey().value()));
                 knowledges.add(knowledge);
                 knowledgeManager.learn(player, knowledge);
             });
-            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
-        } else if (stack.contains(DataComponentTypes.STORED_ENCHANTMENTS)) {
-            World world = player.getEntityWorld();
-            ItemEnchantmentsComponent itemEnchantmentsComponent = stack.get(DataComponentTypes.STORED_ENCHANTMENTS);
+            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+        } else if (stack.has(DataComponents.STORED_ENCHANTMENTS)) {
+            Level world = player.level();
+            ItemEnchantments itemEnchantmentsComponent = stack.get(DataComponents.STORED_ENCHANTMENTS);
 
-            if (world.isClient())
+            if (world.isClientSide())
                 return;
 
-            Registry<Enchantment> enchantmentRegistry = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
+            Registry<Enchantment> enchantmentRegistry = world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
             Set<Knowledge> knowledges = new HashSet<>();
-            itemEnchantmentsComponent.getEnchantments().forEach(enchantmentRegistryEntry -> {
-                Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getId(enchantmentRegistryEntry.value()));
+            itemEnchantmentsComponent.entrySet().forEach(enchantmentRegistryEntry -> {
+                Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getKey(enchantmentRegistryEntry.getKey().value()));
                 knowledges.add(knowledge);
                 knowledgeManager.learn(player, knowledge);
             });
-            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
         } else if (stack.getItem() instanceof SmithingTemplateItem smithingTemplateItem) {
-            if (stack.isOf(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+            if (stack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
                 return;
 
-            RegistryKey<ArmorTrimPattern> armorTrimPattern = KnowledgeUtil.getArmorTrimPatternFromStack(stack);
+            ResourceKey<TrimPattern> armorTrimPattern = KnowledgeUtil.getArmorTrimPatternFromStack(stack);
 
             if (armorTrimPattern != null) {
-                World world = player.getEntityWorld();
-                Registry<ArmorTrimPattern> armorTrimPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN);
+                Level world = player.level();
+                Registry<TrimPattern> armorTrimPatterns = world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN);
                 KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getId(armorTrimPatterns.get(armorTrimPattern)));
+                Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getKey(armorTrimPatterns.getValue(armorTrimPattern)));
                 if (knowledgeManager.learn(player, knowledge)) {
-                    ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
+                    ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
                 }
             }
-        } else if (stack.contains(DataComponentTypes.TRIM)) {
-            World world = player.getEntityWorld();
-            ArmorTrim armorTrim = stack.get(DataComponentTypes.TRIM);
-            Registry<ArmorTrimPattern> armorTrimPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN);
+        } else if (stack.has(DataComponents.TRIM)) {
+            Level world = player.level();
+            ArmorTrim armorTrim = stack.get(DataComponents.TRIM);
+            Registry<TrimPattern> armorTrimPatterns = world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN);
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-            Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getId(armorTrim.pattern().value()));
+            Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getKey(armorTrim.pattern().value()));
             if (knowledgeManager.learn(player, knowledge)) {
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
+                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
             }
-        } else if (stack.contains(DataComponentTypes.PROVIDES_BANNER_PATTERNS)) {
-            World world = player.getEntityWorld();
-            TagKey<BannerPattern> bannerPatternTagKey = stack.get(DataComponentTypes.PROVIDES_BANNER_PATTERNS);
+        } else if (stack.has(DataComponents.PROVIDES_BANNER_PATTERNS)) {
+            Level world = player.level();
+            TagKey<BannerPattern> bannerPatternTagKey = stack.get(DataComponents.PROVIDES_BANNER_PATTERNS);
 
-            RegistryKey<BannerPattern> pattern = KnowledgeUtil.getBannerPatternFromTag(bannerPatternTagKey);
+            ResourceKey<BannerPattern> pattern = KnowledgeUtil.getBannerPatternFromTag(bannerPatternTagKey);
 
             if (pattern != null) {
-                Registry<BannerPattern> bannerPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.BANNER_PATTERN);
+                Registry<BannerPattern> bannerPatterns = world.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN);
                 KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-                Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getId(bannerPatterns.get(pattern)));
+                Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getKey(bannerPatterns.getValue(pattern)));
                 if (knowledgeManager.learn(player, knowledge)) {
-                    ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, Sets.newHashSet(knowledge)));
+                    ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, Sets.newHashSet(knowledge)));
                 }
             }
-        } else if (stack.contains(DataComponentTypes.BANNER_PATTERNS)) {
-            World world = player.getEntityWorld();
-            BannerPatternsComponent bannerPatternsComponent = stack.get(DataComponentTypes.BANNER_PATTERNS);
-            Registry<BannerPattern> bannerPatterns = world.getRegistryManager().getOrThrow(RegistryKeys.BANNER_PATTERN);
+        } else if (stack.has(DataComponents.BANNER_PATTERNS)) {
+            Level world = player.level();
+            BannerPatternLayers bannerPatternsComponent = stack.get(DataComponents.BANNER_PATTERNS);
+            Registry<BannerPattern> bannerPatterns = world.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN);
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
             Set<Knowledge> knowledges = new HashSet<>();
             bannerPatternsComponent.layers().forEach(layer -> {
-                if (layer.pattern().matches(bannerPatternRegistryKey -> bannerPatternRegistryKey != BannerPatterns.BASE)) {
-                    Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getId(layer.pattern().value()));
+                if (layer.pattern().is(bannerPatternRegistryKey -> bannerPatternRegistryKey != BannerPatterns.BASE)) {
+                    Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getKey(layer.pattern().value()));
                     knowledges.add(knowledge);
                     knowledgeManager.learn(player, knowledge);
                 }
             });
-            ServerPlayNetworking.send((ServerPlayerEntity) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, knowledges));
+            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, knowledges));
         }
     }
 }

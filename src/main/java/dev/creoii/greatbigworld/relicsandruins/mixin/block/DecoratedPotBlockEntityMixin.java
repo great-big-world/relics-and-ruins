@@ -2,12 +2,12 @@ package dev.creoii.greatbigworld.relicsandruins.mixin.block;
 
 import dev.creoii.greatbigworld.relicsandruins.util.DyedDecoratedPot;
 import dev.creoii.greatbigworld.relicsandruins.util.TrimmedDecoratedPot;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.MapColor;
-import net.minecraft.block.entity.DecoratedPotBlockEntity;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -26,14 +26,14 @@ public class DecoratedPotBlockEntityMixin implements DyedDecoratedPot, TrimmedDe
         trim = 0;
     }
 
-    @Inject(method = "writeData", at = @At("TAIL"))
-    private void gbw$writeTrimNbt(WriteView view, CallbackInfo ci) {
-        view.putInt(TRIM_KEY, trim);
+    @Inject(method = "saveAdditional", at = @At("TAIL"))
+    private void gbw$writeTrimNbt(ValueOutput valueOutput, CallbackInfo ci) {
+        valueOutput.putInt(TRIM_KEY, trim);
     }
 
-    @Inject(method = "readData", at = @At("TAIL"))
-    private void gbw$readTrimNbt(ReadView view, CallbackInfo ci) {
-        trim = view.getInt(TRIM_KEY, 0);
+    @Inject(method = "loadAdditional", at = @At("TAIL"))
+    private void gbw$readTrimNbt(ValueInput valueInput, CallbackInfo ci) {
+        trim = valueInput.getIntOr(TRIM_KEY, 0);
     }
 
     @Override
