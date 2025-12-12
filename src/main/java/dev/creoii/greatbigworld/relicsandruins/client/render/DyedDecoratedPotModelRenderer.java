@@ -26,7 +26,9 @@ public record DyedDecoratedPotModelRenderer(DecoratedPotRenderer blockEntityRend
     @Override
     public void submit(@Nullable PotDecorations object, ItemDisplayContext itemDisplayContext, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, int j, boolean bl, int k) {
         if (blockEntityRenderer instanceof ExtendedDecoratedPotRender extendedDecoratedPotRender) {
-            extendedDecoratedPotRender.gbw$renderDyed(poseStack, submitNodeCollector, i, j, Objects.requireNonNullElse(object, PotDecorations.EMPTY), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
+            extendedDecoratedPotRender.gbw$submitDyed(poseStack, submitNodeCollector, i, j, Objects.requireNonNullElse(object, PotDecorations.EMPTY), color == null ? null : ColorHelper.getTerracottaColor(color), 0);
+        } else {
+            blockEntityRenderer.submit(poseStack, submitNodeCollector, i, j, Objects.requireNonNullElse(object, PotDecorations.EMPTY), k);
         }
     }
 

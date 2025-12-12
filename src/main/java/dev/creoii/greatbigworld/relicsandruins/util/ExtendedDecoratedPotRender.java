@@ -7,5 +7,5 @@ import net.minecraft.world.level.material.MapColor;
 import org.jetbrains.annotations.Nullable;
 
 public interface ExtendedDecoratedPotRender {
-    void gbw$renderDyed(PoseStack matrices, SubmitNodeCollector queue, int light, int overlay, PotDecorations sherds, @Nullable MapColor color, int trim);
+    void gbw$submitDyed(PoseStack matrices, SubmitNodeCollector queue, int light, int overlay, PotDecorations sherds, @Nullable MapColor color, int trim);
 }

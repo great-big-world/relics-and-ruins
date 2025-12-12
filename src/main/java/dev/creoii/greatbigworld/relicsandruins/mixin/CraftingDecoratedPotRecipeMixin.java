@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.DecoratedPotRecipe;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.PotDecorations;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -18,6 +19,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DecoratedPotRecipe.class)
 public class CraftingDecoratedPotRecipeMixin {
+    @Inject(method = "matches(Lnet/minecraft/world/item/crafting/CraftingInput;Lnet/minecraft/world/level/Level;)Z", at = @At("HEAD"), cancellable = true)
+    private void gbw$allowDyedDecoratedPotRecipes(CraftingInput craftingInput, Level level, CallbackInfoReturnable<Boolean> cir) {
+        if (craftingInput.width() == 3 && craftingInput.height() == 3 && craftingInput.ingredientCount() == 5)
+            cir.setReturnValue(true);
+    }
+
     @Inject(method = "assemble(Lnet/minecraft/world/item/crafting/CraftingInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;", at = @At("RETURN"), cancellable = true)
     private void gbw$makeDecoratedPotsDyeable(CraftingInput craftingInput, HolderLookup.Provider provider, CallbackInfoReturnable<ItemStack> cir, @Local PotDecorations sherds) {
         if (craftingInput.getItem(1, 1).getItem() instanceof DyeItem dyeItem) {
