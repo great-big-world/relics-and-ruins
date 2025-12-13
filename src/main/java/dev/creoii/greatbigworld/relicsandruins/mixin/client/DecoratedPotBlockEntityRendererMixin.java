@@ -113,16 +113,10 @@ public abstract class DecoratedPotBlockEntityRendererMixin implements ExtendedDe
             renderPatternedSide(rightPattern, matrices, queue, light, overlay, sherds.right().get(), rgb);
         }
 
-        if (isSherdNotBrick(sherds.front())) {
+        if (isSherdNotBrick(sherds.front()) || isSherdNotBrick(sherds.back()) || isSherdNotBrick(sherds.left()) || isSherdNotBrick(sherds.right())) {
             renderTrimmedSide(frontTrim, matrices, queue, light, overlay, getTextureIdFromTrim(trim));
-        }
-        if (isSherdNotBrick(sherds.back())) {
             renderTrimmedSide(backTrim, matrices, queue, light, overlay, getTextureIdFromTrim(trim));
-        }
-        if (isSherdNotBrick(sherds.left())) {
             renderTrimmedSide(leftTrim, matrices, queue, light, overlay, getTextureIdFromTrim(trim));
-        }
-        if (isSherdNotBrick(sherds.right())) {
             renderTrimmedSide(rightTrim, matrices, queue, light, overlay, getTextureIdFromTrim(trim));
         }
     }
