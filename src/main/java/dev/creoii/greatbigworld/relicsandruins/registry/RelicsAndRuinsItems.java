@@ -51,7 +51,6 @@ public final class RelicsAndRuinsItems {
     public static Item ICE_BRICK_STAIRS;
     public static Item ICE_BRICK_SLAB;
     public static Item ICE_BRICK_WALL;
-    public static Item CHISELED_ICE_BRICKS;
     public static Item PACKED_ICE_BRICKS;
     public static Item PACKED_ICE_BRICK_STAIRS;
     public static Item PACKED_ICE_BRICK_SLAB;
@@ -61,7 +60,6 @@ public final class RelicsAndRuinsItems {
     public static Item BLUE_ICE_BRICK_STAIRS;
     public static Item BLUE_ICE_BRICK_SLAB;
     public static Item BLUE_ICE_BRICK_WALL;
-    public static Item CHISELED_BLUE_ICE_BRICKS;
 
     public static Item SNOW_BRICKS;
     public static Item SNOW_BRICK_STAIRS;
@@ -114,7 +112,6 @@ public final class RelicsAndRuinsItems {
         ICE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_stairs"), RelicsAndRuinsBlocks.ICE_BRICK_STAIRS);
         ICE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_ICE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
         ICE_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_wall"), RelicsAndRuinsBlocks.ICE_BRICK_WALL);
-        CHISELED_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_ice_bricks"), RelicsAndRuinsBlocks.CHISELED_ICE_BRICKS);
         PACKED_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_bricks"), RelicsAndRuinsBlocks.PACKED_ICE_BRICKS);
         PACKED_ICE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_stairs"), RelicsAndRuinsBlocks.PACKED_ICE_BRICK_STAIRS);
         PACKED_ICE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.PACKED_ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_PACKED_ICE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
@@ -124,7 +121,6 @@ public final class RelicsAndRuinsItems {
         BLUE_ICE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_stairs"), RelicsAndRuinsBlocks.BLUE_ICE_BRICK_STAIRS);
         BLUE_ICE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.BLUE_ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_BLUE_ICE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
         BLUE_ICE_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_wall"), RelicsAndRuinsBlocks.BLUE_ICE_BRICK_WALL);
-        CHISELED_BLUE_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_blue_ice_bricks"), RelicsAndRuinsBlocks.CHISELED_BLUE_ICE_BRICKS);
 
         SNOW_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_bricks"), RelicsAndRuinsBlocks.SNOW_BRICKS);
         SNOW_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_brick_stairs"), RelicsAndRuinsBlocks.SNOW_BRICK_STAIRS);
@@ -144,7 +140,7 @@ public final class RelicsAndRuinsItems {
             entries.addAfter(Items.COBBLESTONE_WALL, COBBLESTONE_BRICKS, COBBLESTONE_BRICK_STAIRS, COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_WALL, COBBLESTONE_BRICK_PILLAR, CHISELED_COBBLESTONE_BRICKS);
             entries.addAfter(Items.COBBLED_DEEPSLATE_WALL, COBBLED_DEEPSLATE_BRICKS, COBBLED_DEEPSLATE_BRICK_STAIRS, COBBLED_DEEPSLATE_BRICK_SLAB, COBBLED_DEEPSLATE_BRICK_WALL);
             entries.addAfter(Items.MOSSY_COBBLESTONE_WALL, MOSSY_COBBLESTONE_BRICKS, MOSSY_COBBLESTONE_BRICK_STAIRS, MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_WALL);
-            entries.addAfter(ArchitectsAssemblyItems.CUT_RED_SANDSTONE_SLAB, ICE_BRICKS, ICE_BRICK_STAIRS, ICE_BRICK_SLAB, ICE_BRICK_WALL, CHISELED_ICE_BRICKS, PACKED_ICE_BRICKS, PACKED_ICE_BRICK_STAIRS, PACKED_ICE_BRICK_SLAB, PACKED_ICE_BRICK_WALL, CHISELED_PACKED_ICE_BRICKS, BLUE_ICE_BRICKS, BLUE_ICE_BRICK_STAIRS, BLUE_ICE_BRICK_SLAB, BLUE_ICE_BRICK_WALL, CHISELED_BLUE_ICE_BRICKS, SNOW_BRICKS, SNOW_BRICK_STAIRS, SNOW_BRICK_SLAB, SNOW_BRICK_WALL, CHISELED_SNOW_BRICKS);
+            entries.addAfter(ArchitectsAssemblyItems.CUT_RED_SANDSTONE_SLAB, ICE_BRICKS, ICE_BRICK_STAIRS, ICE_BRICK_SLAB, ICE_BRICK_WALL, PACKED_ICE_BRICKS, PACKED_ICE_BRICK_STAIRS, PACKED_ICE_BRICK_SLAB, PACKED_ICE_BRICK_WALL, CHISELED_PACKED_ICE_BRICKS, BLUE_ICE_BRICKS, BLUE_ICE_BRICK_STAIRS, BLUE_ICE_BRICK_SLAB, BLUE_ICE_BRICK_WALL, SNOW_BRICKS, SNOW_BRICK_STAIRS, SNOW_BRICK_SLAB, SNOW_BRICK_WALL, CHISELED_SNOW_BRICKS);
             entries.addAfter(Items.PRISMARINE_BRICK_STAIRS, CHISELED_PRISMARINE_BRICKS);
         });
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
