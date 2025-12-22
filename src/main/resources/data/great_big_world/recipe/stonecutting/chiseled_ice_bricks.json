@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": [
+    "minecraft:ice",
+    "great_big_world:ice_bricks"
+  ],
+  "result": {
+    "id": "great_big_world:chiseled_ice_bricks"
+  }
+}

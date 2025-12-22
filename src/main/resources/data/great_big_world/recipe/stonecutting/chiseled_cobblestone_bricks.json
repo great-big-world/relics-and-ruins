@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": [
+    "minecraft:cobblestone",
+    "great_big_world:cobblestone_bricks"
+  ],
+  "result": {
+    "id": "great_big_world:chiseled_cobblestone_bricks"
+  }
+}

@@ -5,15 +5,12 @@ import dev.creoii.greatbigworld.architectsassembly.item.SlabItem;
 import dev.creoii.greatbigworld.architectsassembly.registry.ArchitectsAssemblyItems;
 import dev.creoii.greatbigworld.relicsandruins.block.EngravedStoneBlock;
 import dev.creoii.greatbigworld.relicsandruins.item.KnowledgeBookItem;
-import dev.creoii.greatbigworld.thealterworld.item.RelicItem;
-import dev.creoii.greatbigworld.thealterworld.registry.TheAlterworldDataComponentTypes;
 import dev.creoii.greatbigworld.util.RegistryHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.Unit;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.entity.PotDecorations;
 
@@ -45,40 +42,36 @@ public final class RelicsAndRuinsItems {
     public static Item MOSSY_COBBLESTONE_BRICK_STAIRS;
     public static Item MOSSY_COBBLESTONE_BRICK_SLAB;
     public static Item MOSSY_COBBLESTONE_BRICK_WALL;
+    public static Item COBBLED_DEEPSLATE_BRICKS;
+    public static Item COBBLED_DEEPSLATE_BRICK_STAIRS;
+    public static Item COBBLED_DEEPSLATE_BRICK_SLAB;
+    public static Item COBBLED_DEEPSLATE_BRICK_WALL;
 
     public static Item ICE_BRICKS;
     public static Item ICE_BRICK_STAIRS;
     public static Item ICE_BRICK_SLAB;
     public static Item ICE_BRICK_WALL;
+    public static Item CHISELED_ICE_BRICKS;
     public static Item PACKED_ICE_BRICKS;
     public static Item PACKED_ICE_BRICK_STAIRS;
     public static Item PACKED_ICE_BRICK_SLAB;
     public static Item PACKED_ICE_BRICK_WALL;
+    public static Item CHISELED_PACKED_ICE_BRICKS;
     public static Item BLUE_ICE_BRICKS;
     public static Item BLUE_ICE_BRICK_STAIRS;
     public static Item BLUE_ICE_BRICK_SLAB;
     public static Item BLUE_ICE_BRICK_WALL;
+    public static Item CHISELED_BLUE_ICE_BRICKS;
 
     public static Item SNOW_BRICKS;
     public static Item SNOW_BRICK_STAIRS;
     public static Item SNOW_BRICK_SLAB;
     public static Item SNOW_BRICK_WALL;
+    public static Item CHISELED_SNOW_BRICKS;
+
+    public static Item CHISELED_PRISMARINE_BRICKS;
 
     public static Item ENGRAVED_STONE;
-
-    public static Item MENDING_RELIC;
-    public static Item INFINITY_RELIC;
-    public static Item TAMING_RELIC;
-    public static Item REACHING_RELIC;
-    public static Item VISION_RELIC;
-    public static Item THORNS_RELIC;
-    public static Item INSIGHT_RELIC;
-    public static Item FORTUNE_RELIC;
-    public static Item PURGING_RELIC;
-    public static Item SILENCE_RELIC;
-    public static Item RAMPAGE_RELIC;
-    public static Item NOURISHING_RELIC;
-    public static Item BEHEADING_RELIC;
 
     public static Item DISC_FRAGMENT_RELIC;
 
@@ -112,40 +105,36 @@ public final class RelicsAndRuinsItems {
         MOSSY_COBBLESTONE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_stairs"), RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS);
         MOSSY_COBBLESTONE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_MOSSY_COBBLESTONE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
         MOSSY_COBBLESTONE_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_wall"), RelicsAndRuinsBlocks.MOSSY_COBBLESTONE_BRICK_WALL);
+        COBBLED_DEEPSLATE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_bricks"), RelicsAndRuinsBlocks.COBBLED_DEEPSLATE_BRICKS);
+        COBBLED_DEEPSLATE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_brick_stairs"), RelicsAndRuinsBlocks.COBBLED_DEEPSLATE_BRICK_STAIRS);
+        COBBLED_DEEPSLATE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.COBBLED_DEEPSLATE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_COBBLED_DEEPSLATE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
+        COBBLED_DEEPSLATE_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_brick_wall"), RelicsAndRuinsBlocks.COBBLED_DEEPSLATE_BRICK_WALL);
 
         ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_bricks"), RelicsAndRuinsBlocks.ICE_BRICKS);
         ICE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_stairs"), RelicsAndRuinsBlocks.ICE_BRICK_STAIRS);
         ICE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_ICE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
         ICE_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_wall"), RelicsAndRuinsBlocks.ICE_BRICK_WALL);
+        CHISELED_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_ice_bricks"), RelicsAndRuinsBlocks.CHISELED_ICE_BRICKS);
         PACKED_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_bricks"), RelicsAndRuinsBlocks.PACKED_ICE_BRICKS);
         PACKED_ICE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_stairs"), RelicsAndRuinsBlocks.PACKED_ICE_BRICK_STAIRS);
         PACKED_ICE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.PACKED_ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_PACKED_ICE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
         PACKED_ICE_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_wall"), RelicsAndRuinsBlocks.PACKED_ICE_BRICK_WALL);
+        CHISELED_PACKED_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_packed_ice_bricks"), RelicsAndRuinsBlocks.CHISELED_PACKED_ICE_BRICKS);
         BLUE_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_bricks"), RelicsAndRuinsBlocks.BLUE_ICE_BRICKS);
         BLUE_ICE_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_stairs"), RelicsAndRuinsBlocks.BLUE_ICE_BRICK_STAIRS);
         BLUE_ICE_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.BLUE_ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_BLUE_ICE_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
         BLUE_ICE_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_wall"), RelicsAndRuinsBlocks.BLUE_ICE_BRICK_WALL);
+        CHISELED_BLUE_ICE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_blue_ice_bricks"), RelicsAndRuinsBlocks.CHISELED_BLUE_ICE_BRICKS);
 
         SNOW_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_bricks"), RelicsAndRuinsBlocks.SNOW_BRICKS);
         SNOW_BRICK_STAIRS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_brick_stairs"), RelicsAndRuinsBlocks.SNOW_BRICK_STAIRS);
         SNOW_BRICK_SLAB = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_brick_slab"), settings -> new SlabItem(RelicsAndRuinsBlocks.SNOW_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_SNOW_BRICK_SLAB, settings.useBlockDescriptionPrefix()));
         SNOW_BRICK_WALL = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_brick_wall"), RelicsAndRuinsBlocks.SNOW_BRICK_WALL);
+        CHISELED_SNOW_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_snow_bricks"), RelicsAndRuinsBlocks.CHISELED_SNOW_BRICKS);
+
+        CHISELED_PRISMARINE_BRICKS = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_prismarine_bricks"), RelicsAndRuinsBlocks.CHISELED_PRISMARINE_BRICKS);
 
         ENGRAVED_STONE = RegistryHelper.registerBlockItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "engraved_stone"), RelicsAndRuinsBlocks.ENGRAVED_STONE, new Item.Properties().rarity(Rarity.UNCOMMON));
-
-        MENDING_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "mending_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        INFINITY_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "infinity_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        TAMING_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "taming_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        REACHING_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "reaching_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        VISION_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "vision_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        THORNS_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "thorns_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        INSIGHT_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "insight_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        FORTUNE_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "fortune_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        PURGING_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "purging_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        SILENCE_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "silence_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        RAMPAGE_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "rampage_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        NOURISHING_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "nourishing_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
-        BEHEADING_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "beheading_relic"), settings -> new RelicItem(settings.durability(100).component(TheAlterworldDataComponentTypes.RELIC, Unit.INSTANCE), 1));
 
         DISC_FRAGMENT_RELIC = RegistryHelper.registerItem(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "disc_fragment_relic"), DiscFragmentItem::new);
 
@@ -153,8 +142,10 @@ public final class RelicsAndRuinsItems {
 
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
             entries.addAfter(Items.COBBLESTONE_WALL, COBBLESTONE_BRICKS, COBBLESTONE_BRICK_STAIRS, COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_WALL, COBBLESTONE_BRICK_PILLAR, CHISELED_COBBLESTONE_BRICKS);
+            entries.addAfter(Items.COBBLED_DEEPSLATE_WALL, COBBLED_DEEPSLATE_BRICKS, COBBLED_DEEPSLATE_BRICK_STAIRS, COBBLED_DEEPSLATE_BRICK_SLAB, COBBLED_DEEPSLATE_BRICK_WALL);
             entries.addAfter(Items.MOSSY_COBBLESTONE_WALL, MOSSY_COBBLESTONE_BRICKS, MOSSY_COBBLESTONE_BRICK_STAIRS, MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_WALL);
-            entries.addAfter(ArchitectsAssemblyItems.CUT_RED_SANDSTONE_SLAB, ICE_BRICKS, ICE_BRICK_STAIRS, ICE_BRICK_SLAB, ICE_BRICK_WALL, PACKED_ICE_BRICKS, PACKED_ICE_BRICK_STAIRS, PACKED_ICE_BRICK_SLAB, PACKED_ICE_BRICK_WALL, BLUE_ICE_BRICKS, BLUE_ICE_BRICK_STAIRS, BLUE_ICE_BRICK_SLAB, BLUE_ICE_BRICK_WALL, SNOW_BRICKS, SNOW_BRICK_STAIRS, SNOW_BRICK_SLAB, SNOW_BRICK_WALL);
+            entries.addAfter(ArchitectsAssemblyItems.CUT_RED_SANDSTONE_SLAB, ICE_BRICKS, ICE_BRICK_STAIRS, ICE_BRICK_SLAB, ICE_BRICK_WALL, CHISELED_ICE_BRICKS, PACKED_ICE_BRICKS, PACKED_ICE_BRICK_STAIRS, PACKED_ICE_BRICK_SLAB, PACKED_ICE_BRICK_WALL, CHISELED_PACKED_ICE_BRICKS, BLUE_ICE_BRICKS, BLUE_ICE_BRICK_STAIRS, BLUE_ICE_BRICK_SLAB, BLUE_ICE_BRICK_WALL, CHISELED_BLUE_ICE_BRICKS, SNOW_BRICKS, SNOW_BRICK_STAIRS, SNOW_BRICK_SLAB, SNOW_BRICK_WALL, CHISELED_SNOW_BRICKS);
+            entries.addAfter(Items.PRISMARINE_BRICK_STAIRS, CHISELED_PRISMARINE_BRICKS);
         });
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
             entries.addAfter(Items.DECORATED_POT, WHITE_DECORATED_POT, LIGHT_GRAY_DECORATED_POT, GRAY_DECORATED_POT, BLACK_DECORATED_POT, BROWN_DECORATED_POT, RED_DECORATED_POT, ORANGE_DECORATED_POT, YELLOW_DECORATED_POT, LIME_DECORATED_POT, GREEN_DECORATED_POT, CYAN_DECORATED_POT, LIGHT_BLUE_DECORATED_POT, BLUE_DECORATED_POT, PURPLE_DECORATED_POT, MAGENTA_DECORATED_POT, PINK_DECORATED_POT);
@@ -178,9 +169,6 @@ public final class RelicsAndRuinsItems {
                     return DISC_FRAGMENT_RELIC.getDefaultInstance();
                 return stack;
             });
-        });
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(entries -> {
-            entries.addAfter(Items.SADDLE, MENDING_RELIC, INFINITY_RELIC, TAMING_RELIC, REACHING_RELIC, VISION_RELIC, THORNS_RELIC, INSIGHT_RELIC, FORTUNE_RELIC, PURGING_RELIC, SILENCE_RELIC, RAMPAGE_RELIC, NOURISHING_RELIC, BEHEADING_RELIC);
         });
 
         FuelRegistryEvents.BUILD.register((builder, context) -> {

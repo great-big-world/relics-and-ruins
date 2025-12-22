@@ -41,28 +41,39 @@ public final class RelicsAndRuinsBlocks {
     public static Block MOSSY_COBBLESTONE_BRICK_SLAB;
     public static Block VERTICAL_MOSSY_COBBLESTONE_BRICK_SLAB;
     public static Block MOSSY_COBBLESTONE_BRICK_WALL;
+    public static Block COBBLED_DEEPSLATE_BRICKS;
+    public static Block COBBLED_DEEPSLATE_BRICK_STAIRS;
+    public static Block COBBLED_DEEPSLATE_BRICK_SLAB;
+    public static Block VERTICAL_COBBLED_DEEPSLATE_BRICK_SLAB;
+    public static Block COBBLED_DEEPSLATE_BRICK_WALL;
 
     public static Block ICE_BRICKS;
     public static Block ICE_BRICK_STAIRS;
     public static Block ICE_BRICK_SLAB;
     public static Block VERTICAL_ICE_BRICK_SLAB;
     public static Block ICE_BRICK_WALL;
+    public static Block CHISELED_ICE_BRICKS;
     public static Block PACKED_ICE_BRICKS;
     public static Block PACKED_ICE_BRICK_STAIRS;
     public static Block PACKED_ICE_BRICK_SLAB;
     public static Block VERTICAL_PACKED_ICE_BRICK_SLAB;
     public static Block PACKED_ICE_BRICK_WALL;
+    public static Block CHISELED_PACKED_ICE_BRICKS;
     public static Block BLUE_ICE_BRICKS;
     public static Block BLUE_ICE_BRICK_STAIRS;
     public static Block BLUE_ICE_BRICK_SLAB;
     public static Block VERTICAL_BLUE_ICE_BRICK_SLAB;
     public static Block BLUE_ICE_BRICK_WALL;
+    public static Block CHISELED_BLUE_ICE_BRICKS;
 
     public static Block SNOW_BRICKS;
     public static Block SNOW_BRICK_STAIRS;
     public static Block SNOW_BRICK_SLAB;
     public static Block VERTICAL_SNOW_BRICK_SLAB;
     public static Block SNOW_BRICK_WALL;
+    public static Block CHISELED_SNOW_BRICKS;
+
+    public static Block CHISELED_PRISMARINE_BRICKS;
 
     public static Block ENGRAVED_STONE;
 
@@ -96,28 +107,39 @@ public final class RelicsAndRuinsBlocks {
         MOSSY_COBBLESTONE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_slab"), SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(MOSSY_COBBLESTONE_BRICKS));
         VERTICAL_MOSSY_COBBLESTONE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "vertical_mossy_cobblestone_brick_slab"), VerticalSlabBlock::new, BlockBehaviour.Properties.ofFullCopy(MOSSY_COBBLESTONE_BRICKS));
         MOSSY_COBBLESTONE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "mossy_cobblestone_brick_wall"), WallBlock::new, BlockBehaviour.Properties.ofFullCopy(MOSSY_COBBLESTONE_BRICKS));
+        COBBLED_DEEPSLATE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_bricks"), BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLED_DEEPSLATE));
+        COBBLED_DEEPSLATE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_brick_stairs"), settings -> new StairBlock(COBBLED_DEEPSLATE_BRICKS.defaultBlockState(), settings), BlockBehaviour.Properties.ofFullCopy(COBBLED_DEEPSLATE_BRICKS));
+        COBBLED_DEEPSLATE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_brick_slab"), SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(COBBLED_DEEPSLATE_BRICKS));
+        VERTICAL_COBBLED_DEEPSLATE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "vertical_cobbled_deepslate_brick_slab"), VerticalSlabBlock::new, BlockBehaviour.Properties.ofFullCopy(COBBLED_DEEPSLATE_BRICKS));
+        COBBLED_DEEPSLATE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "cobbled_deepslate_brick_wall"), WallBlock::new, BlockBehaviour.Properties.ofFullCopy(COBBLED_DEEPSLATE_BRICKS));
 
         ICE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_bricks"), BlockBehaviour.Properties.ofFullCopy(Blocks.ICE));
         ICE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_stairs"), settings -> new IceStairsBlock(ICE_BRICKS.defaultBlockState(), settings), BlockBehaviour.Properties.ofFullCopy(ICE_BRICKS));
         ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_slab"), IceSlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ICE_BRICKS));
         VERTICAL_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "vertical_ice_brick_slab"), IceVerticalSlabBlock::new, BlockBehaviour.Properties.ofFullCopy(ICE_BRICKS));
         ICE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "ice_brick_wall"), IceWallBlock::new, BlockBehaviour.Properties.ofFullCopy(ICE_BRICKS));
+        CHISELED_ICE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_ice_bricks"), BlockBehaviour.Properties.ofFullCopy(ICE_BRICKS));
         PACKED_ICE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_bricks"), BlockBehaviour.Properties.ofFullCopy(Blocks.PACKED_ICE));
         PACKED_ICE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_stairs"), settings -> new StairBlock(PACKED_ICE_BRICKS.defaultBlockState(), settings), BlockBehaviour.Properties.ofFullCopy(PACKED_ICE_BRICKS));
         PACKED_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_slab"), SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(PACKED_ICE_BRICKS));
         VERTICAL_PACKED_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "vertical_packed_ice_brick_slab"), VerticalSlabBlock::new, BlockBehaviour.Properties.ofFullCopy(PACKED_ICE_BRICKS));
         PACKED_ICE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "packed_ice_brick_wall"), WallBlock::new, BlockBehaviour.Properties.ofFullCopy(PACKED_ICE_BRICKS));
+        CHISELED_PACKED_ICE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_packed_ice_bricks"), BlockBehaviour.Properties.ofFullCopy(PACKED_ICE_BRICKS));
         BLUE_ICE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_bricks"), BlockBehaviour.Properties.ofFullCopy(Blocks.BLUE_ICE));
         BLUE_ICE_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_stairs"), settings -> new StairBlock(BLUE_ICE_BRICKS.defaultBlockState(), settings), BlockBehaviour.Properties.ofFullCopy(BLUE_ICE_BRICKS));
         BLUE_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_slab"), SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(BLUE_ICE_BRICKS));
         VERTICAL_BLUE_ICE_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "vertical_blue_ice_brick_slab"), VerticalSlabBlock::new, BlockBehaviour.Properties.ofFullCopy(BLUE_ICE_BRICKS));
         BLUE_ICE_BRICK_WALL = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "blue_ice_brick_wall"), WallBlock::new, BlockBehaviour.Properties.ofFullCopy(BLUE_ICE_BRICKS));
+        CHISELED_BLUE_ICE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_blue_ice_bricks"), BlockBehaviour.Properties.ofFullCopy(BLUE_ICE_BRICKS));
 
         SNOW_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_bricks"), BlockBehaviour.Properties.of().mapColor(MapColor.NONE).strength(.35f).sound(SoundType.SNOW));
         SNOW_BRICK_STAIRS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_brick_stairs"), settings -> new StairBlock(SNOW_BRICKS.defaultBlockState(), settings), BlockBehaviour.Properties.ofFullCopy(SNOW_BRICKS));
         SNOW_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_brick_slab"), SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(SNOW_BRICKS));
         VERTICAL_SNOW_BRICK_SLAB = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "vertical_snow_brick_slab"), VerticalSlabBlock::new, BlockBehaviour.Properties.ofFullCopy(SNOW_BRICKS));
         SNOW_BRICK_WALL = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "snow_brick_wall"), WallBlock::new, BlockBehaviour.Properties.ofFullCopy(SNOW_BRICKS));
+        CHISELED_SNOW_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_snow_bricks"), BlockBehaviour.Properties.ofFullCopy(SNOW_BRICKS));
+
+        CHISELED_PRISMARINE_BRICKS = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "chiseled_prismarine_bricks"), BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE_BRICKS));
 
         ENGRAVED_STONE = RegistryHelper.registerBlock(Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "engraved_stone"), EngravedStoneBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
 

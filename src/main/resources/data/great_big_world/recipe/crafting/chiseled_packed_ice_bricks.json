@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "S",
+    "S"
+  ],
+  "key": {
+    "S": "great_big_world:packed_ice_brick_slab"
+  },
+  "result": {
+    "id": "great_big_world:chiseled_packed_ice_bricks"
+  },
+  "show_notification": true
+}

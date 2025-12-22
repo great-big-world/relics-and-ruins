@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": [
+    "minecraft:cobbled_deepslate",
+    "great_big_world:cobbled_deepslate_bricks"
+  ],
+  "result": {
+    "id": "great_big_world:cobbled_deepslate_brick_slab"
+  }
+}
