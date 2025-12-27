@@ -45,21 +45,20 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
     public StructureTemplate.@Nullable StructureBlockInfo processBlock(LevelReader levelReader, BlockPos blockPos, BlockPos blockPos2, StructureTemplate.StructureBlockInfo structureBlockInfo, StructureTemplate.StructureBlockInfo structureBlockInfo2, StructurePlaceSettings structurePlaceSettings) {
         RandomSource random = structurePlaceSettings.getRandom(structureBlockInfo.pos().above());
 
-        if (structureBlockInfo.state().is(TheAlterworldBlocks.REINFORCED_DEEPSLATE) && !levelReader.registryAccess().lookupOrThrow(Registries.DIMENSION_TYPE).getResourceKey(levelReader.dimensionType()).get().equals(BuiltinDimensionTypes.OVERWORLD)) {
+        if ((structureBlockInfo.state().is(TheAlterworldBlocks.REINFORCED_DEEPSLATE) || structureBlockInfo.state().is(Blocks.REINFORCED_DEEPSLATE)) && !levelReader.registryAccess().lookupOrThrow(Registries.DIMENSION_TYPE).getResourceKey(levelReader.dimensionType()).get().equals(BuiltinDimensionTypes.OVERWORLD)) {
             return new StructureTemplate.StructureBlockInfo(structureBlockInfo.pos(), RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.defaultBlockState(), structureBlockInfo.nbt());
         }
 
-        if (random.nextFloat() < .995f) {
-            if (structureBlockInfo.state().is(RelicsAndRuinsBlocks.COBBLESTONE_BRICKS)) {
-                return new StructureTemplate.StructureBlockInfo(structureBlockInfo.pos(), RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.defaultBlockState(), structureBlockInfo.nbt());
-            }
+        if (random.nextFloat() < .95f && levelReader.getBlockState(structureBlockInfo2.pos().above()).is(STAIRS) && structureBlockInfo.state().is(RelicsAndRuinsBlocks.COBBLESTONE_BRICKS)) {
+            return new StructureTemplate.StructureBlockInfo(structureBlockInfo.pos(), RelicsAndRuinsBlocks.CHISELED_COBBLESTONE_BRICKS.defaultBlockState(), structureBlockInfo.nbt());
         }
-        random = structurePlaceSettings.getRandom(structureBlockInfo.pos());
-        BlockState current = structureBlockInfo.state();
+
+        random = structurePlaceSettings.getRandom(structureBlockInfo2.pos());
+        BlockState current = structureBlockInfo2.state();
         Block block = current.getBlock();
         if (random.nextFloat() < .6f && REPLACEMENT_MAP.containsKey(block)) {
             if (random.nextFloat() < .08f)
-                return null;
+                return structureBlockInfo;
             BlockState state = REPLACEMENT_MAP.get(block).getState(random, structureBlockInfo.pos());
             if (current.hasProperty(StairBlock.FACING)) {
                 state = state.setValue(StairBlock.FACING, current.getValue(StairBlock.FACING));
@@ -81,9 +80,9 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
                 state = state.setValue(BlockStateProperties.WATERLOGGED, current.getValue(BlockStateProperties.WATERLOGGED));
             }
 
-            return new StructureTemplate.StructureBlockInfo(structureBlockInfo.pos(), state, structureBlockInfo.nbt());
+            return new StructureTemplate.StructureBlockInfo(structureBlockInfo2.pos(), state, structureBlockInfo2.nbt());
         }
-        return structureBlockInfo;
+        return structureBlockInfo2;
     }
 
     protected StructureProcessorType<?> getType() {
