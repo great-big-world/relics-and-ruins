@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 public class RelicsAndRuinsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.putBlocks(ChunkSectionLayer.TRANSLUCENT, RelicsAndRuinsBlocks.ICE_BRICKS, RelicsAndRuinsBlocks.ICE_BRICK_STAIRS, RelicsAndRuinsBlocks.ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_ICE_BRICK_SLAB, RelicsAndRuinsBlocks.ICE_BRICK_WALL, RelicsAndRuinsBlocks.CHISELED_ICE_BRICKS);
+        BlockRenderLayerMap.putBlocks(ChunkSectionLayer.TRANSLUCENT, RelicsAndRuinsBlocks.ICE_BRICKS, RelicsAndRuinsBlocks.ICE_BRICK_STAIRS, RelicsAndRuinsBlocks.ICE_BRICK_SLAB, RelicsAndRuinsBlocks.VERTICAL_ICE_BRICK_SLAB, RelicsAndRuinsBlocks.ICE_BRICK_WALL);
         BlockRenderLayerMap.putBlocks(ChunkSectionLayer.CUTOUT, RelicsAndRuinsBlocks.ENGRAVED_STONE);
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
