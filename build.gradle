@@ -17,4 +17,6 @@ dependencies {
 
     common(project(path: ':lightning-flash', configuration: 'namedElements')) { transitive false }
     common(project(path: ':rotatable-sculk', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':copper-pressure-plates', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':delay-tool-usage', configuration: 'namedElements')) { transitive false }
 }
