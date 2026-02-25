@@ -103,6 +103,11 @@ public class EngravedStoneBlock extends KnowledgeBlock {
         builder.add(ENGRAVING, COLOR);
     }
 
+    @Override
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        return InteractionResult.PASS;
+    }
+
     public enum Engraving implements StringRepresentable {
         ANGLER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LUCK_OF_THE_SEA)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.LURE)).build()),
         ARCHER(WeightedList.<Knowledge>builder().add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.POWER)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PUNCH)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.INFINITY)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.MULTISHOT)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.PIERCING)).add(new Knowledge(Knowledge.Type.ENCHANTMENT, Enchantments.QUICK_CHARGE)).build()),
