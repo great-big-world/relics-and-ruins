@@ -1,12 +1,10 @@
 package dev.creoii.greatbigworld.relicsandruins;
 
 import com.google.common.collect.Sets;
-import dev.creoii.greatbigworld.block.KnowledgeBlock;
 import dev.creoii.greatbigworld.event.ItemEvents;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.knowledge.KnowledgeManager;
 import dev.creoii.greatbigworld.knowledge.KnowledgeUtil;
-import dev.creoii.greatbigworld.relicsandruins.block.EngravedStoneBlock;
 import dev.creoii.greatbigworld.relicsandruins.registry.*;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
 import dev.creoii.greatbigworld.thealterworld.TheAlterworld;
@@ -25,7 +23,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -36,7 +33,6 @@ import net.minecraft.world.item.equipment.trim.ArmorTrim;
 import net.minecraft.world.item.equipment.trim.TrimPattern;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.minecraft.world.level.block.entity.BannerPatterns;
@@ -44,13 +40,13 @@ import net.minecraft.world.level.block.entity.PotDecorations;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 public class RelicsAndRuins implements ModInitializer {
     @Override
     public void onInitialize() {
         RelicsAndRuinsBlocks.register();
+        RelicsAndRuinsBlockEntities.register();
         RelicsAndRuinsItems.register();
         RelicsAndRuinsStructureProcessors.register();
         RelicsAndRuinsPotions.register();
@@ -68,23 +64,6 @@ public class RelicsAndRuins implements ModInitializer {
 
         ItemEvents.PICKUP.register((player, itemEntity) -> {
             tryLearnFrom(player, itemEntity.getItem());
-        });
-
-        ItemEvents.BRUSH.register((level, player, stack,  state, pos, brushDuration) -> {
-            if (!level.isClientSide() && brushDuration > 40 && state.hasProperty(KnowledgeBlock.NATURAL) && state.getValue(KnowledgeBlock.NATURAL)) {
-                Block block = state.getBlock();
-                if (block instanceof EngravedStoneBlock engravedStoneBlock) {
-                    System.out.println("brushing engraved stone");
-                    KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(level.getServer());
-                    Optional<Knowledge> knowledge = engravedStoneBlock.getKnowledgePool(state).getRandom(level.random);
-                    if (knowledge.isPresent() && knowledgeManager.learn(player, knowledge.get())) {
-                        ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(knowledge.get().type(), Sets.newHashSet(knowledge.get())));
-
-                        EquipmentSlot equipmentSlot = stack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
-                        stack.hurtAndBreak(1, player, equipmentSlot);
-                    }
-                }
-            }
         });
 
         ComponentTooltipAppenderRegistry.addBefore(DataComponents.MAP_ID, RelicsAndRuinsDataComponentTypes.ENGRAVING);

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.creoii.greatbigworld.block.KnowledgeBlock;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
+import dev.creoii.greatbigworld.relicsandruins.block.entity.KnowledgeBlockEntity;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponentTypes;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
 import net.minecraft.ChatFormatting;
@@ -29,6 +30,8 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -41,7 +44,7 @@ import org.jspecify.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class EngravedStoneBlock extends KnowledgeBlock {
+public class EngravedStoneBlock extends KnowledgeBlock implements EntityBlock {
     public static final EnumProperty<Engraving> ENGRAVING = EnumProperty.create("engraving", Engraving.class);
     public static final EnumProperty<DyeColor> COLOR = EnumProperty.create("color", DyeColor.class);
 
@@ -60,6 +63,11 @@ public class EngravedStoneBlock extends KnowledgeBlock {
         ItemStack stack = super.getCloneItemStack(levelReader, blockPos, blockState, bl);
         stack.set(RelicsAndRuinsDataComponentTypes.ENGRAVING, new Data(blockState.getValue(ENGRAVING), blockState.getValue(COLOR)));
         return stack;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        return InteractionResult.PASS;
     }
 
     @Override
@@ -104,8 +112,8 @@ public class EngravedStoneBlock extends KnowledgeBlock {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        return InteractionResult.PASS;
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new KnowledgeBlockEntity(blockPos, blockState);
     }
 
     public enum Engraving implements StringRepresentable {

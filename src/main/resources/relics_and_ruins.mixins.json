@@ -4,6 +4,7 @@
   "package": "dev.creoii.greatbigworld.relicsandruins.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BrushItemMixin",
     "CraftingDecoratedPotRecipeMixin",
     "block.DecoratedPotBlockEntityMixin",
     "block.DecoratedPotBlockMixin",
