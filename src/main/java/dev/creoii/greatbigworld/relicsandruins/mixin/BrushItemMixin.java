@@ -6,7 +6,7 @@ import dev.creoii.greatbigworld.block.KnowledgeBlock;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.knowledge.KnowledgeManager;
 import dev.creoii.greatbigworld.relicsandruins.block.EngravedStoneBlock;
-import dev.creoii.greatbigworld.relicsandruins.block.entity.KnowledgeBlockEntity;
+import dev.creoii.greatbigworld.block.entity.KnowledgeBlockEntity;
 import dev.creoii.greatbigworld.util.network.LearnKnowledgeS2C;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.BlockPos;

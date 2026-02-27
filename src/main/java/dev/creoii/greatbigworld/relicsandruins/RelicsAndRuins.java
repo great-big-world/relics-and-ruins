@@ -5,6 +5,7 @@ import dev.creoii.greatbigworld.event.ItemEvents;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.knowledge.KnowledgeManager;
 import dev.creoii.greatbigworld.knowledge.KnowledgeUtil;
+import dev.creoii.greatbigworld.registry.GBWBlockEntityTypes;
 import dev.creoii.greatbigworld.relicsandruins.registry.*;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
 import dev.creoii.greatbigworld.thealterworld.TheAlterworld;
@@ -14,6 +15,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.ComponentTooltipAppenderRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.fabric.mixin.lookup.BlockEntityTypeAccessor;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -46,7 +48,6 @@ public class RelicsAndRuins implements ModInitializer {
     @Override
     public void onInitialize() {
         RelicsAndRuinsBlocks.register();
-        RelicsAndRuinsBlockEntities.register();
         RelicsAndRuinsItems.register();
         RelicsAndRuinsStructureProcessors.register();
         RelicsAndRuinsPotions.register();
@@ -54,6 +55,9 @@ public class RelicsAndRuins implements ModInitializer {
         RelicsAndRuinsDataComponentTypes.register();
         RelicsAndRuinsBlockStateProviderTypes.register();
         RelicsAndRuinsLootFunctionTypes.register();
+
+        if (GBWBlockEntityTypes.KNOWLEDGE_BLOCK != null)
+            ((BlockEntityTypeAccessor) GBWBlockEntityTypes.KNOWLEDGE_BLOCK).getBlocks().add(RelicsAndRuinsBlocks.ENGRAVED_STONE);
 
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, CavePlacements.FOSSIL_LOWER);
         BiomeModifications.addFeature(BiomeSelectors.tag(RelicsAndRuinsTags.FOSSIL_BIOMES), GenerationStep.Decoration.UNDERGROUND_STRUCTURES, CavePlacements.FOSSIL_UPPER);

@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.creoii.greatbigworld.block.KnowledgeBlock;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
-import dev.creoii.greatbigworld.relicsandruins.block.entity.KnowledgeBlockEntity;
+import dev.creoii.greatbigworld.block.entity.KnowledgeBlockEntity;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponentTypes;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
 import net.minecraft.ChatFormatting;
