@@ -37,13 +37,13 @@ public class IceSlabBlock extends TranslucentSlabBlock {
 
             BlockState blockState = world.getBlockState(pos.below());
             if ((blockState.blocksMotion() || blockState.liquid()) && blockState.getValue(SlabBlock.TYPE) == SlabType.DOUBLE) {
-                world.setBlock(pos, getMeltedState(), 2);
+                world.setBlockAndUpdate(pos, getMeltedState());
             }
         }
     }
 
     protected void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        if (world.getBrightness(LightLayer.BLOCK, pos) > 11 - state.getLightBlock()) {
+        if (world.getBrightness(LightLayer.BLOCK, pos) > 11 - state.getLightBlock() && state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE) {
             melt(state, world, pos);
         }
     }

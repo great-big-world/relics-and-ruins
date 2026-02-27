@@ -35,7 +35,7 @@ public class IceStairsBlock extends TranslucentStairsBlock {
 
             BlockState blockState = world.getBlockState(pos.below());
             if (blockState.blocksMotion() || blockState.liquid()) {
-                world.setBlock(pos, getMeltedState(), 2);
+                world.setBlockAndUpdate(pos, getMeltedState());
             }
         }
     }
