@@ -308,6 +308,20 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 6,
+          "name": "minecraft:brush",
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.05,
+                "max": 0.3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "weight": 2,
           "name": "minecraft:iron_pickaxe",
           "functions": [

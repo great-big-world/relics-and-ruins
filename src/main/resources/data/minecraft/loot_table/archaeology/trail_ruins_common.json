@@ -117,11 +117,27 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:copper_nugget"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_nugget"
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:coal"
         },
         {
           "type": "minecraft:item",
           "name": "minecraft:wheat_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pumpkin_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:melon_seeds"
         },
         {
           "type": "minecraft:item",
