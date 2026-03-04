@@ -52,11 +52,13 @@ public final class RelicsAndRuinsEvents {
             sherds.ordered().forEach(item -> {
                 if (item != Items.BRICK) {
                     Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, BuiltInRegistries.ITEM.getKey(item));
-                    knowledges.add(knowledge);
-                    knowledgeManager.learn(player, knowledge);
+                    if (knowledgeManager.learn(player, knowledge)) {
+                        knowledges.add(knowledge);
+                    }
                 }
             });
-            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, knowledges));
+            if (!knowledges.isEmpty())
+                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, knowledges));
         } else if (stack.is(ItemTags.DECORATED_POT_SHERDS)) {
             Level world = player.level();
 
@@ -65,8 +67,8 @@ public final class RelicsAndRuinsEvents {
 
             KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
             Knowledge knowledge = new Knowledge(Knowledge.Type.POTTERY_SHERD, BuiltInRegistries.ITEM.getKey(stack.getItem()));
-            knowledgeManager.learn(player, knowledge);
-            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, Sets.newHashSet(knowledge)));
+            if (knowledgeManager.learn(player, knowledge))
+                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.POTTERY_SHERD, Sets.newHashSet(knowledge)));
         } else if (stack.isEnchanted()) {
             Level world = player.level();
             ItemEnchantments itemEnchantmentsComponent = stack.getEnchantments();
@@ -79,10 +81,14 @@ public final class RelicsAndRuinsEvents {
             Set<Knowledge> knowledges = new HashSet<>();
             itemEnchantmentsComponent.entrySet().forEach(enchantmentRegistryEntry -> {
                 Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getKey(enchantmentRegistryEntry.getKey().value()));
-                knowledges.add(knowledge);
-                knowledgeManager.learn(player, knowledge);
+                if (knowledgeManager.learn(player, knowledge)) {
+                    knowledges.add(knowledge);
+                }
             });
-            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+
+            if (knowledges.isEmpty()) {
+                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+            }
         } else if (stack.has(DataComponents.STORED_ENCHANTMENTS)) {
             Level world = player.level();
             ItemEnchantments itemEnchantmentsComponent = stack.get(DataComponents.STORED_ENCHANTMENTS);
@@ -95,10 +101,14 @@ public final class RelicsAndRuinsEvents {
             Set<Knowledge> knowledges = new HashSet<>();
             itemEnchantmentsComponent.entrySet().forEach(enchantmentRegistryEntry -> {
                 Knowledge knowledge = new Knowledge(Knowledge.Type.ENCHANTMENT, enchantmentRegistry.getKey(enchantmentRegistryEntry.getKey().value()));
-                knowledges.add(knowledge);
-                knowledgeManager.learn(player, knowledge);
+                if (knowledgeManager.learn(player, knowledge)) {
+                    knowledges.add(knowledge);
+                }
             });
-            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+
+            if (knowledges.isEmpty()) {
+                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
+            }
         } else if (stack.getItem() instanceof SmithingTemplateItem smithingTemplateItem) {
             if (stack.is(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
                 return;
@@ -146,11 +156,15 @@ public final class RelicsAndRuinsEvents {
             bannerPatternsComponent.layers().forEach(layer -> {
                 if (layer.pattern().is(bannerPatternRegistryKey -> bannerPatternRegistryKey != BannerPatterns.BASE)) {
                     Knowledge knowledge = new Knowledge(Knowledge.Type.BANNER_PATTERN, bannerPatterns.getKey(layer.pattern().value()));
-                    knowledges.add(knowledge);
-                    knowledgeManager.learn(player, knowledge);
+                    if (knowledgeManager.learn(player, knowledge)) {
+                        knowledges.add(knowledge);
+                    }
                 }
             });
-            ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, knowledges));
+
+            if (!knowledges.isEmpty()) {
+                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.BANNER_PATTERN, knowledges));
+            }
         }
     }
 }
