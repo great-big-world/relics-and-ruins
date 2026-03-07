@@ -1,0 +1,73 @@
+{
+  "type": "minecraft:archaeology",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wheat",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wooden_hoe",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:coal",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_nugget",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:knowledge_book",
+          "functions": [
+            {
+              "function": "great_big_world:random_knowledge",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "knowledge": [
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:blade"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:explorer"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:mourner"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:plenty"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:archaeology/ocean_ruin_cold"
+}

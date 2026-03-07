@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:archaeology",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:tnt"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gunpowder"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:knowledge_book",
+          "functions": [
+            {
+              "function": "great_big_world:random_knowledge",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "knowledge": [
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:archer"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:miner"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:prize"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:skull"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:archaeology/desert_pyramid"
+}

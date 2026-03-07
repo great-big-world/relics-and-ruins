@@ -1,0 +1,66 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_apple",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_precipice",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:trident"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:knowledge_book",
+          "functions": [
+            {
+              "function": "great_big_world:random_knowledge",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "knowledge": [
+                {
+                  "type": "armor_trim",
+                  "data": "minecraft:bolt"
+                },
+                {
+                  "type": "banner_pattern",
+                  "data": "minecraft:guster"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:guster"
+                },
+                {
+                  "type": "pottery_sherd",
+                  "data": "minecraft:flow"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:density"
+                },
+                {
+                  "type": "enchantment",
+                  "data": "minecraft:sweeping_edge"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:chests/trial_chambers/reward_unique"
+}
