@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -12,22 +13,49 @@ import net.minecraft.world.item.crafting.DecoratedPotRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.PotDecorations;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(DecoratedPotRecipe.class)
-public class CraftingDecoratedPotRecipeMixin {
+public abstract class CraftingDecoratedPotRecipeMixin {
+    @Shadow
+    private static ItemStack back(CraftingInput craftingInput) {
+        return null;
+    }
+
+    @Shadow
+    private static ItemStack left(CraftingInput craftingInput) {
+        return null;
+    }
+
+    @Shadow
+    private static ItemStack right(CraftingInput craftingInput) {
+        return null;
+    }
+
+    @Shadow
+    private static ItemStack front(CraftingInput craftingInput) {
+        return null;
+    }
+
+    @Unique
+    private static ItemStack middle(CraftingInput craftingInput) {
+        return craftingInput.getItem(1, 1);
+    }
+
     @Inject(method = "matches(Lnet/minecraft/world/item/crafting/CraftingInput;Lnet/minecraft/world/level/Level;)Z", at = @At("HEAD"), cancellable = true)
     private void gbw$allowDyedDecoratedPotRecipes(CraftingInput craftingInput, Level level, CallbackInfoReturnable<Boolean> cir) {
-        if (craftingInput.width() == 3 && craftingInput.height() == 3 && craftingInput.ingredientCount() == 5)
-            cir.setReturnValue(true);
+        if (craftingInput.width() == 3 && craftingInput.height() == 3 && craftingInput.ingredientCount() == 5) {
+            cir.setReturnValue(back(craftingInput).is(ItemTags.DECORATED_POT_INGREDIENTS) && left(craftingInput).is(ItemTags.DECORATED_POT_INGREDIENTS) && right(craftingInput).is(ItemTags.DECORATED_POT_INGREDIENTS) && front(craftingInput).is(ItemTags.DECORATED_POT_INGREDIENTS) && middle(craftingInput).getItem() instanceof DyeItem);
+        }
     }
 
     @Inject(method = "assemble(Lnet/minecraft/world/item/crafting/CraftingInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;", at = @At("RETURN"), cancellable = true)
     private void gbw$makeDecoratedPotsDyeable(CraftingInput craftingInput, HolderLookup.Provider provider, CallbackInfoReturnable<ItemStack> cir, @Local PotDecorations sherds) {
-        if (craftingInput.getItem(1, 1).getItem() instanceof DyeItem dyeItem) {
+        if (middle(craftingInput).getItem() instanceof DyeItem dyeItem) {
             cir.setReturnValue(switch (dyeItem.getDyeColor()) {
                 case BROWN -> getStackWith(RelicsAndRuinsItems.BROWN_DECORATED_POT, sherds);
                 case RED -> getStackWith(RelicsAndRuinsItems.RED_DECORATED_POT, sherds);
