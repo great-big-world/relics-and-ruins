@@ -46,14 +46,16 @@ public class RandomKnowledgeLootFunction extends LootItemConditionalFunction {
         for (int i = 0; i < count; ++i) {
             Knowledge knowledge = this.knowledge.get(lootContext.getRandom().nextInt(this.knowledge.size()));
 
-            if (itemStack.has(GBWDataComponentTypes.KNOWLEDGE)) {
-                if (itemStack.get(GBWDataComponentTypes.KNOWLEDGE).knowledge().contains(knowledge)) {
-                    itemStack.get(GBWDataComponentTypes.KNOWLEDGE).knowledge().add(knowledge);
-                } else {
-                    List<Knowledge> knowledges = new ArrayList<>();
-                    knowledges.add(knowledge);
-                    itemStack.set(GBWDataComponentTypes.KNOWLEDGE, new KnowledgeComponent(knowledges));
-                }
+            if (!itemStack.has(GBWDataComponentTypes.KNOWLEDGE)) {
+                itemStack.set(GBWDataComponentTypes.KNOWLEDGE, new KnowledgeComponent(new ArrayList<>()));
+            }
+
+            if (itemStack.get(GBWDataComponentTypes.KNOWLEDGE).knowledge().contains(knowledge)) {
+                itemStack.get(GBWDataComponentTypes.KNOWLEDGE).knowledge().add(knowledge);
+            } else {
+                List<Knowledge> knowledges = new ArrayList<>();
+                knowledges.add(knowledge);
+                itemStack.set(GBWDataComponentTypes.KNOWLEDGE, new KnowledgeComponent(knowledges));
             }
         }
         return itemStack;
