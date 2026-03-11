@@ -72,5 +72,9 @@
   "item.great_big_world.disc_fragment_relic.desc": "Music Disc - Relic",
   "item.great_big_world.knowledge_book": "Knowledge Book",
 
-  "item.engraving": "%s"
+  "item.engraving": "%s",
+
+  "item.minecraft.potion.effect.resistance": "Potion of Resistance",
+  "item.minecraft.splash_potion.effect.resistance": "Splash Potion of Resistance",
+  "item.minecraft.lingering_potion.effect.resistance": "Lingering Potion of Resistance"
 }
