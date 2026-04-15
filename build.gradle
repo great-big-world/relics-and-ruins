@@ -15,8 +15,22 @@ dependencies {
     common(project(path: ':adventures', configuration: 'namedElements')) { transitive false }
     common(project(path: ':swords-and-shields', configuration: 'namedElements')) { transitive false }
 
+    common(project(path: ':breezy-seas', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':cavier-caves', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':chilling-peaks', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':colormatic', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':farms-and-friends', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':mystical-mixtures', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':savanna-safari', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':swampier-swamps', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':wild-wild-west', configuration: 'namedElements')) { transitive false }
+
     common(project(path: ':lightning-flash', configuration: 'namedElements')) { transitive false }
     common(project(path: ':rotatable-sculk', configuration: 'namedElements')) { transitive false }
     common(project(path: ':copper-pressure-plates', configuration: 'namedElements')) { transitive false }
     common(project(path: ':delay-tool-usage', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':boat-through-lilies', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':place-signs-easy', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':item-variants', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':rain-through-leaves', configuration: 'namedElements')) { transitive false }
 }
