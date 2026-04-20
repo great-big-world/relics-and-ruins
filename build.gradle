@@ -8,6 +8,8 @@ configurations {
 }
 
 dependencies {
+    implementation("org.apache.commons:commons-text:1.15.0")
+
     common(project(path: ':core', configuration: 'namedElements')) { transitive false }
     common(project(path: ':architects-assembly', configuration: 'namedElements')) { transitive false }
     common(project(path: ':flora-and-fauna', configuration: 'namedElements')) { transitive false }
@@ -19,4 +21,9 @@ dependencies {
     common(project(path: ':rotatable-sculk', configuration: 'namedElements')) { transitive false }
     common(project(path: ':copper-pressure-plates', configuration: 'namedElements')) { transitive false }
     common(project(path: ':delay-tool-usage', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':boat-through-lilies', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':item-variants', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':place-signs-easy', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':rain-through-leaves', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':staircased-dripleaf', configuration: 'namedElements')) { transitive false }
 }

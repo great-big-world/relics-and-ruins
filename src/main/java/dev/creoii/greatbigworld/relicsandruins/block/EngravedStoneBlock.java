@@ -38,7 +38,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
@@ -184,7 +184,7 @@ public class EngravedStoneBlock extends KnowledgeBlock implements EntityBlock {
 
         @Override
         public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-            consumer.accept(Component.translatable("item.engraving", StringUtils.capitalize(engraving.getSerializedName())).withStyle(ChatFormatting.GRAY));
+            consumer.accept(Component.translatable("item.engraving", WordUtils.capitalizeFully(engraving.getSerializedName().replace('_', ' '))).withStyle(ChatFormatting.GRAY));
         }
     }
 }
