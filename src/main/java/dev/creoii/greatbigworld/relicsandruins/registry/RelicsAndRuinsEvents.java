@@ -1,7 +1,7 @@
 package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import com.google.common.collect.Sets;
-import dev.creoii.greatbigworld.event.ItemEvents;
+import dev.creoii.greatbigworld.event.InventoryEvents;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.knowledge.KnowledgeManager;
 import dev.creoii.greatbigworld.knowledge.KnowledgeUtil;
@@ -34,8 +34,8 @@ import java.util.Set;
 
 public final class RelicsAndRuinsEvents {
     public static void register() {
-        ItemEvents.PICKUP.register((player, itemEntity) -> {
-            tryLearnFrom(player, itemEntity.getItem());
+        InventoryEvents.SLOTS_CHANGED.register((abstractContainerMenu, inventory, slotIndex, itemStack) -> {
+            tryLearnFrom(inventory.player, itemStack);
         });
     }
 
@@ -86,7 +86,7 @@ public final class RelicsAndRuinsEvents {
                 }
             });
 
-            if (knowledges.isEmpty()) {
+            if (!knowledges.isEmpty()) {
                 ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
             }
         } else if (stack.has(DataComponents.STORED_ENCHANTMENTS)) {
@@ -106,7 +106,7 @@ public final class RelicsAndRuinsEvents {
                 }
             });
 
-            if (knowledges.isEmpty()) {
+            if (!knowledges.isEmpty()) {
                 ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ENCHANTMENT, knowledges));
             }
         } else if (stack.getItem() instanceof SmithingTemplateItem smithingTemplateItem) {
