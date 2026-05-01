@@ -38,7 +38,9 @@
     "minecraft:jagged_peaks",
     "minecraft:stony_peaks",
     "minecraft:frozen_river",
+    "great_big_world:alter_frozen_river",
     "minecraft:river",
+    "great_big_world:alter_river",
     "minecraft:ice_spikes",
     "minecraft:old_growth_pine_taiga",
     "minecraft:sunflower_plains",
@@ -64,7 +66,23 @@
       "required": false
     },
     {
-      "id": "great_big_world:desert_river",
+      "id": "great_big_world:alter_desert_river",
+      "required": false
+    },
+    {
+      "id": "great_big_world:alter_swamp_river",
+      "required": false
+    },
+    {
+      "id": "great_big_world:alter_jungle_river",
+      "required": false
+    },
+    {
+      "id": "great_big_world:alter_cold_river",
+      "required": false
+    },
+    {
+      "id": "great_big_world:alter_desert_river",
       "required": false
     }
   ]
