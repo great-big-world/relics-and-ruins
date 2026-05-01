@@ -7,6 +7,7 @@ import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.block.entity.KnowledgeBlockEntity;
 import dev.creoii.greatbigworld.relicsandruins.registry.RelicsAndRuinsDataComponentTypes;
 import dev.creoii.greatbigworld.relicsandruins.util.RelicsAndRuinsTags;
+import dev.creoii.greatbigworld.util.StringUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -38,7 +39,6 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
-import org.apache.commons.text.WordUtils;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
@@ -184,7 +184,7 @@ public class EngravedStoneBlock extends KnowledgeBlock implements EntityBlock {
 
         @Override
         public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-            consumer.accept(Component.translatable("item.engraving", WordUtils.capitalizeFully(engraving.getSerializedName().replace('_', ' '))).withStyle(ChatFormatting.GRAY));
+            consumer.accept(Component.translatable("item.engraving", StringUtils.toTitleCase(engraving.getSerializedName().replace("_", " "), " ")).withStyle(ChatFormatting.GRAY));
         }
     }
 }
