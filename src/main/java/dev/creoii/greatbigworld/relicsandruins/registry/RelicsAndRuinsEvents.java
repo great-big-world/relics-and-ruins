@@ -1,6 +1,7 @@
 package dev.creoii.greatbigworld.relicsandruins.registry;
 
 import com.google.common.collect.Sets;
+import dev.creoii.greatbigworld.GreatBigWorld;
 import dev.creoii.greatbigworld.event.InventoryEvents;
 import dev.creoii.greatbigworld.knowledge.Knowledge;
 import dev.creoii.greatbigworld.knowledge.KnowledgeManager;
@@ -11,6 +12,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.ItemTags;
@@ -33,6 +35,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class RelicsAndRuinsEvents {
+    private static final ResourceKey<TrimPattern> NONE_TRIM_PATTERN = ResourceKey.create(Registries.TRIM_PATTERN, Identifier.fromNamespaceAndPath(GreatBigWorld.NAMESPACE, "none"));
+
     public static void register() {
         InventoryEvents.SLOTS_CHANGED.register((abstractContainerMenu, inventory, slotIndex, itemStack) -> {
             tryLearnFrom(inventory.player, itemStack);
@@ -114,8 +118,7 @@ public final class RelicsAndRuinsEvents {
                 return;
 
             ResourceKey<TrimPattern> armorTrimPattern = KnowledgeUtil.getArmorTrimPatternFromStack(stack);
-
-            if (armorTrimPattern != null) {
+            if (armorTrimPattern != null && armorTrimPattern != NONE_TRIM_PATTERN) {
                 Level world = player.level();
                 Registry<TrimPattern> armorTrimPatterns = world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN);
                 KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
@@ -127,11 +130,13 @@ public final class RelicsAndRuinsEvents {
         } else if (stack.has(DataComponents.TRIM)) {
             Level world = player.level();
             ArmorTrim armorTrim = stack.get(DataComponents.TRIM);
-            Registry<TrimPattern> armorTrimPatterns = world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN);
-            KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
-            Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getKey(armorTrim.pattern().value()));
-            if (knowledgeManager.learn(player, knowledge)) {
-                ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
+            if (!armorTrim.pattern().is(NONE_TRIM_PATTERN)) {
+                Registry<TrimPattern> armorTrimPatterns = world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN);
+                KnowledgeManager knowledgeManager = KnowledgeManager.getServerState(world.getServer());
+                Knowledge knowledge = new Knowledge(Knowledge.Type.ARMOR_TRIM, armorTrimPatterns.getKey(armorTrim.pattern().value()));
+                if (knowledgeManager.learn(player, knowledge)) {
+                    ServerPlayNetworking.send((ServerPlayer) player, new LearnKnowledgeS2C(Knowledge.Type.ARMOR_TRIM, Sets.newHashSet(knowledge)));
+                }
             }
         } else if (stack.has(DataComponents.PROVIDES_BANNER_PATTERNS)) {
             Level world = player.level();
