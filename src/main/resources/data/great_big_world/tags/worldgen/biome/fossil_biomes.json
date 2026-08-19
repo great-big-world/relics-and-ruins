@@ -54,10 +54,6 @@
     "minecraft:dripstone_caves",
     "minecraft:lush_caves",
     {
-      "id": "great_big_world:swamp_river",
-      "required": false
-    },
-    {
       "id": "great_big_world:jungle_river",
       "required": false
     },
@@ -67,10 +63,6 @@
     },
     {
       "id": "great_big_world:alter_desert_river",
-      "required": false
-    },
-    {
-      "id": "great_big_world:alter_swamp_river",
       "required": false
     },
     {

@@ -27,7 +27,7 @@ dependencies {
 
     //common(project(path: ':breezy-seas', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':cavier-caves', configuration: 'namedElements')) { transitive false }
-    //common(project(path: ':chilling-peaks', configuration: 'namedElements')) { transitive false }
+    common(project(path: ':chilling-peaks', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':colormatic', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':farms-and-friends', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':mystical-mixtures', configuration: 'namedElements')) { transitive false }
