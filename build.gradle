@@ -25,9 +25,12 @@ dependencies {
     common(project(path: ':rain-through-leaves', configuration: 'namedElements')) { transitive false }
     common(project(path: ':staircased-dripleaf', configuration: 'namedElements')) { transitive false }
 
+    //implementation "maven.modrinth:exyYnvjc:OLcq7gEM"
+    //implementation "maven.modrinth:YSVVKdlP:tenbf7uy"
+
     //common(project(path: ':breezy-seas', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':cavier-caves', configuration: 'namedElements')) { transitive false }
-    common(project(path: ':chilling-peaks', configuration: 'namedElements')) { transitive false }
+    //common(project(path: ':chilling-peaks', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':colormatic', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':farms-and-friends', configuration: 'namedElements')) { transitive false }
     //common(project(path: ':mystical-mixtures', configuration: 'namedElements')) { transitive false }
